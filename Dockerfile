@@ -12,7 +12,7 @@ RUN apk add --no-cache ffmpeg@community
 RUN apk add --no-cache atomicparsley@testing
 
 VOLUME /config
-VOLUME /download
+VOLUME /downloads
 
 COPY etc/ /etc
 COPY args.conf /config/args.conf
