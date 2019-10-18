@@ -25,6 +25,20 @@ docker run -d \
 
   Remember that if the directory that does not yet exist on the Docker host, Docker does not automatically create it for you and the command will fail.
 
+**Configure youtube-dl**
+
+Once the container is running you need to edit the file `/config/channels.txt`.
+
+This is where you input all the channels you would like to download
+
+```
+# One per line
+# Name
+https://www.youtube.com/user/examplefakeurl
+# Another one
+https://www.youtube.com/channel/anotherexamplefakeurl
+```
+
 **Optional Env Parameters**
 
 * `-e PGID=<GroupID>` - If you need to specify GroupID for file permission reasons
