@@ -29,7 +29,7 @@ docker run -d \
 
 Once the container is running you need to edit the file `/config/channels.txt`.
 
-This is where you input all the channels you would like to download
+This is where you input all the channels you would like to download.
 
 ```
 # One per line
