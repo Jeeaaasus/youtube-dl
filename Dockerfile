@@ -23,7 +23,7 @@ WORKDIR /config
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2"
 ENV PGID="911"
 ENV PUID="911"
-ENV youtubedl_interval="60m"
+ENV youtubedl_interval="3h"
 ENV youtubedl_quality="1080"
 
 ENTRYPOINT ["/init"]
