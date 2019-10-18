@@ -1,0 +1,12 @@
+# one per line
+#
+# For Example
+#
+# # GCP Grey
+#https://www.youtube.com/user/CGPGrey
+# # Kurzgesagt
+#https://www.youtube.com/user/Kurzgesagt
+# # Strange Parts
+#https://www.youtube.com/channel/UCO8DQrSp5yEP937qNqTooOw
+#
+#

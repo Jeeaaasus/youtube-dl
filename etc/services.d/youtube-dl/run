@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv sh
+apk update youtube-dl@community> /dev/null
+apk update ffmpeg@community > /dev/null
+apk update atomicparsley@testing > /dev/null
+youtube-dl --config-location "/config/args.conf" --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]"
+date
+echo "sleeping $youtubedl_interval.."
+sleep $youtubedl_interval
