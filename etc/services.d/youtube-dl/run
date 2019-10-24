@@ -1,8 +1,14 @@
 #!/usr/bin/with-contenv sh
+
 apk update youtube-dl@community> /dev/null
 apk update ffmpeg@community > /dev/null
 apk update atomicparsley@testing > /dev/null
-youtube-dl --config-location "/config/args.conf" --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]"
+if [ "$use_youtube_login" = "yes" ]
+then
+  youtube-dl --config-location "/config/args.conf" --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]"
+else
+  youtube-dl --config-location "/config/args.conf" --batch-file "/config/channels.txt" --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]"
+fi
 date
 echo "sleeping $youtubedl_interval.."
 sleep $youtubedl_interval
