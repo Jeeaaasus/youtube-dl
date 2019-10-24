@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv sh
+
+if [ ! -f "/config/args.conf"  ]
+then
+  cp /config.default/args.conf /config/
+fi
+if [ ! -f "/config/channels.txt"  ]
+then
+  cp /config.default/channels.txt /config/
+fi
