@@ -11,14 +11,14 @@ RUN apk add --no-cache youtube-dl@community
 RUN apk add --no-cache ffmpeg@community
 RUN apk add --no-cache atomicparsley@testing
 
-WORKDIR /config
-
 COPY etc/ /etc
 COPY args.conf /config/args.conf
 COPY channels.txt /config/channels.txt
 
 VOLUME /config
 VOLUME /downloads
+
+WORKDIR /config
 
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2"
 ENV PGID="911"
