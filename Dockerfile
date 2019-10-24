@@ -12,8 +12,8 @@ RUN apk add --no-cache ffmpeg@community
 RUN apk add --no-cache atomicparsley@testing
 
 COPY etc/ /etc
-COPY args.conf /config/args.conf
-COPY channels.txt /config/channels.txt
+COPY args.conf /config.default/
+COPY channels.txt /config.default/
 
 VOLUME /config
 VOLUME /downloads
