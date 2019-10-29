@@ -66,7 +66,7 @@ docker run -d \
 # Configure youtube-dl
 * **args.conf**
 
-    File located: `/config/args.conf`. > *delete to restore default options*
+    File located: `/config/args.conf`.&nbsp;&nbsp;&nbsp;&nbsp;*delete to restore default options*
 
     This is where all youtube-dl execution options are and you can add or remove them however you like, one exception being `--format` cannot be used.
 
@@ -93,6 +93,6 @@ docker run -d \
 
 * **archive.txt**
 
-    File located: `/config/archive.txt`. > *delete to make youtube-dl forget downloaded videos*
+    File located: `/config/archive.txt`.&nbsp;&nbsp;&nbsp;&nbsp;*delete to make youtube-dl forget downloaded videos*
 
     This is where youtube-dl stores all previously downloaded video IDs.
