@@ -56,7 +56,7 @@ docker run -d \
 | :---: | :---: | :--- |
 | `PGID` | (`911`) | If you need to specify GroupID for file permission reasons.
 | `PUID` | (`911`) | If you need to specify UserID for file permission reasons.
-| `TZ` | `Europe/London` | Specify TimeZone if you want the log timestamps to be correct.
+| `TZ` | `Europe/London` | Specify TimeZone for the log timestamps to be correct.
 | `youtubedl_interval` | `1h` (`3h`) `12h` `2d` | If you want to change the default download interval. 1 hour, (3 hours), 12 hours, 2 days.
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution. 720p, (1080p), 1440p, 4k.
 | `youtubedl_youtube_login` | (`no`) `yes` | If you want to login to YouTube and download **all** your subscriptions instead of adding them to *channels.txt*. Requires both `youtubedl_youtube_username` and `youtubedl_youtube_password`.
@@ -81,6 +81,7 @@ docker run -d \
     File located: `/config/channels.txt`.
 
     This is where you input all the YouTube channels you want to download.
+    Ignored if you use `youtubedl_youtube_login`=`yes`
     ```
     # One per line
     # Name
@@ -88,7 +89,7 @@ docker run -d \
     # Another one
     https://www.youtube.com/channel/anotherurl
     ```
-    Adding with Docker: `docker exec youtube-dl bash -c "echo <YOUTUBEURL> >> ./channels.txt"`
+    Adding with Docker: `docker exec youtube-dl bash -c "echo URL >> ./channels.txt"`
 
 * **archive.txt**
 
