@@ -3,11 +3,13 @@
 apk update youtube-dl@community> /dev/null
 apk update ffmpeg@community > /dev/null
 apk update atomicparsley@testing > /dev/null
-if [ "$use_youtube_login" = "yes" ]
+if [ "$youtubedl_youtube_login" = "yes" ]
 then
   youtube-dl \
     --config-location "/config/args.conf" \
-    --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]"
+    --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]" \
+    --username $youtubedl_youtube_username \
+    --password $youtubedl_youtube_password
 else
   youtube-dl \
     --config-location "/config/args.conf" \
