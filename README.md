@@ -72,7 +72,7 @@ docker run -d \
 
     Don't want a folder for every channel? Change the line with `--output` to suit your needs.
     
-    Don't want mp4 file? Change the line with `--merge-output-format` to suit your needs.
+    Don't want mp4 files? Change the line with `--merge-output-format` to suit your needs.
 
     youtube-dl configuration options documentation: [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#options)
 
