@@ -1,4 +1,10 @@
 # Jeeaaasus - youtube-dl
+[![Docker Automated build](https://img.shields.io/docker/cloud/automated/jeeaaasustest/youtube-dl?style=flat-square&logo=docker)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
+[![Image Layers](https://img.shields.io/microbadger/layers/jeeaaasustest/youtube-dl/latest?style=flat-square&logo=docker)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
+[![Image Size](https://img.shields.io/microbadger/image-size/jeeaaasustest/youtube-dl/latest?style=flat-square&logo=docker)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
+[![Docker Stars](https://img.shields.io/docker/stars/jeeaaasustest/youtube-dl?style=flat-square&logo=docker)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/jeeaaasustest/youtube-dl?style=flat-square&logo=docker)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
+
 **Automated youtube-dl Docker image for downloading YouTube subscriptions**
 
 Docker hub page: [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl)
@@ -59,7 +65,7 @@ docker run -d \
 
     File located: `/config/args.conf`.  *delete file to restore default options*
 
-    This is where all youtube-dl execution options are and you can add or remove them however you like, one exeception being `--format` cannot be used.
+    This is where all youtube-dl execution options are and you can add or remove them however you like, one exception being `--format` cannot be used.
 
     Don't want a folder for every channel? Change the line with `--output` to suit your needs.
     
