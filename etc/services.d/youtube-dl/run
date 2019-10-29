@@ -1,8 +1,7 @@
 #!/usr/bin/with-contenv sh
 
-apk update youtube-dl@community> /dev/null
-apk update ffmpeg@community > /dev/null
-apk update atomicparsley@testing > /dev/null
+apk update > /dev/null
+apk upgrade > /dev/null
 if [ "$youtubedl_youtube_login" = "yes" ]
 then
   youtube-dl \
