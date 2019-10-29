@@ -52,13 +52,17 @@ docker run -d \
 # Env Parameters
 `-e <Parameter>=<Option>`
 
-| Parameter | Option (Default) | What it does 
+| Parameter | Option (Default) | What it does
 | :---: | :---: | :--- |
 | `PGID` | (`911`) | If you need to specify GroupID for file permission reasons
 | `PUID` | (`911`) | If you need to specify UserID for file permission reasons
 | `TZ` | `Europe/London` | Specify TimeZone if you want the log timestamps to be correct
 | `youtubedl_interval` | `1h` (`3h`) `12h` `2d` | If you want to change the default download interval. 1 hour, (3 hours), 12 hours, 2 days.
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution. 720p, (1080p), 1440p, 4k
+| `youtubedl_youtube_login` | `yes` | If you want to login to YouTube and download **all** your subscriptions instead of adding them to *channels.txt*. Requires both `youtubedl_youtube_username` and `youtubedl_youtube_password`
+| `youtubedl_youtube_username` | <username> | YouTube login
+| `youtubedl_youtube_password` | <password> | YouTube login
+|  |  |
 
 # Configure youtube-dl
 * **args.conf**
