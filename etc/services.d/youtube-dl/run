@@ -23,8 +23,8 @@ then
     --config-location "/config/args.conf" \
     --download-archive "/config/archive.txt" \
     --dateafter $(cat "/config/dateafter.txt") \
-    --username $youtubedl_youtube_username \
-    --password $youtubedl_youtube_password
+    --username "$youtubedl_youtube_username" \
+    --password "$youtubedl_youtube_password"
 else
   youtube-dl \
     --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]" \
