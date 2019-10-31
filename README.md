@@ -16,7 +16,6 @@ youtube-dl documentation: [here](https://ytdl-org.github.io/youtube-dl/documenta
 * **Automated Downloading**
     * Interval options
 * **Subscriptions Downloading**
-    * Login with YouTube
     * Channels from file
 * **PUID/PGID**
 * **All youtube-dl Options**
@@ -36,6 +35,8 @@ docker run -d \
     --mount 'type=bind,source=<PATH>,target=/downloads' \
     jeeaaasustest/youtube-dl
 ```
+Then configure the channels as explained in the Configure youtube-dl section below.
+
 **Explanation**
 * `--mount 'type=volume,source=youtube-dl_data,target=/config'`
   
@@ -59,14 +60,11 @@ docker run -d \
 | `TZ` | `Europe/London` | Specify TimeZone for the log timestamps to be correct.
 | `youtubedl_interval` | `1h` (`3h`) `12h` `2d` | If you want to change the default download interval. 1 hour, (3 hours), 12 hours, 2 days.
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution. 720p, (1080p), 1440p, 4k.
-| `youtubedl_youtube_login` | (`no`) `yes` | If you want to login to YouTube and download **all** your subscriptions instead of adding them to *channels.txt*. Requires both `youtubedl_youtube_username` and `youtubedl_youtube_password`.
-| `youtubedl_youtube_username` | `<username>` | YouTube username
-| `youtubedl_youtube_password` | `<password>` | YouTube password
 
 # Configure youtube-dl
 * **args.conf**
 
-    File located: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete to restore default options*
+    File located: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore default options*
 
     This is where all youtube-dl execution options are and you can add or remove them however you like, 
     exceptions being that `--format`, `--dateafter`, `--config-location` cannot be used.
@@ -82,7 +80,6 @@ docker run -d \
     File located: `/config/channels.txt`.
 
     This is where you input all the YouTube channels you want to download.
-    Ignored if you use `youtubedl_youtube_login`=`yes`
     ```
     # One per line
     # Name
