@@ -68,7 +68,8 @@ docker run -d \
 
     File located: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete to restore default options*
 
-    This is where all youtube-dl execution options are and you can add or remove them however you like, one exception being `--format` cannot be used.
+    This is where all youtube-dl execution options are and you can add or remove them however you like, 
+    exceptions being: `--format`, `--dateafter`, `--config-location` cannot be used.
 
     Don't want a folder for every channel? Change the line with `--output` to suit your needs.
     
@@ -96,3 +97,9 @@ docker run -d \
     File located: `/config/archive.txt`.&nbsp;&nbsp;&nbsp;*delete to make youtube-dl forget downloaded videos*
 
     This is where youtube-dl stores all previously downloaded video IDs.
+
+* **dateafter.txt**
+
+    File located: `/config/dateafter.txt`.
+
+    This is where youtube-dl gets the value for `--dateafter`.
