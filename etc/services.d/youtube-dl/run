@@ -10,6 +10,7 @@ then
     date "+%Y%m%d" > "/config/dateafter.txt"
   fi
 else
+  touch "/config/archive.txt"
   date "+%Y%m%d" > "/config/dateafter.txt"
 fi
 
@@ -33,5 +34,6 @@ else
     --batch-file "/config/channels.txt"
 fi
 date
-echo "sleeping $youtubedl_interval.."
+echo "Waiting $youtubedl_interval.."
 sleep $youtubedl_interval
+date
