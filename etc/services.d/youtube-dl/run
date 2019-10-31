@@ -13,7 +13,7 @@ else
   date "+%Y%m%d" > "/config/dateafter.txt"
 fi
 
-youtubedl_archive_dateafter=$(cat dateafter.txt)
+youtubedl_archive_dateafter=$(cat "/config/dateafter.txt")
 
 if [ "$youtubedl_youtube_login" = "yes" ]
 then
