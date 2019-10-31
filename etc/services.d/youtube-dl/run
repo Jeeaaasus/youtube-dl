@@ -2,17 +2,26 @@
 
 apk update > /dev/null
 apk upgrade > /dev/null
-if [ "$use_youtube_login" = "yes" ]
+
+if [ -f "/config/archive.txt" ]
 then
-  youtube-dl \
-    --config-location "/config/args.conf" \
-    --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]"
+  if [ ! -f "/config/dateafter.txt" ]
+  then
+    date "+%Y%m%d" > "/config/dateafter.txt"
+  fi
 else
-  youtube-dl \
-    --config-location "/config/args.conf" \
-    --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]" \
-    --batch-file "/config/channels.txt"
+  touch "/config/archive.txt"
+  date "+%Y%m%d" > "/config/dateafter.txt"
 fi
+
+youtube-dl \
+  --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]" \
+  --config-location "/config/args.conf" \
+  --download-archive "/config/archive.txt" \
+  --dateafter "$(cat "/config/dateafter.txt")" \
+  --batch-file "/config/channels.txt"
+
 date
-echo "sleeping $youtubedl_interval.."
+echo "Waiting $youtubedl_interval.."
 sleep $youtubedl_interval
+date
