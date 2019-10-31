@@ -64,7 +64,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 # Configure youtube-dl
 * **args.conf**
 
-    File located: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore default options*
+    File location: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore default options*
 
     This is where all youtube-dl execution options are and you can add or remove them however you like, 
     exceptions being that `--format`, `--dateafter`, `--config-location`, `--batch-file` cannot be used.
@@ -77,7 +77,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
 * **channels.txt**
 
-    File located: `/config/channels.txt`.
+    File location: `/config/channels.txt`.
 
     This is where you input all the YouTube channels you want to download.
     ```
@@ -91,12 +91,12 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
 * **archive.txt**
 
-    File located: `/config/archive.txt`.&nbsp;&nbsp;&nbsp;*delete to make youtube-dl forget downloaded videos*
+    File location: `/config/archive.txt`.&nbsp;&nbsp;&nbsp;*delete to make youtube-dl forget downloaded videos*
 
     This is where youtube-dl stores all previously downloaded video IDs.
 
 * **dateafter.txt**
 
-    File located: `/config/dateafter.txt`.
+    File location: `/config/dateafter.txt`.
 
     This is where youtube-dl gets the value for `--dateafter`.
