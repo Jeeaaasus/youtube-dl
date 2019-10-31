@@ -14,25 +14,13 @@ else
   date "+%Y%m%d" > "/config/dateafter.txt"
 fi
 
-youtubedl_archive_dateafter=$(cat "/config/dateafter.txt")
+youtube-dl \
+  --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]" \
+  --config-location "/config/args.conf" \
+  --download-archive "/config/archive.txt" \
+  --dateafter "$(cat "/config/dateafter.txt")" \
+  --batch-file "/config/channels.txt"
 
-if [ "$youtubedl_youtube_login" = "yes" ]
-then
-  youtube-dl \
-    --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]" \
-    --config-location "/config/args.conf" \
-    --download-archive "/config/archive.txt" \
-    --dateafter "$(cat "/config/dateafter.txt")" \
-    --username "$youtubedl_youtube_username" \
-    --password "$youtubedl_youtube_password"
-else
-  youtube-dl \
-    --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]" \
-    --config-location "/config/args.conf" \
-    --download-archive "/config/archive.txt" \
-    --dateafter "$(cat "/config/dateafter.txt")" \
-    --batch-file "/config/channels.txt"
-fi
 date
 echo "Waiting $youtubedl_interval.."
 sleep $youtubedl_interval
