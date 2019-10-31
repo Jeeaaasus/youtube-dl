@@ -67,7 +67,7 @@ Then configure the channels as explained in the Configure youtube-dl section bel
     File located: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore default options*
 
     This is where all youtube-dl execution options are and you can add or remove them however you like, 
-    exceptions being that `--format`, `--dateafter`, `--config-location` cannot be used.
+    exceptions being that `--format`, `--dateafter`, `--config-location`, `--batch-file` cannot be used.
 
     Don't want a folder for every channel? Change the line with `--output` to suit your needs.
     
