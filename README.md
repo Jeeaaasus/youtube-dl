@@ -35,7 +35,7 @@ docker run -d \
     --mount 'type=bind,source=<PATH>,target=/downloads' \
     jeeaaasustest/youtube-dl
 ```
-Then configure the channels as explained in the Configure youtube-dl section below.
+Then configure the channels as explained in the [Configure youtube-dl](https://github.com/Jeeaaasus/youtube-dl/blob/update-readme/README.md#configure-youtube-dl) section below.
 
 **Explanation**
 * `--mount 'type=volume,source=youtube-dl_data,target=/config'`
