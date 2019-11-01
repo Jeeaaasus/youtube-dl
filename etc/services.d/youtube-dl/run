@@ -1,17 +1,23 @@
 #!/usr/bin/with-contenv sh
 
-apk update > /dev/null
-apk upgrade > /dev/null
+echo "checking for updates.."
+apk update
+apk upgrade
 
 if [ -f "/config/archive.txt" ]
 then
   if [ ! -f "/config/dateafter.txt" ]
   then
-    date "+%Y%m%d" > "/config/dateafter.txt"
+    echo "'dateafter.txt' not found."
+    echo "creating 'dateafter.txt'."
+    date --date "-1 days" "+%Y%m%d" > "/config/dateafter.txt"
   fi
 else
+  echo "'archive.txt' not found."
+  echo "creating 'archive.txt'."
   touch "/config/archive.txt"
-  date "+%Y%m%d" > "/config/dateafter.txt"
+  echo "creating 'dateafter.txt'."
+  date --date "-1 days" "+%Y%m%d" > "/config/dateafter.txt"
 fi
 
 youtube-dl \
@@ -22,6 +28,6 @@ youtube-dl \
   --batch-file "/config/channels.txt"
 
 date
-echo "Waiting $youtubedl_interval.."
+echo "waiting $youtubedl_interval.."
 sleep $youtubedl_interval
 date
