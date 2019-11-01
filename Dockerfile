@@ -1,9 +1,9 @@
 FROM lsiobase/alpine:3.10
 
 RUN printf "\
-@edge http://nl.alpinelinux.org/alpine/edge/main\n\
-@testing http://nl.alpinelinux.org/alpine/edge/testing\n\
-@community http://nl.alpinelinux.org/alpine/edge/community\n\
+@edge http://dl-cdn.alpinelinux.org.org/alpine/edge/main\n\
+@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
+@community http://dl-cdn.alpinelinux.org/alpine/edge/community\n\
 " >> /etc/apk/repositories
 
 RUN apk update && apk upgrade
