@@ -1,8 +1,8 @@
 #!/usr/bin/with-contenv sh
 
 echo "checking for updates.."
-apk update
-apk upgrade
+apk update > /dev/null
+apk upgrade > /dev/null
 
 if [ -f "/config/archive.txt" ]
 then
