@@ -20,6 +20,8 @@ else
   date --date "-1 days" "+%Y%m%d" > "/config/dateafter.txt"
 fi
 
+YOUTUBEDL_LAST_RUN_DATE=$(date "+%s")
+
 youtube-dl \
   --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]" \
   --config-location "/config/args.conf" \
@@ -27,7 +29,8 @@ youtube-dl \
   --dateafter "$(cat "/config/dateafter.txt")" \
   --batch-file "/config/channels.txt"
 
-date
+date "+%Y-%M-%d %H:%m:%S"
+echo "last execution took $(( ($(date "+%s") - $YOUTUBEDL_LAST_RUN_DATE) / 60 )) minutes"
 echo "waiting $youtubedl_interval.."
 sleep $youtubedl_interval
-date
+date "+%Y-%M-%d %H:%m:%S"
