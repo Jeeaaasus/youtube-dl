@@ -29,8 +29,8 @@ youtube-dl \
   --dateafter "$(cat "/config/dateafter.txt")" \
   --batch-file "/config/channels.txt"
 
-date "+%Y-%M-%d %H:%m:%S"
+date "+%Y-%m-%d %H:%M:%S"
 echo "last execution took $(( ($(date "+%s") - $YOUTUBEDL_LAST_RUN_DATE) / 60 )) minutes"
 echo "waiting $youtubedl_interval.."
 sleep $youtubedl_interval
-date "+%Y-%M-%d %H:%m:%S"
+date "+%Y-%m-%d %H:%M:%S"
