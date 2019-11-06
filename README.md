@@ -20,11 +20,12 @@ youtube-dl documentation: [here](https://ytdl-org.github.io/youtube-dl/documenta
 * **PUID/PGID**
 * **All youtube-dl Options**
     * Quality
-    * Download achive
+    * Download archive
     * Format merging
     * Subtitles
     * Thumbnails
     * Geo bypass
+    * Proxy support
     * Metadata
 
 # Usage
