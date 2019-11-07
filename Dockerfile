@@ -1,15 +1,9 @@
 FROM lsiobase/alpine:3.10
 
-RUN printf "\
-@edge http://dl-cdn.alpinelinux.org./alpine/edge/main\n\
-@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
-@community http://dl-cdn.alpinelinux.org/alpine/edge/community\n\
-" >> /etc/apk/repositories
-
 RUN apk update && apk upgrade
-RUN apk add --no-cache youtube-dl@community
-RUN apk add --no-cache ffmpeg@community
-RUN apk add --no-cache atomicparsley@testing
+RUN python3 -m pip install --upgrade youtube-dl
+RUN python3 -m pip install --upgrade ffmpeq
+RUN python3 -m pip install --upgrade ffmpeq
 
 COPY etc/ /etc
 COPY args.conf /config.default/
