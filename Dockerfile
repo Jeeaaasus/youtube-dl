@@ -1,6 +1,7 @@
 FROM lsiobase/alpine:3.10
 
 RUN apk update && apk upgrade
+RUN apk add python3
 RUN python3 -m pip install --upgrade youtube-dl
 RUN python3 -m pip install --upgrade ffmpeq
 RUN python3 -m pip install --upgrade atomicparsley
