@@ -3,7 +3,6 @@
 echo "checking for updates.."
 python3 -m pip install --upgrade youtube-dl > /dev/null
 python3 -m pip install --upgrade ffmpeg > /dev/null
-python3 -m pip install --upgrade atomicparsley > /dev/null
 
 if [ -f "/config/archive.txt" ]
 then
