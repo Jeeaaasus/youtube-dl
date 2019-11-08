@@ -1,10 +1,16 @@
 FROM lsiobase/alpine:3.10
 
+RUN printf "\
+@edge http://dl-cdn.alpinelinux.org./alpine/edge/main\n\
+@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
+@community http://dl-cdn.alpinelinux.org/alpine/edge/community\n\
+" >> /etc/apk/repositories
+
 RUN apk update && apk upgrade
 RUN apk add python3
 RUN python3 -m pip install --upgrade youtube-dl
 RUN python3 -m pip install --upgrade ffmpeg
-RUN python3 -m pip install --upgrade atomicparsley
+RUN apk add --no-cache atomicparsley@testing
 
 COPY etc/ /etc
 COPY args.conf /config.default/
