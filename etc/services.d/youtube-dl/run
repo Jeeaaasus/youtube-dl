@@ -1,6 +1,7 @@
 #!/usr/bin/with-contenv sh
 
 echo "checking for updates.."
+python3 -m pip install --upgrade pip > /dev/null
 python3 -m pip install --upgrade youtube-dl > /dev/null
 python3 -m pip install --upgrade ffmpeg > /dev/null
 
