@@ -2,9 +2,9 @@
 
 echo "checking for updates.."
 apk update > /dev/null
+apk upgrade > /dev/null
 python3 -m pip install --upgrade pip > /dev/null
 python3 -m pip install --upgrade youtube-dl > /dev/null
-apk update --upgrade ffmpeg > /dev/null
 
 if [ -f "/config/archive.txt" ]
 then
@@ -31,8 +31,7 @@ youtube-dl \
   --dateafter "$(cat "/config/dateafter.txt")" \
   --batch-file "/config/channels.txt"
 
-date "+%Y-%m-%d %H:%M:%S"
-echo "last execution took $(( ($(date "+%s") - $YOUTUBEDL_LAST_RUN_DATE) / 60 )) minutes"
+echo "$(date "+%Y-%m-%d %H:%M:%S") - last execution took $(( ($(date "+%s") - $YOUTUBEDL_LAST_RUN_DATE) / 60 )) minutes"
 echo "waiting $youtubedl_interval.."
 sleep $youtubedl_interval
 date "+%Y-%m-%d %H:%M:%S"
