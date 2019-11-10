@@ -28,7 +28,7 @@ youtube-dl \
   --dateafter "$(cat "/config/dateafter.txt")" \
   --batch-file "/config/channels.txt"
 
-if ( ($(date "+%s") - $YOUTUBEDL_LAST_RUN_DATE) / 60 > 1 )
+if [ (($(date "+%s") - $YOUTUBEDL_LAST_RUN_DATE) / 60) -gt 1 ]
 then
   echo "$(date "+%Y-%m-%d %H:%M:%S") - execution lasted $(( ($(date "+%s") - $YOUTUBEDL_LAST_RUN_DATE) / 60 )) minutes"
 else
