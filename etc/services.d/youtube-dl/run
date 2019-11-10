@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv sh
 
-echo "checking for updates.."
+echo "checking for updates..."
 python3 -m pip --disable-pip-version-check install --upgrade youtube_dl > /dev/null
 
 if [ -f "/config/archive.txt" ]
@@ -28,7 +28,7 @@ youtube-dl \
   --dateafter "$(cat "/config/dateafter.txt")" \
   --batch-file "/config/channels.txt"
 
-if [ $(( $(date "+%s") - $YOUTUBEDL_LAST_RUN_DATE / 60 )) -gt 1 ]
+if [ $(( $(date "+%s") - $YOUTUBEDL_LAST_RUN_DATE / 60 )) -ge 2 ]
 then
   echo "$(date "+%Y-%m-%d %H:%M:%S") - execution took $(( ($(date "+%s") - $YOUTUBEDL_LAST_RUN_DATE) / 60 )) minutes"
 else
