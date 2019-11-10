@@ -8,8 +8,7 @@ RUN printf "\
 
 RUN apk update && apk upgrade
 RUN apk add python3
-RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install --upgrade youtube-dl
+RUN python3 -m pip install --upgrade youtube_dl
 RUN apk add --no-cache ffmpeg@community
 RUN apk add --no-cache atomicparsley@testing
 
