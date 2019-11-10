@@ -7,7 +7,8 @@ RUN printf "\
 " >> /etc/apk/repositories
 
 RUN apk update && apk upgrade
-RUN apk add --no-cache youtube-dl@community
+RUN apk add python3
+RUN python3 -m pip install --upgrade youtube_dl
 RUN apk add --no-cache ffmpeg@community
 RUN apk add --no-cache atomicparsley@testing
 
