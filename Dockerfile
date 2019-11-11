@@ -8,11 +8,15 @@ RUN printf "\
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.22.1.0/s6-overlay-amd64.tar.gz /tmp/
 RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
+
 RUN apk update && apk upgrade
+RUN apk add coreutils
+
 RUN apk add python3
 RUN python3 -m pip install --upgrade youtube_dl
 RUN apk add --no-cache ffmpeg@community
 RUN apk add --no-cache atomicparsley@testing
+
 RUN rm -rf \
     /tmp/* \
     /root/.cache \
