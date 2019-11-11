@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.10
+FROM alpine:latest
 
 RUN printf "\
 @edge http://dl-cdn.alpinelinux.org./alpine/edge/main\n\
@@ -6,11 +6,17 @@ RUN printf "\
 @community http://dl-cdn.alpinelinux.org/alpine/edge/community\n\
 " >> /etc/apk/repositories
 
+ADD https://github.com/just-containers/s6-overlay/releases/download/v1.22.1.0/s6-overlay-amd64.tar.gz /tmp/
+RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
 RUN apk update && apk upgrade
 RUN apk add python3
 RUN python3 -m pip install --upgrade youtube_dl
 RUN apk add --no-cache ffmpeg@community
 RUN apk add --no-cache atomicparsley@testing
+RUN rm -rf \
+    /tmp/* \
+    /root/.cache \
+    /root/packages
 
 COPY etc/ /etc
 COPY args.conf /config.default/
