@@ -1,30 +1,35 @@
 FROM alpine:latest
 
+RUN \
+    wget https://github.com/just-containers/s6-overlay/releases/download/v1.22.1.0/s6-overlay-amd64.tar.gz /tmp/ && \
+    tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
+    rm -rf \
+        /tmp/* \
+        /root/.cache \
+        /root/packages
+
 RUN printf "\
 @edge http://dl-cdn.alpinelinux.org./alpine/edge/main\n\
 @testing http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
 @community http://dl-cdn.alpinelinux.org/alpine/edge/community\n\
 " >> /etc/apk/repositories
 
-ADD https://github.com/just-containers/s6-overlay/releases/download/v1.22.1.0/s6-overlay-amd64.tar.gz /tmp/
-RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
-
-RUN apk update && apk upgrade
-RUN apk add coreutils
+RUN apk update && apk upgrade && \
+    apk add --no-cache \
+        coreutils \
+        bash \
+        tzdata && \
+    rm -rf \
+        /tmp/* \
+        /root/.cache \
+        /root/packages
 
 RUN apk add python3
 RUN python3 -m pip install --upgrade youtube_dl
 RUN apk add --no-cache ffmpeg@community
 RUN apk add --no-cache atomicparsley@testing
 
-RUN rm -rf \
-    /tmp/* \
-    /root/.cache \
-    /root/packages
-
-COPY etc/ /etc
-COPY args.conf /config.default/
-COPY channels.txt /config.default/
+COPY root/ /
 
 VOLUME /config
 VOLUME /downloads
