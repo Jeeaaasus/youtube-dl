@@ -6,10 +6,7 @@ tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
 groupmod -g 1000 users && \
 useradd -u 911 -U -d /config -s /bin/false abc && \
 usermod -G users abc && \
-rm -rf \
-    /tmp/* \
-    /root/.cache \
-    /root/packages
+rm -rf /tmp/* 
 
 RUN printf "\
 @edge http://dl-cdn.alpinelinux.org./alpine/edge/main\n\
