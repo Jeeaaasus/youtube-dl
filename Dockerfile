@@ -17,8 +17,8 @@ RUN printf "\
 RUN \
 apk update && apk upgrade && \
 apk add --no-cache \
-    coreutils \
     bash \
+    coreutils \
     tzdata && \
 rm -rf \
     /tmp/* \
