@@ -1,3 +1,5 @@
+#!/usr/bin/with-contenv bash
+
 echo "youtube-dl version: $(youtube-dl --version)"
 echo "checking for updates..."
 python3 -m pip --disable-pip-version-check install --upgrade youtube_dl > /dev/null
