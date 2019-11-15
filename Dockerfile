@@ -34,15 +34,15 @@ ENV PGID="911"
 ENV youtubedl_interval="3h"
 ENV youtubedl_quality="1080"
 
-RUN addgroup --gid "$PGID" abc && \
-    adduser \
-        --gecos "" \
-        --disabled-password \
-        --no-create-home \
-        --uid "$PUID" \
-        --ingroup abc \
-        --shell abc \
-        abc 
+#RUN addgroup --gid "$PGID" abc && \
+#    adduser \
+#        --gecos "" \
+#        --disabled-password \
+#        --no-create-home \
+#        --uid "$PUID" \
+#        --ingroup abc \
+#        --shell abc \
+#        abc 
 
 VOLUME /config
 VOLUME /downloads
