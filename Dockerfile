@@ -23,12 +23,12 @@ RUN apk update && \
         coreutils \
         shadow \
         tzdata \
-        ffmpeg@community \
         atomicparsley@testing && \
     rm -rf \
         /root/.cache \
         /root/packages
 
+RUN apk add ffmpeg@community
 RUN apk add python3
 RUN python3 -m pip install youtube_dl
 
@@ -42,12 +42,13 @@ ENV youtubedl_quality="1080"
 
 RUN addgroup --gid "$PGID" abc && \
     adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "$(pwd)" \
-    --ingroup abc \
-    --uid "$PUID" \
-    abc
+        --gecos "" \
+        --disabled-password \
+        --no-create-home \
+        --uid "$PUID" \
+        --ingroup abc \
+        --shell abc \
+        abc 
 
 VOLUME /config
 VOLUME /downloads
