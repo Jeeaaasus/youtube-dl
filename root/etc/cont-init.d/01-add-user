@@ -6,13 +6,16 @@
 #groupmod -o -g "$PGID" abc
 #usermod -o -u "$PUID" abc
 
-echo "
-UID/GID
--------------------------------------
-User uid:  $(id -u abc)
-User gid:  $(id -g abc)
--------------------------------------
-"
 #chown abc:abc /config
 #chown abc:abc /config.default
 #chown abc:abc /downloads
+
+addgroup --gid "$PGID" abc && \
+  adduser \
+    --gecos "" \
+    --disabled-password \
+    --no-create-home \
+    --uid "$PUID" \
+    --ingroup abc \
+    --shell abc \
+    abc 
