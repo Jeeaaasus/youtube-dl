@@ -46,7 +46,6 @@ RUN addgroup --gid "$PGID" abc && \
     --gecos "" \
     --home "$(pwd)" \
     --ingroup abc \
-    --no-create-home \
     --uid "$PUID" \
     abc
 
