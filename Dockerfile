@@ -40,15 +40,15 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2"
 ENV youtubedl_interval="3h"
 ENV youtubedl_quality="1080"
 
-RUN addgroup --gid "$PGID" nobody && \
+RUN addgroup --gid "$PGID" abc && \
     adduser \
     --disabled-password \
     --gecos "" \
     --home "$(pwd)" \
-    --ingroup nobody \
+    --ingroup abc \
     --no-create-home \
     --uid "$PUID" \
-    nobody
+    abc
 
 VOLUME /config
 VOLUME /downloads
