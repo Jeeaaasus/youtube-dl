@@ -30,7 +30,7 @@ RUN apk update && \
         /root/packages
 
 RUN apk add python3
-RUN python3 -m pip install --upgrade youtube_dl
+RUN python3 -m pip install youtube_dl
 
 COPY root/ /
 
