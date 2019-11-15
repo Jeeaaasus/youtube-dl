@@ -9,8 +9,8 @@ usermod -o -u "$PUID" nobody
 echo "
 GID/UID
 -------------------------------------
-User uid:  $(id -u abc)
-User gid:  $(id -g abc)
+User uid:  $(id -u nobody)
+User gid:  $(id -g users)
 -------------------------------------
 "
 chown nobody:users /config
