@@ -34,9 +34,9 @@ RUN python3 -m pip install youtube_dl
 
 COPY root/ /
 
+ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2"
 ENV PUID="911"
 ENV PGID="911"
-ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2"
 ENV youtubedl_interval="3h"
 ENV youtubedl_quality="1080"
 
