@@ -3,9 +3,9 @@ FROM alpine:latest
 RUN \
 wget -P /tmp/ http://github.com/just-containers/s6-overlay/releases/download/v1.22.1.0/s6-overlay-amd64.tar.gz && \
 tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \ 
-groupmod -g 1000 users && \
-useradd -u 911 -U -d /config -s /bin/false nobody && \
-usermod -G users nobody && \
+#groupmod -g 1000 users && \
+#useradd -u 911 -U -d /config -s /bin/false nobody && \
+#usermod -G users nobody && \
 rm -rf /tmp/* 
 
 RUN printf "\
