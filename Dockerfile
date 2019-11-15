@@ -4,7 +4,7 @@ RUN \
 wget -P /tmp/ http://github.com/just-containers/s6-overlay/releases/download/v1.22.1.0/s6-overlay-amd64.tar.gz && \
 tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \ 
 #addgroup -S users && \
-adduser -S nobody -G users && \
+#adduser -S nobody -G users && \
 #groupmod -g 1000 users && \
 #useradd -u 911 -U -d /config -s /bin/false nobody -G users && \
 #useradd nobody -G users  && \
@@ -40,10 +40,21 @@ VOLUME /downloads
 
 WORKDIR /config
 
-ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2"
-ENV PGID="911"
+ENV USER=nobody
 ENV PUID="911"
+ENV PGID="911"
+ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2"
 ENV youtubedl_interval="3h"
 ENV youtubedl_quality="1080"
+
+RUN addgroup --gid "$PGID" "$USER" && \
+    adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "$(pwd)" \
+    --ingroup "$USER" \
+    --no-create-home \
+    --uid "$PUID" \
+    "$USER"
 
 ENTRYPOINT ["/init"]
