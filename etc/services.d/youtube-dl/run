@@ -23,7 +23,7 @@ fi
 YOUTUBEDL_LAST_RUN_DATE=$(date "+%s")
 
 youtube-dl \
-  --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]" \
+  --format "bestvideo[height<=$youtubedl_quality][fps>30]+bestaudio[acodec!=opus]/bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]" \
   --config-location "/config/args.conf" \
   --download-archive "/config/archive.txt" \
   --dateafter "$(cat "/config/dateafter.txt")" \
