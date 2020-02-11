@@ -1,9 +1,14 @@
 #!/usr/bin/with-contenv sh
 
-addgroup \
-  --force \
-  --gid "$PGID" \
-  abc
+if [ $(getent group | grep abc) ]
+  then
+    echo "group abc already exists"
+  else
+    addgroup \
+      --gid "$PGID" \
+      abc
+fi
+
 adduser \
   --gecos "" \
   --disabled-password \
