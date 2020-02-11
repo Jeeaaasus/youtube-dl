@@ -1,24 +1,4 @@
 #!/usr/bin/with-contenv sh
 
-if [ $(getent group | grep abc) ]
-  then
-    echo "group abc already exists"
-  else
-    addgroup \
-      --gid "$PGID" \
-      abc
-fi
-
-if [ $(getent users | grep abc) ]
-  then
-    echo "user abc already exists"
-  else
-    adduser \
-      --gecos "" \
-      --disabled-password \
-      --no-create-home \
-      --uid "$PUID" \
-      --ingroup abc \
-      --shell abc \
-      abc 
-fi
+groupmod -o -g "$PGID" abc
+usermod -o -u "$PUID" abc
