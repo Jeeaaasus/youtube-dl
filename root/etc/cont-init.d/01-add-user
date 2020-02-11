@@ -10,12 +10,15 @@
 #chown abc:abc /config.default
 #chown abc:abc /downloads
 
-addgroup --gid "$PGID" abc && \
-  adduser \
-    --gecos "" \
-    --disabled-password \
-    --no-create-home \
-    --uid "$PUID" \
-    --ingroup abc \
-    --shell abc \
-    abc 
+addgroup \
+  --force \
+  --gid "$PGID" \
+  abc
+adduser \
+  --gecos "" \
+  --disabled-password \
+  --no-create-home \
+  --uid "$PUID" \
+  --ingroup abc \
+  --shell abc \
+  abc 
