@@ -1,3 +1,5 @@
+#!/usr/bin/with-contenv sh
+
 chown abc:abc /home/abc
 chown abc:abc /config
 chown abc:abc /downloads
