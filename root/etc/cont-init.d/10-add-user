@@ -9,11 +9,16 @@ if [ $(getent group | grep abc) ]
       abc
 fi
 
-adduser \
-  --gecos "" \
-  --disabled-password \
-  --no-create-home \
-  --uid "$PUID" \
-  --ingroup abc \
-  --shell abc \
-  abc 
+if [ $(getent users | grep abc) ]
+  then
+    echo "user abc already exists"
+  else
+    adduser \
+      --gecos "" \
+      --disabled-password \
+      --no-create-home \
+      --uid "$PUID" \
+      --ingroup abc \
+      --shell abc \
+      abc 
+fi
