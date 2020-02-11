@@ -1,7 +1,0 @@
-#!/usr/bin/with-contenv sh
-
-chown -R abc:abc /home/abc
-chown -R abc:abc /config
-chown -R abc:abc /downloads
-
-chmod +x /home/abc/youtube-dl.sh
