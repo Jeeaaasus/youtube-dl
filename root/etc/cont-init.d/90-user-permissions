@@ -1,5 +1,5 @@
 #!/usr/bin/with-contenv sh
 
-chown abc:abc /home/abc
-chown abc:abc /config
-chown abc:abc /downloads
+chown -R abc:abc /home/abc
+chown -R abc:abc /config
+chown -R abc:abc /downloads
