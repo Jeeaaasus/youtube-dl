@@ -30,7 +30,7 @@ RUN apk update && \
         /root/.cache \
         /root/packages
 
-RUN python3 -m pip install youtube_dl
+RUN python3 -m pip --no-cache-dir install youtube_dl
 
 RUN addgroup --gid "$PGID" abc && \
     adduser \
