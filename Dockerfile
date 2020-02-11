@@ -24,13 +24,12 @@ RUN apk update && \
         shadow \
         tzdata \
         python3 \
-        ffmpeg@community \
-        atomicparsley@testing && \
+        atomicparsley@testing \
+        ffmpeg@community && \
+    python3 -m pip --no-cache-dir install youtube_dl && \
     rm -rf \
         /root/.cache \
         /root/packages
-
-RUN python3 -m pip --no-cache-dir install youtube_dl
 
 RUN addgroup --gid "$PGID" abc && \
     adduser \
@@ -44,8 +43,7 @@ RUN addgroup --gid "$PGID" abc && \
 
 COPY root/ /
 
-VOLUME /config
-VOLUME /downloads
+VOLUME /config /downloads
 
 WORKDIR /config
 
