@@ -45,9 +45,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
  
 * `-v <PATH>:/downloads`
   
-  Here you have to replace `<PATH>`.
-  
-  This is where on your Docker host you want youtube-dl to download videos. Example: `-v /media/youtube-dl:/downloads`
+  Here you have to replace `<PATH>`. This is where on your Docker host you want youtube-dl to download videos. Example: `-v /media/youtube-dl:/downloads`
 
   Remember that if the directory that does not yet exist on the Docker host, Docker does not automatically create it for you and the command will fail.
 
