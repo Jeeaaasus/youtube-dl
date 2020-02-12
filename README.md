@@ -31,23 +31,23 @@ youtube-dl documentation: [here](https://ytdl-org.github.io/youtube-dl/documenta
 # Usage
 ```
 docker run -d \
-    --name=youtube-dl \
-    --mount 'type=volume,source=youtube-dl_data,target=/config' \
-    --mount 'type=bind,source=<PATH>,target=/downloads' \
+    --name youtube-dl \
+    -v youtube-dl_data:/config \
+    -v <PATH>:/downloads \
     jeeaaasustest/youtube-dl
 ```
 Then configure the channels as explained in the [Configure youtube-dl](https://github.com/Jeeaaasus/youtube-dl#configure-youtube-dl) section below.
 
 **Explanation**
-* `--mount 'type=volume,source=youtube-dl_data,target=/config'`
+* `-v youtube-dl_data:/config`
   
-  This makes a volume where your config files are saved, named: `youtube-dl_data`.
+  This makes a docker volume where your config files are saved, named: `youtube-dl_data`.
  
-* `--mount 'type=bind,source=<PATH>,target=/downloads'`
+* `-v <PATH>:/downloads`
   
   Here you have to replace `<PATH>`.
   
-  This is where on your Docker host you want youtube-dl to download videos.
+  This is where on your Docker host you want youtube-dl to download videos. Example: `-v /media/youtube-dl:/downloads`
 
   Remember that if the directory that does not yet exist on the Docker host, Docker does not automatically create it for you and the command will fail.
 
