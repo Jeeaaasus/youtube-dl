@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv sh
+
+echo "
+UID/GID
+---------------------------------------
+User uid:  $(id -u abc)
+User gid:  $(id -g abc)
+---------------------------------------
+
+Image made by: Jeeaaasus
+https://github.com/Jeeaaasus/youtube-dl
+"

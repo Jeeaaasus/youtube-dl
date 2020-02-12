@@ -1,8 +1,8 @@
-#!/usr/bin/with-contenv sh
+#!/usr/bin/with-contenv bash
 
 echo "youtube-dl version: $(youtube-dl --version)"
 echo "checking for updates..."
-python3 -m pip --disable-pip-version-check install --upgrade youtube_dl > /dev/null
+python3 -m pip --no-cache-dir --disable-pip-version-check install --upgrade youtube_dl > /dev/null
 
 if [ -f "/config/archive.txt" ]
 then
@@ -23,7 +23,7 @@ fi
 YOUTUBEDL_LAST_RUN_DATE=$(date "+%s")
 
 youtube-dl \
-  --format "bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]" \
+  --format "bestvideo[height<=$youtubedl_quality][vcodec=vp9][fps>30]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality][vcodec=vp9]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]" \
   --config-location "/config/args.conf" \
   --download-archive "/config/archive.txt" \
   --dateafter "$(cat "/config/dateafter.txt")" \

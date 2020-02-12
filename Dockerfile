@@ -1,4 +1,10 @@
-FROM lsiobase/alpine:3.10
+FROM alpine:latest
+
+ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2"
+ENV PUID="911"
+ENV PGID="911"
+ENV youtubedl_interval="3h"
+ENV youtubedl_quality="1080"
 
 RUN printf "\
 @edge http://dl-cdn.alpinelinux.org./alpine/edge/main\n\
@@ -6,25 +12,39 @@ RUN printf "\
 @community http://dl-cdn.alpinelinux.org/alpine/edge/community\n\
 " >> /etc/apk/repositories
 
-RUN apk update && apk upgrade
-RUN apk add python3
-RUN python3 -m pip install --upgrade youtube_dl
-RUN apk add --no-cache ffmpeg@community
-RUN apk add --no-cache atomicparsley@testing
+RUN wget -P /tmp/ http://github.com/just-containers/s6-overlay/releases/download/v1.22.1.0/s6-overlay-amd64.tar.gz && \
+    tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
+    rm -rf /tmp/* 
 
-COPY etc/ /etc
-COPY args.conf /config.default/
-COPY channels.txt /config.default/
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache \
+        bash \
+        coreutils \
+        shadow \
+        tzdata \
+        python3 \
+        atomicparsley@testing \
+        ffmpeg@community && \
+    python3 -m pip --no-cache-dir install youtube_dl && \
+    rm -rf \
+        /root/.cache \
+        /root/packages
 
-VOLUME /config
-VOLUME /downloads
+RUN addgroup --gid "$PGID" abc && \
+    adduser \
+        --gecos "" \
+        --disabled-password \
+        --no-create-home \
+        --uid "$PUID" \
+        --ingroup abc \
+        --shell abc \
+        abc 
+
+COPY root/ /
+
+VOLUME /config /downloads
 
 WORKDIR /config
-
-ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2"
-ENV PGID="911"
-ENV PUID="911"
-ENV youtubedl_interval="3h"
-ENV youtubedl_quality="1080"
 
 ENTRYPOINT ["/init"]
