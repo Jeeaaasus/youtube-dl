@@ -7,7 +7,7 @@ User uid:  $(id -u abc)
 User gid:  $(id -g abc)
 ---------------------------------------
 
-Image made by: Jeeaaasus
+Image Made By: Jeeaaasus
 https://github.com/Jeeaaasus/youtube-dl
 https://hub.docker.com/r/jeeaaasustest/youtube-dl
 "
