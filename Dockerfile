@@ -35,6 +35,7 @@ RUN addgroup --gid "$PGID" abc && \
     adduser \
         --gecos "" \
         --disabled-password \
+        --no-create-home \
         --uid "$PUID" \
         --ingroup abc \
         --shell abc \
