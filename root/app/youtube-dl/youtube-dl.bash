@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bash
+#!/usr/bin/with-contenv sh
 
 echo "youtube-dl version: $(youtube-dl --version)"
 echo "checking for updates..."
