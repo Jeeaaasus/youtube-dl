@@ -22,7 +22,7 @@ youtube-dl documentation: [here](https://ytdl-org.github.io/youtube-dl/documenta
     * Format
     * Quality
     * Download archive
-    * Format merging
+    * Output
     * Subtitles
     * Thumbnails
     * Geo bypass
