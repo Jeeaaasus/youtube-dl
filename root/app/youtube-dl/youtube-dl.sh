@@ -1,6 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-ls -lh /root/
 python3 -m pip --no-cache-dir --disable-pip-version-check install --upgrade youtube_dl > /dev/null
 echo "youtube-dl version: $(youtube-dl --version)"
 
