@@ -3,6 +3,7 @@
 groupmod -o -g "$PGID" abc
 usermod -o -u "$PUID" abc
 
+chown -R abc:abc /home/abc
 chown -R abc:abc /app/youtube-dl
 chown -R abc:abc /config
 chown -R abc:abc /downloads
