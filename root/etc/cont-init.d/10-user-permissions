@@ -1,11 +1,10 @@
-#!/usr/bin/with-contenv sh
+#!/usr/bin/with-contenv bash
 
 groupmod -o -g "$PGID" abc
 usermod -o -u "$PUID" abc
 
-chown -R abc:abc /home/abc
 chown -R abc:abc /app/youtube-dl
 chown -R abc:abc /config
 chown -R abc:abc /downloads
 
-chmod +x /app/youtube-dl/youtube-dl.bash
+chmod +x /app/youtube-dl/youtube-dl.sh
