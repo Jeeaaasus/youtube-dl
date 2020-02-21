@@ -19,6 +19,7 @@ youtube-dl documentation: [here](https://ytdl-org.github.io/youtube-dl/documenta
     * Channels from file
 * **PUID/PGID**
 * **All youtube-dl Options**
+    * Format
     * Quality
     * Download archive
     * Format merging
@@ -66,7 +67,9 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     File location: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore default options*
 
     This is where all youtube-dl execution options are and you can add or remove them however you like, 
-    exceptions being that `--format`, `--dateafter`, `--config-location`, `--batch-file` cannot be used.
+    exceptions being that `--config-location` and `--batch-file` cannot be used.
+    
+    Please keep in mind that if you define `--format`, the ENV `youtubedl_quality` is no longer used.
 
     Don't want a folder for every channel? Change the line with `--output` to suit your needs.
     
@@ -98,4 +101,4 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
     File location: `/config/dateafter.txt`.
 
-    This is where youtube-dl gets the value for `--dateafter`.
+    If you do not define `--dateafter` in args.conf, this is where youtube-dl gets that value.
