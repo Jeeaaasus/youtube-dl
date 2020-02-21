@@ -1,8 +1,7 @@
 #!/usr/bin/with-contenv bash
 
-echo "youtube-dl version: $(youtube-dl --version)"
-echo "checking for updates..."
 python3 -m pip --no-cache-dir --disable-pip-version-check install --upgrade youtube_dl > /dev/null
+echo "youtube-dl version: $(youtube-dl --version)"
 
 if grep -qe '--format ' "/config/args.conf"; then youtubedl_args_format=true; else youtubedl_args_format=false; fi
 if grep -qe '--dateafter ' "/config/args.conf"; then youtubedl_args_dateafter=true; else youtubedl_args_dateafter=false; fi
