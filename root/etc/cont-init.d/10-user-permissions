@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv sh
+#!/usr/bin/with-contenv bash
 
 groupmod -o -g "$PGID" abc
 usermod -o -u "$PUID" abc
