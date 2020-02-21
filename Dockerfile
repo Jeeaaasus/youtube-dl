@@ -26,7 +26,7 @@ RUN apk update && \
         python3 \
         atomicparsley@testing \
         ffmpeg@community && \
-    python3 -m pip --no-cache-dir install youtube_dl && \
+    python3 -m pip --no-cache-dir install --target /usr/bin youtube_dl && \
     rm -rf \
         /root/.cache \
         /root/packages
