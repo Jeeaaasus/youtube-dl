@@ -26,7 +26,6 @@ RUN apk update && \
         python3 \
         atomicparsley@testing \
         ffmpeg@community && \
-    python3 -m pip --no-cache-dir install --target /usr/bin youtube_dl && \
     rm -rf \
         /root/.cache \
         /root/packages
@@ -35,7 +34,7 @@ RUN addgroup --gid "$PGID" abc && \
     adduser \
         --gecos "" \
         --disabled-password \
-#        --no-create-home \
+        --no-create-home \
         --uid "$PUID" \
         --ingroup abc \
         --shell abc \
