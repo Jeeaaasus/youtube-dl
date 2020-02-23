@@ -14,20 +14,20 @@ then
     if ! $youtubedl_args_dateafter
     then
       echo "'--dateafter' not found in args.conf"
-      echo "creating temporary 'dateafter.txt'."
+      echo "creating 'dateafter.txt'."
       date --date "-1 days" "+%Y%m%d" > "/config/dateafter.txt"
     fi
   fi
 else
   if ! $youtubedl_args_downloadarchive
   then
-    echo "'archive.txt' not defined in args."
-    echo "creating 'archive.txt'."
+    echo "'--download-archive' not defined in args."
+    echo "creating and using 'archive.txt'."
     touch "/config/archive.txt"
     if ! $youtubedl_args_dateafter
     then
       echo "'--dateafter' not found in args.conf"
-      echo "creating temporary 'dateafter.txt'."
+      echo "creating 'dateafter.txt'."
       date --date "-1 days" "+%Y%m%d" > "/config/dateafter.txt"
     fi
   fi
