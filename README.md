@@ -16,11 +16,12 @@ youtube-dl documentation: [here](https://ytdl-org.github.io/youtube-dl/documenta
 * **Automated Downloading**
     * Interval options
 * **Subscriptions Downloading**
-    * Channels from file
+    * Channel urls from file
 * **PUID/PGID**
 * **All youtube-dl Options**
     * Format
     * Quality
+    * High fps videos
     * Download archive
     * Output
     * Subtitles
