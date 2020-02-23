@@ -68,12 +68,12 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
     This is where all youtube-dl execution options are and you can add or remove them however you like, 
     exceptions being that `--config-location` and `--batch-file` cannot be used.
-    
-    Please keep in mind that if you define `--format`, the ENV `youtubedl_quality` is no longer used.
 
     Don't want a folder for every channel? Change the line with `--output` to suit your needs.
     
     Don't want mp4 files? Change the line with `--merge-output-format` to suit your needs.
+    
+    Please keep in mind that if you define `--format`, the ENV `youtubedl_quality` is no longer used.
 
     youtube-dl configuration options documentation: [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#options)
 
@@ -101,4 +101,4 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
     File location: `/config/dateafter.txt`.
 
-    If you do not define `--dateafter` in args.conf, this is where youtube-dl gets that value.
+    If you do not define `--dateafter` in args.conf, this is where youtube-dl gets that value. It is used as a workaround to help against youtube thinking you are making too many requests and therefore ip banning you.
