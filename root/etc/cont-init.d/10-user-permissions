@@ -7,4 +7,5 @@ chown -R abc:abc /app/youtube-dl
 chown -R abc:abc /config
 chown -R abc:abc /downloads
 
+chmod +x /app/youtube-dl/updater.sh
 chmod +x /app/youtube-dl/youtube-dl.sh
