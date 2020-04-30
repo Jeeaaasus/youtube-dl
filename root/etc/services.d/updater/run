@@ -1,3 +1,3 @@
 #!/usr/bin/with-contenv bash
 
-exec /app/youtube-dl/updater.sh
+exec s6-envuidgid /app/youtube-dl/updater.sh
