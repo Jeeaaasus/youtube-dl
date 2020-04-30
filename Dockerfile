@@ -37,8 +37,8 @@ RUN addgroup --gid "$PGID" abc && \
         --disabled-password \
         --no-create-home \
         --uid "$PUID" \
-        --ingroup abc \
-        --shell abc \
+        --ingroup abc, root \
+        --shell /bin/bash \
         abc 
 
 COPY root/ /
