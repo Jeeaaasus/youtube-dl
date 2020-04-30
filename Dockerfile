@@ -34,10 +34,11 @@ RUN apk update && \
 RUN addgroup --gid "$PGID" abc && \
     adduser \
         --gecos "" \
+        --system \
         --disabled-password \
         --no-create-home \
         --uid "$PUID" \
-        --ingroup abc root \
+        --ingroup abc \
         --shell /bin/bash \
         abc 
 
