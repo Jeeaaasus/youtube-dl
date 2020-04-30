@@ -1,10 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-echo "UPDATING"
-apk update > /dev/null && apk upgrade > /dev/null
-python3 -m pip --no-cache-dir --disable-pip-version-check install --upgrade youtube_dl > /dev/null
-echo "UPDATING OVER"
-
 if grep -qe '--format ' "/config/args.conf"; then youtubedl_args_format=true; else youtubedl_args_format=false; fi
 if grep -qe '--dateafter ' "/config/args.conf"; then youtubedl_args_dateafter=true; else youtubedl_args_dateafter=false; fi
 if grep -qe '--download-archive ' "/config/args.conf"; then youtubedl_args_downloadarchive=true; else youtubedl_args_downloadarchive=false; fi
