@@ -49,8 +49,6 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
   
   Here you have to replace `<PATH>`. This is where on your Docker host you want youtube-dl to download videos. Example: `-v /media/youtube-dl:/downloads`
 
-  Remember that if the directory that does not yet exist on the Docker host, Docker does not automatically create it for you and the command will fail.
-
 # Env Parameters
 `-e <Parameter>=<Option>`
 
@@ -102,4 +100,4 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
     File location: `/config/dateafter.txt`.
 
-    If you do not define `--dateafter` in args.conf, this is where youtube-dl gets that value. It is used as a workaround to help against youtube thinking you are making too many requests and therefore ip banning you.
+    If you do not define `--dateafter` in args.conf, this is where youtube-dl gets that value. It is used as a workaround to help against YouTube thinking you are making too many requests and therefore ip banning you.
