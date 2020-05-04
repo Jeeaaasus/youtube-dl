@@ -38,7 +38,7 @@ RUN addgroup --gid "$PGID" abc && \
         --no-create-home \
         --uid "$PUID" \
         --ingroup abc \
-        --shell abc \
+        --shell /bin/bash \
         abc 
 
 COPY root/ /
