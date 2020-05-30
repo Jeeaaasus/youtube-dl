@@ -25,7 +25,8 @@ RUN apk update && \
         tzdata \
         python3 \
         atomicparsley@testing \
-        ffmpeg@community && \
+        ffmpeg@community \
+        py3-pip@community && \
     python3 -m pip --no-cache-dir install youtube_dl && \
     rm -rf \
         /root/.cache \
