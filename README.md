@@ -61,6 +61,20 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution. 720p, (1080p), 1440p, 4k.
 
 # Configure youtube-dl
+* **channels.txt**
+
+    File location: `/config/channels.txt`.
+
+    This is where you input all the YouTube channels you want to have videos downloaded from.
+    ```
+    # One per line
+    # Name
+    https://www.youtube.com/user/url
+    # Another one
+    https://www.youtube.com/channel/anotherurl
+    ```
+    Adding with Docker: `docker exec youtube-dl bash -c "echo URL >> ./channels.txt"`
+
 * **args.conf**
 
     File location: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore default options*
@@ -75,20 +89,6 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     Please keep in mind that if you define `--format`, the ENV `youtubedl_quality` is no longer used.
 
     youtube-dl configuration options documentation: [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#options)
-
-* **channels.txt**
-
-    File location: `/config/channels.txt`.
-
-    This is where you input all the YouTube channels you want to download.
-    ```
-    # One per line
-    # Name
-    https://www.youtube.com/user/url
-    # Another one
-    https://www.youtube.com/channel/anotherurl
-    ```
-    Adding with Docker: `docker exec youtube-dl bash -c "echo URL >> ./channels.txt"`
 
 * **archive.txt**
 
