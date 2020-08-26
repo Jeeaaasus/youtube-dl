@@ -16,7 +16,8 @@ RUN wget -P /tmp/ http://github.com/just-containers/s6-overlay/releases/download
     tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
     rm -rf /tmp/* 
 
-RUN apk update && \
+RUN set -x && \
+    apk update && \
     apk upgrade && \
     apk add --no-cache \
         bash \
