@@ -12,7 +12,7 @@ RUN printf "\
 @community http://dl-cdn.alpinelinux.org/alpine/edge/community\n\
 " >> /etc/apk/repositories
 
-RUN wget -P /tmp/ http://github.com/just-containers/s6-overlay/releases/download/v1.22.1.0/s6-overlay-amd64.tar.gz && \
+RUN wget -P /tmp/ http://github.com/just-containers/s6-overlay/releases/download/v2.1.0.0/s6-overlay-amd64.tar.gz && \
     tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
     rm -rf /tmp/* 
 
