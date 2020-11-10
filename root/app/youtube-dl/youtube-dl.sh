@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bash
 
+youtubedl_binary="youtube-dl"
+
 if grep -qe '--format ' "/config/args.conf"; then youtubedl_args_format=true; else youtubedl_args_format=false; fi
 if grep -qe '--dateafter ' "/config/args.conf"; then youtubedl_args_dateafter=true; else youtubedl_args_dateafter=false; fi
 if grep -qe '--download-archive ' "/config/args.conf"; then youtubedl_args_downloadarchive=true; else youtubedl_args_downloadarchive=false; fi
@@ -30,7 +32,7 @@ else
   fi
 fi
 
-youtubedl_exec="youtube-dl"
+youtubedl_exec=$youtubedl_binary
 if ! $youtubedl_args_downloadarchive; then youtubedl_exec+=" --download-archive "/config/archive.txt""; fi
 if ! $youtubedl_args_dateafter; then youtubedl_exec+=" --dateafter $(cat /config/dateafter.txt)"; fi
 youtubedl_exec+=" --config-location "/config/args.conf""
@@ -52,7 +54,7 @@ else
   echo "$(date "+%Y-%m-%d %H:%M:%S") - execution took $(( ($(date "+%s") - $youtubedl_last_run_date) )) seconds"
 fi
 
-echo "youtube-dl version: $(youtube-dl --version)"
+echo "youtube-dl version: $($youtubedl_binary --version)"
 echo "waiting $youtubedl_interval.."
 sleep $youtubedl_interval
 date "+%Y-%m-%d %H:%M:%S"
