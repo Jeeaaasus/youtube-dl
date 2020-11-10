@@ -1,4 +1,4 @@
-# Jeeaaasus - youtube-dl
+# Jeeaaasus - youtube-dl(c)
 [![Docker Automated build](https://img.shields.io/docker/cloud/automated/jeeaaasustest/youtube-dl?style=flat&logo=docker&label=build)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
 [![Image Layers](https://img.shields.io/microbadger/layers/jeeaaasustest/youtube-dl/latest?style=flat&logo=docker&label=image+layers)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
 [![Image Size](https://img.shields.io/microbadger/image-size/jeeaaasustest/youtube-dl/latest?style=flat&logo=docker)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
@@ -9,7 +9,7 @@
 
 Docker hub page: [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl)
 
-youtube-dl documentation: ~~[here](https://ytdl-org.github.io/youtube-dl/documentation.html)~~  [internet archive link](https://web.archive.org/web/20200924161811/https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme)
+youtube-dl documentation: [here](https://github.com/blackjack4494/yt-dlc/#readme)
 
 # Features
 * **Self Updating youtube-dl**
@@ -88,7 +88,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     
     Please keep in mind that if you define `--format`, the ENV `youtubedl_quality` is no longer used.
 
-    youtube-dl configuration options documentation: ~~[here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#options)~~  [internet archive link](https://web.archive.org/web/20200924161811/https://github.com/ytdl-org/youtube-dl/blob/master/README.md#options)
+    youtube-dl configuration options documentation: [here](https://github.com/blackjack4494/yt-dlc/#options)
 
 * **archive.txt**
 
