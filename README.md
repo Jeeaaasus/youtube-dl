@@ -9,7 +9,7 @@
 
 Docker hub page: [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl)
 
-youtube-dl documentation: [here](https://github.com/blackjack4494/yt-dlc/#readme)
+youtube-dl documentation: [here](https://github.com/blackjack4494/yt-dlc/blob/master/README.md)
 
 # Features
 * **Self Updating youtube-dl**
@@ -88,7 +88,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     
     Please keep in mind that if you define `--format`, the ENV `youtubedl_quality` is no longer used.
 
-    youtube-dl configuration options documentation: [here](https://github.com/blackjack4494/yt-dlc/#options)
+    youtube-dl configuration options documentation: [here](https://github.com/blackjack4494/yt-dlc/blob/master/README.md#options)
 
 * **archive.txt**
 
