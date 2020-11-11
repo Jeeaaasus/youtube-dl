@@ -24,6 +24,7 @@ RUN set -x && \
         coreutils \
         shadow \
         tzdata \
+        git \
         python3 \
         atomicparsley@testing \
         ffmpeg@community \
