@@ -32,19 +32,19 @@ else
   fi
 fi
 
-youtubedl_exec=$youtubedl_binary
-if ! $youtubedl_args_downloadarchive; then youtubedl_exec+=" --download-archive "/config/archive.txt""; fi
-if ! $youtubedl_args_dateafter; then youtubedl_exec+=" --dateafter $(cat /config/dateafter.txt)"; fi
-youtubedl_exec+=" --config-location "/config/args.conf""
-youtubedl_exec+=" --batch-file "/config/channels.txt""
+exec=$youtubedl_binary
+if ! $youtubedl_args_downloadarchive; then exec+=" --download-archive "/config/archive.txt""; fi
+if ! $youtubedl_args_dateafter; then exec+=" --dateafter $(cat /config/dateafter.txt)"; fi
+exec+=" --config-location "/config/args.conf""
+exec+=" --batch-file "/config/channels.txt""
 
 youtubedl_last_run_date=$(date "+%s")
 
 if ! $youtubedl_args_format
 then
-  $youtubedl_exec --format "bestvideo[height<=$youtubedl_quality][vcodec=vp9][fps>30]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality][vcodec=vp9]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus] / best"
+  $exec --format "bestvideo[height<=$youtubedl_quality][vcodec=vp9][fps>30]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality][vcodec=vp9]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus] / best"
 else
-  $youtubedl_exec
+  $exec
 fi
 
 if [ $(( ($(date "+%s") - $youtubedl_last_run_date) / 60 )) -ge 2 ]
