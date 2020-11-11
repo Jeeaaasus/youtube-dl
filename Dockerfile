@@ -29,7 +29,7 @@ RUN set -x && \
         atomicparsley@testing \
         ffmpeg@community \
         py3-pip@community && \
-    python3 -m pip --no-cache-dir install youtube_dlc && \
+    python3 -m pip --no-cache-dir install git+https://github.com/blackjack4494/yt-dlc && \
     rm -rf \
         /root/.cache \
         /root/packages
