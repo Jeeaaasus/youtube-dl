@@ -1,8 +1,7 @@
-# one per line
-# For Example
-# # GCP Grey
-#https://www.youtube.com/user/CGPGrey
-# # Kurzgesagt
-#https://www.youtube.com/user/Kurzgesagt
-# # Strange Parts
-#https://www.youtube.com/channel/UCO8DQrSp5yEP937qNqTooOw
+### This is where you input all the YouTube channels you want to have videos downloaded from.
+#
+# One per line
+# Name
+#https://www.youtube.com/user/url
+# Another one
+#https://www.youtube.com/channel/anotherurl
