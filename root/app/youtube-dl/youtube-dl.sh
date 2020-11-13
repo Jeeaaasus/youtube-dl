@@ -23,6 +23,7 @@ exec+=" --batch-file "/config/channels.txt""
 
 youtubedl_last_run_date=$(date "+%s")
 
+while ! [ -f /usr/bin/$youtubedl_binary ]; do sleep 1s; done
 if ! $youtubedl_args_format
 then
   $exec --format "bestvideo[height<=$youtubedl_quality][vcodec=vp9][fps>30]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality][vcodec=vp9]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus] / best"
