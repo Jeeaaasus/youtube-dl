@@ -7,9 +7,9 @@
 
 **Automated youtube-dl Docker image for downloading YouTube subscriptions**
 
-Docker hub page: [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl)
+Docker hub page [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl).
 
-youtube-dl documentation: [here](https://github.com/blackjack4494/yt-dlc/blob/master/README.md)
+youtube-dl documentation [here](https://github.com/blackjack4494/yt-dlc/blob/master/README.md).
 
 # Features
 * **Self Updating youtube-dl**
@@ -81,23 +81,20 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
     This is where all youtube-dl execution options are and you can add or remove them however you like, 
     exceptions being that `--config-location` and `--batch-file` cannot be used.
+    
+    Keep in mind that if you define `--format`, the ENV `youtubedl_quality` is not used anymore.
+    
+    The default `--playlist-end 8` makes youtube-dl only download the latest 8 videos.
+    Be careful changing this! YouTube may feel like you are making too many requests and therefore ip banning you.
 
     Don't want a folder for every channel? Change the line with `--output` to suit your needs.
     
     Don't want mp4 files? Change the line with `--merge-output-format` to suit your needs.
-    
-    Please keep in mind that if you define `--format`, the ENV `youtubedl_quality` is no longer used.
 
-    youtube-dl configuration options documentation: [here](https://github.com/blackjack4494/yt-dlc/blob/master/README.md#options)
+    youtube-dl configuration options documentation [here](https://github.com/blackjack4494/yt-dlc/blob/master/README.md#options).
 
 * **archive.txt**
 
     File location: `/config/archive.txt`.&nbsp;&nbsp;&nbsp;*delete to make youtube-dl forget downloaded videos*
 
     This is where youtube-dl stores all previously downloaded video IDs.
-
-* **dateafter.txt**
-
-    File location: `/config/dateafter.txt`.
-
-    If you do not define `--dateafter` in args.conf, this is where youtube-dl gets that value. It is used as a workaround to help against YouTube thinking you are making too many requests and therefore ip banning you.
