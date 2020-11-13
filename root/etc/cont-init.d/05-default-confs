@@ -2,11 +2,11 @@
 
 if [ ! -f "/config/args.conf"  ]
 then
-  echo "restoring default 'args.conf'."
+  echo "[05-default-confs] restoring default 'args.conf'."
   cp /config.default/args.conf /config/
 fi
 if [ ! -f "/config/channels.txt"  ]
 then
-  echo "restoring default 'channels.txt'."
+  echo "[05-default-confs] restoring default 'channels.txt'."
   cp /config.default/channels.txt /config/
 fi
