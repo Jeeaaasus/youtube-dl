@@ -85,7 +85,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     Keep in mind that if you define `--format`, the ENV `youtubedl_quality` is not used anymore.
     
     The default `--playlist-end 8` makes youtube-dl only download the latest 8 videos.
-    Be careful changing this, YouTube could think you are making too many requests and therefore ip banning you.
+    Be careful changing this! YouTube may feel like you are making too many requests and therefore ip banning you.
 
     Don't want a folder for every channel? Change the line with `--output` to suit your needs.
     
