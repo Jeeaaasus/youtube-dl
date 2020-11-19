@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-youtubedl_binary="youtube-dlc"
+youtubedl_binary="youtube-dl"
 
 if grep -qe '--format ' "/config/args.conf"; then youtubedl_args_format=true; else youtubedl_args_format=false; fi
 if grep -qe '--download-archive ' "/config/args.conf"; then youtubedl_args_downloadarchive=true; else youtubedl_args_downloadarchive=false; fi
