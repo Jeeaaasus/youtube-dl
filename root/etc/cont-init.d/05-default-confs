@@ -1,11 +1,11 @@
 #!/usr/bin/with-contenv sh
 
-if [ ! -f "/config/args.conf"  ]
+if ! [ -f "/config/args.conf" ]
 then
   echo "[default-confs] restoring default 'args.conf'."
   cp /config.default/args.conf /config/
 fi
-if [ ! -f "/config/channels.txt"  ]
+if ! [ -f "/config/channels.txt" ]
 then
   echo "[default-confs] restoring default 'channels.txt'."
   cp /config.default/channels.txt /config/
