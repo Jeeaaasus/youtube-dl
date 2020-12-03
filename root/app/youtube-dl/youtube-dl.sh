@@ -21,9 +21,9 @@ if [ -f "/config/dateafter.txt" ]; then exec+=" --dateafter $(cat /config/dateaf
 exec+=" --config-location "/config/args.conf""
 exec+=" --batch-file "/config/channels.txt""
 
-youtubedl_last_run_date=$(date "+%s")
-
 while ! [ -f /usr/bin/$youtubedl_binary ]; do sleep 1s; done
+sed -iE 's!  *$!!; s!//*$!!; s!(youtube.*(channel|user|c))/([^/]+$)!\1/\3/videos!i' /config/channels.txt
+youtubedl_last_run_date=$(date "+%s")
 if ! $youtubedl_args_format
 then
   $exec --format "bestvideo[height<=$youtubedl_quality][vcodec=vp9][fps>30]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality][vcodec=vp9]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus] / best"
