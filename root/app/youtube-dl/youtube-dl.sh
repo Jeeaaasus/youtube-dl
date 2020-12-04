@@ -22,8 +22,9 @@ exec+=" --config-location "/config/args.conf""
 exec+=" --batch-file "/config/channels.txt""
 
 while ! [ -f /usr/bin/$youtubedl_binary ]; do sleep 1s; done
-sed -Ei 's!  *$!!; s!//*$!!; s!(youtube.*(channel|user|c))/([^/]+$)!\1/\3/videos!i' /config/channels.txt
+youtubedl_version=$($youtubedl_binary --version)
 youtubedl_last_run_date=$(date "+%s")
+sed -Ei 's!  *$!!; s!//*$!!; s!(youtube.*(channel|user|c))/([^/]+$)!\1/\3/videos!i' /config/channels.txt
 if ! $youtubedl_args_format
 then
   $exec --format "bestvideo[height<=$youtubedl_quality][vcodec=vp9][fps>30]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality][vcodec=vp9]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus] / best"
@@ -38,7 +39,7 @@ else
   echo "$(date "+%Y-%m-%d %H:%M:%S") - execution took $(( ($(date "+%s") - $youtubedl_last_run_date) )) seconds"
 fi
 
-echo "youtube-dl version: $($youtubedl_binary --version)"
+echo "youtube-dl version: $youtubedl_version"
 echo "waiting $youtubedl_interval.."
 sleep $youtubedl_interval
 date "+%Y-%m-%d %H:%M:%S"
