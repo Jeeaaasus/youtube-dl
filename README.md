@@ -98,6 +98,8 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     
     The default `--playlist-end 8` makes youtube-dl only download the latest 8 videos.
     Be careful changing this! YouTube may feel like you are making too many requests and therefore ip banning you.
+    
+    The default `--match-filter "! is_live"` makes youtube-dl ignore live streams.
 
     Don't want a folder for every channel? Change the line with `--output` to suit your needs.
     
