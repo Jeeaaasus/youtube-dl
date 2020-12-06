@@ -79,7 +79,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     You find this URL by going to a video and clicking on the uploader.
     
     A recent change makes it that you have to add `/videos` to the end of channel URLs, otherwise you will download "related" channels and other things.
-    This *should* be added automatically but I still recommend you add it to the end of all URLs.
+    This *should* be added automatically but I still recommend you add it to the end of all channel URLs.
 
 * **archive.txt**
 
