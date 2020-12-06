@@ -22,7 +22,7 @@ exec+=" --config-location "/config/args.conf""
 exec+=" --batch-file "/config/channels.txt""
 
 while ! [ -f /usr/bin/$youtubedl_binary ]; do sleep 1s; done
-sed -Ei 's!  *$!!; s!//*$!!; s!(youtube.*(channel|user|c))/([^/]+$)!\1/\3/videos!i' /config/channels.txt
+sed -i -E 's!  *$!!; s!//*$!!; s!(youtube.*(channel|user|c))/([^/]+$)!\1/\3/videos!i' /config/channels.txt
 youtubedl_version=$($youtubedl_binary --version)
 youtubedl_last_run_time=$(date "+%s")
 if ! $youtubedl_args_format
