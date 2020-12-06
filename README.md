@@ -1,4 +1,4 @@
-# Jeeaaasus - youtube-dl(c)
+# Jeeaaasus - youtube-dl
 [![Docker Automated build](https://img.shields.io/docker/cloud/automated/jeeaaasustest/youtube-dl?style=flat&logo=docker&label=build)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
 [![Image Layers](https://img.shields.io/microbadger/layers/jeeaaasustest/youtube-dl/latest?style=flat&logo=docker&label=image+layers)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
 [![Image Size](https://img.shields.io/microbadger/image-size/jeeaaasustest/youtube-dl/latest?style=flat&logo=docker)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
@@ -9,7 +9,7 @@
 
 Docker hub page [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl).
 
-youtube-dl documentation [here](https://github.com/blackjack4494/yt-dlc/blob/master/README.md).
+youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme).
 
 # Features
 * **Self Updating youtube-dl**
@@ -69,11 +69,23 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     ```
     # One per line
     # Name
-    https://www.youtube.com/user/url
+    https://www.youtube.com/user/channel_username/videos
     # Another one
-    https://www.youtube.com/channel/anotherurl
+    https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q/videos
     ```
     Adding with Docker: `docker exec youtube-dl bash -c "echo URL >> ./channels.txt"`
+    
+    It is recommended to use the ID-based URLs, they look like: `/channel/UC0vaVaSyV14uvJ4hEZDOl0Q`, as the other ones might get changed.
+    You find the ID-based URL by going to a video and clicking on the uploader.
+    
+    A recent change makes it that all channel URLs must end with `/videos`, otherwise you will download "related" channels and other things.
+    This *should* be added automatically but I still recommend you add it to the end of all channel URLs.
+
+* **archive.txt**
+
+    File location: `/config/archive.txt`.&nbsp;&nbsp;&nbsp;*delete to make youtube-dl forget downloaded videos*
+
+    This is where youtube-dl stores all previously downloaded video IDs.
 
 * **args.conf**
 
@@ -91,10 +103,4 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     
     Don't want mp4 files? Change the line with `--merge-output-format` to suit your needs.
 
-    youtube-dl configuration options documentation [here](https://github.com/blackjack4494/yt-dlc/blob/master/README.md#options).
-
-* **archive.txt**
-
-    File location: `/config/archive.txt`.&nbsp;&nbsp;&nbsp;*delete to make youtube-dl forget downloaded videos*
-
-    This is where youtube-dl stores all previously downloaded video IDs.
+    youtube-dl configuration options documentation [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#options).

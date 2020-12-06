@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-youtubedl_binary="youtube-dlc"
+youtubedl_binary="youtube-dl"
 
 if grep -qe '--format ' "/config/args.conf"; then youtubedl_args_format=true; else youtubedl_args_format=false; fi
 if grep -qe '--download-archive ' "/config/args.conf"; then youtubedl_args_downloadarchive=true; else youtubedl_args_downloadarchive=false; fi
@@ -21,9 +21,10 @@ if [ -f "/config/dateafter.txt" ]; then exec+=" --dateafter $(cat /config/dateaf
 exec+=" --config-location "/config/args.conf""
 exec+=" --batch-file "/config/channels.txt""
 
-youtubedl_last_run_date=$(date "+%s")
-
 while ! [ -f /usr/bin/$youtubedl_binary ]; do sleep 1s; done
+sed -i -E 's!  *$!!; s!//*$!!; s!(youtube.*(channel|user|c))/([^/]+$)!\1/\3/videos!i' /config/channels.txt
+youtubedl_version=$($youtubedl_binary --version)
+youtubedl_last_run_time=$(date "+%s")
 if ! $youtubedl_args_format
 then
   $exec --format "bestvideo[height<=$youtubedl_quality][vcodec=vp9][fps>30]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality][vcodec=vp9]+bestaudio[acodec!=opus] / bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus] / best"
@@ -31,14 +32,14 @@ else
   $exec
 fi
 
-if [ $(( ($(date "+%s") - $youtubedl_last_run_date) / 60 )) -ge 2 ]
+if [ $(( ($(date "+%s") - $youtubedl_last_run_time) / 60 )) -ge 2 ]
 then
-  echo "$(date "+%Y-%m-%d %H:%M:%S") - execution took $(( ($(date "+%s") - $youtubedl_last_run_date) / 60 )) minutes"
+  echo "$(date "+%Y-%m-%d %H:%M:%S") - execution took $(( ($(date "+%s") - $youtubedl_last_run_time) / 60 )) minutes"
 else
-  echo "$(date "+%Y-%m-%d %H:%M:%S") - execution took $(( ($(date "+%s") - $youtubedl_last_run_date) )) seconds"
+  echo "$(date "+%Y-%m-%d %H:%M:%S") - execution took $(( ($(date "+%s") - $youtubedl_last_run_time) )) seconds"
 fi
 
-echo "youtube-dl version: $($youtubedl_binary --version)"
+echo "youtube-dl version: $youtubedl_version"
 echo "waiting $youtubedl_interval.."
 sleep $youtubedl_interval
 date "+%Y-%m-%d %H:%M:%S"
