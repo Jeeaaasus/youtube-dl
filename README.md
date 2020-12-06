@@ -75,10 +75,10 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     ```
     Adding with Docker: `docker exec youtube-dl bash -c "echo URL >> ./channels.txt"`
     
-    It is recommended to use URLs that look like: `/channel/UC0vaVaSyV14uvJ4hEZDOl0Q`, as the other ones might get changed.
-    You find this URL by going to a video and clicking on the uploader.
+    It is recommended to use ID-based URLs, they look like: `/channel/UC0vaVaSyV14uvJ4hEZDOl0Q`, as the other ones might get changed.
+    You find the ID-based URL by going to a video and clicking on the uploader.
     
-    A recent change makes it that you have to add `/videos` to the end of channel URLs, otherwise you will download "related" channels and other things.
+    A recent change makes it that all channel URLs must end with `/videos`, otherwise you will download "related" channels and other things.
     This *should* be added automatically but I still recommend you add it to the end of all channel URLs.
 
 * **archive.txt**
