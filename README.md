@@ -15,7 +15,7 @@ youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/mast
 * **Automated Downloading**
     * Interval options
 * **Subscriptions Downloading**
-    * Channel urls from file
+    * Channel URLs from file
 * **PUID/PGID**
 * **All youtube-dl Options**
     * Format
@@ -40,23 +40,24 @@ docker run -d \
 Then configure the channels as explained in the [Configure youtube-dl](https://github.com/Jeeaaasus/youtube-dl#configure-youtube-dl) section below.
 
 **Explanation**
-* `-v youtube-dl_data:/config`
-  
-  This makes a docker volume where your config files are saved, named: `youtube-dl_data`.
+* `-v youtube-dl_data:/config`  
+  This makes a Docker volume where your config files are saved, named: `youtube-dl_data`.
  
-* `-v <PATH>:/downloads`
+* `-v <PATH>:/downloads`  
+  This makes a bind mount where videos get downloaded.
   
-  Here you have to replace `<PATH>`. This is where on your Docker host you want youtube-dl to download videos. Example: `-v /media/youtube-dl:/downloads`
+  This is where on your Docker host you want youtube-dl to download videos.  
+  Replace `<PATH>`, example: `-v /media/youtube-dl:/downloads`
 
 # Env Parameters
-`-e <Parameter>=<Option>`
+`-e <Parameter>=<Value>`
 
-| Parameter | Option (Default) | What it does
+| Parameter | Value (Default) | What it does
 | :---: | :---: | :--- |
 | `PUID` | (`911`) | If you need to specify UserID for file permission reasons.
 | `PGID` | (`911`) | If you need to specify GroupID for file permission reasons.
 | `TZ` | `Europe/London` | Specify TimeZone for the log timestamps to be correct.
-| `youtubedl_interval` | `1h` (`3h`) `12h` `2d` | If you want to change the default download interval. 1 hour, (3 hours), 12 hours, 2 days.
+| `youtubedl_interval` | `1h` (`3h`) `12h` `3d` | If you want to change the default download interval. 1 hour, (3 hours), 12 hours, 3 days.
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution. 720p, (1080p), 1440p, 4k.
 
 # Configure youtube-dl
