@@ -7,8 +7,7 @@
 
 **Automated youtube-dl Docker image for downloading YouTube subscriptions**
 
-Docker hub page [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl).
-
+Docker hub page [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl).  
 youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme).
 
 # Features
@@ -63,8 +62,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 # Configure youtube-dl
 * **channels.txt**
 
-    File location: `/config/channels.txt`.
-
+    File location: `/config/channels.txt`.  
     This is where you input all the YouTube channels you want to have videos downloaded from.
     ```
     # One per line
@@ -73,7 +71,9 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     # Another one
     https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q/videos
     ```
-    Adding with Docker: `docker exec youtube-dl bash -c "echo URL >> ./channels.txt"`
+    Adding with Docker:  
+    `docker exec youtube-dl bash -c 'echo "# NAME" >> ./channels.txt'`  
+    `docker exec youtube-dl bash -c 'echo "URL" >> ./channels.txt'`
     
     It is recommended to use the ID-based URLs, they look like: `/channel/UC0vaVaSyV14uvJ4hEZDOl0Q`, as the other ones might get changed.
     You find the ID-based URL by going to a video and clicking on the uploader.
@@ -83,14 +83,12 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
 * **archive.txt**
 
-    File location: `/config/archive.txt`.&nbsp;&nbsp;&nbsp;*delete to make youtube-dl forget downloaded videos*
-
+    File location: `/config/archive.txt`.&nbsp;&nbsp;&nbsp;*delete to make youtube-dl forget downloaded videos*  
     This is where youtube-dl stores all previously downloaded video IDs.
 
 * **args.conf**
 
-    File location: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore default options*
-
+    File location: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore default options*  
     This is where all youtube-dl execution options are and you can add or remove them however you like, 
     exceptions being that `--config-location` and `--batch-file` cannot be used.
     
