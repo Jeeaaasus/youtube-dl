@@ -13,6 +13,7 @@ on:
 env:
   IMAGE_REPO: jeeaaasustest
   IMAGE_NAME: youtube-dl
+  DATE_TAG: $(date +'%Y.%m.%d')
 
 jobs:
   main:
@@ -29,12 +30,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Set Tags
-        id: docker_tag
-        run: |
-          export DATE="$(date +'%Y.%m.%d')"
-          echo "::set-env name=DATE_TAG::$DATE"
 
       - name: Build and push
         id: docker_build
