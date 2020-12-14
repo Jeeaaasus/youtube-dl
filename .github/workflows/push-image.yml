@@ -13,7 +13,6 @@ on:
 env:
   IMAGE_REPO: jeeaaasustest
   IMAGE_NAME: youtube-dl
-  DATE_TAG: $(date +'%Y.%m.%d')
 
 jobs:
   main:
@@ -32,8 +31,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set Tags
-        id: docker_tag
-        run: echo "DATE_TAG=$(date +%Y.%m.%d)" >> $GITHUB_ENV
+        id: image_tags
+        run: echo "DATE_TAG=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
 
       - name: Build and push
         id: docker_build
