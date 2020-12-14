@@ -34,4 +34,4 @@ jobs:
           IMAGE_NAME: youtube-dl
         with:
           push: true
-          tags: ${{IMAGE_REPO}}/${{IMAGE_NAME}}:beta
+          tags: ${{ IMAGE_REPO }}/${{ IMAGE_NAME }}:beta
