@@ -36,4 +36,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: $IMAGE_REPO/$IMAGE_NAME:beta
+          tags: ${IMAGE_REPO}/${IMAGE_NAME}:beta
