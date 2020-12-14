@@ -30,6 +30,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Set Tags
+        id: docker_tag
+        run: |
+          export DATE="$(date +'%Y.%m.%d')"
+          echo "::set-env name=DATE_TAG::$DATE"
+
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -37,4 +43,4 @@ jobs:
           push: true
           tags: |
             ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:beta
-            ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:$(echo date +%Y%m%d)
+            ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.DATE_TAG }}
