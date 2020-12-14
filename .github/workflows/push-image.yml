@@ -3,9 +3,9 @@ name: Push Image
 on:
   push:
     branches:
-      - beta
+      - master
   pull_request:
-    branches: beta
+    branches: master
 
 #  schedule:
 #    - cron: '0 12 * * *'
