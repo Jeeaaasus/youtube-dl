@@ -1,14 +1,14 @@
 name: Push Image
 
 on:
+  schedule:
+    - cron: '0 12 * * *'
+
   push:
     branches:
       - master
   pull_request:
     branches: master
-
-  schedule:
-    - cron: '0 12 * * *'
 
 env:
   IMAGE_REPO: jeeaaasustest
@@ -40,5 +40,5 @@ jobs:
         with:
           push: true
           tags: |
-            ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:beta
             ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.DATE_TAG }}
+            ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:beta
