@@ -27,11 +27,14 @@ jobs:
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Set Version and Tag
+      - name: Get Version
+        id: image_version
+        run: |
+          echo "VERSION_TAG=$(echo $(curl https://github.com/ytdl-org/youtube-dl/releases/latest) | sed -E 's!(.*/youtube-dl/releases/tag/)(.*)(">.*)!\2!i')" >> $GITHUB_ENV
+
+      - name: Set Tag
         id: image_tag
         run: |
-          echo test
-          echo "VERSION_TAG=$(echo $(curl https://github.com/ytdl-org/youtube-dl/releases/latest) | sed -E 's!(.*/youtube-dl/releases/tag/)(.*)(">.*)!\2!i')" >> $GITHUB_ENV
           echo ${{ env.VERSION_TAG }}
           VERSION_TAG=${{ env.VERSION_TAG }}
           sed -i -E 's!(python.*install.*)(youtube_dl)!\1\2=='"$VERSION_TAG"'!i' ./Dockerfile
