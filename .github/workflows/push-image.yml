@@ -30,7 +30,7 @@ jobs:
       - name: Get Version
         id: image_version
         run: |
-          VERSION_TAG=$(echo $(curl https://github.com/ytdl-org/youtube-dl/releases/latest) | sed -E 's!(.*/youtube-dl/releases/tag/)(.*)(">.*)!\2!i')
+          VERSION_TAG=$(echo $(curl -s https://github.com/ytdl-org/youtube-dl/releases/latest) | sed -E 's!(.*/youtube-dl/releases/tag/)(.*)(">.*)!\2!i')
           echo "Version: $VERSION_TAG"
           echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_ENV
           sed -i -E 's!(python.*install.*)(youtube_dl)!\1\2=='"$VERSION_TAG"'!i' ./Dockerfile
