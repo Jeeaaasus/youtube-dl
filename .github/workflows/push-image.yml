@@ -30,6 +30,7 @@ jobs:
       - name: Set Version and Tag
         id: image_tag
         run: |
+          echo test
           echo "VERSION_TAG=$(echo $(curl https://github.com/ytdl-org/youtube-dl/releases/latest) | sed -E 's!(.*/youtube-dl/releases/tag/)(.*)(">.*)!\2!i')" >> $GITHUB_ENV
           echo ${{ env.VERSION_TAG }}
           VERSION_TAG=${{ env.VERSION_TAG }}
