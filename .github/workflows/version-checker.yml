@@ -11,11 +11,14 @@ jobs:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.REPO_SCOPED_TOKEN }}
+
       - name: Fetch latest release version
         run: curl -s https://api.github.com/repos/ytdl-org/youtube-dl/releases/latest | jq -r ".tag_name" > release-versions/latest.txt
+
       - name: Check for modified files
         id: git-check
         run: echo ::set-output name=modified::$([ -z "`git status --porcelain`" ] && echo "false" || echo "true")
+
       - name: Commit latest release version
         if: steps.git-check.outputs.modified == 'true'
         run: |
