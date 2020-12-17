@@ -5,7 +5,7 @@ on:
     - cron: '0 0,12 * * *'
 
 jobs:
-  update-release-version:
+  Release Checker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
