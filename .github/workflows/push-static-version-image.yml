@@ -30,7 +30,9 @@ jobs:
           sed -i -E 's!(python.*install.*)(youtube_dl)!\1\2=='"$VERSION_TAG"'!i' ./Dockerfile
 
       - name: Remove updater
-        run: rm --verbose ./root/app/youtube-dl/updater.sh
+        run: |
+          rm --verbose -r ./root/etc/services.d/updater/
+          rm --verbose ./root/app/youtube-dl/updater.sh
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
