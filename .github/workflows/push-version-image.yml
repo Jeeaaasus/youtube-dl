@@ -10,7 +10,7 @@ env:
   IMAGE_NAME: youtube-dl
 
 jobs:
-  push-new-version:
+  push-new-version-image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
