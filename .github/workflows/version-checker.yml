@@ -2,7 +2,7 @@ name: Version Checker
 
 on:
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '0 12,6 * * *'
 
 jobs:
   update-release-version:
@@ -22,6 +22,6 @@ jobs:
       - name: Commit latest release version
         if: steps.git-check.outputs.modified == 'true'
         run: |
-          git config --global user.name 'Jeeaaasus'
+          git config --global user.name 'Version Checker'
           git commit -am "New release version"
           git push
