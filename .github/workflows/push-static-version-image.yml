@@ -10,7 +10,7 @@ env:
   IMAGE_NAME: youtube-dl
 
 jobs:
-  Push new static version image:
+  Push New Static Version Image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
