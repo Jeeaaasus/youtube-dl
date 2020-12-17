@@ -1,4 +1,4 @@
-name: Push New Version Image
+name: Push New Static Version Image
 
 on:
   push:
@@ -10,7 +10,7 @@ env:
   IMAGE_NAME: youtube-dl
 
 jobs:
-  push-new-version-image:
+  Push new static version image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
