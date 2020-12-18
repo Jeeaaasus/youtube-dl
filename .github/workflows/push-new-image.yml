@@ -15,18 +15,17 @@ jobs:
 
       - name: Set tag
         run: |
-          if [ echo "$CI_ACTION_REF_NAME_SLUG" == 'master' ]
+          if [ $(echo "$CI_ACTION_REF_NAME_SLUG") == 'master' ]
           then
-            echo "IMAGE_TAGS=latest" >> $GITHUB_ENV
+            echo "IMAGE_TAG=latest" >> $GITHUB_ENV
           else
-            echo "IMAGE_TAGS=$CI_ACTION_REF_NAME_SLUG" >> $GITHUB_ENV
+            echo "IMAGE_TAG=$CI_ACTION_REF_NAME_SLUG" >> $GITHUB_ENV
           fi
-          echo "IMAGE_TAGS=$CI_ACTION_REF_NAME_SLUG"
 
       - name: Print image tag
         run: |
           echo "Branch: $CI_ACTION_REF_NAME_SLUG"
-          echo "Image Tag: ${{ env.IMAGE_TAGS }}"
+          echo "Image Tag: ${{ env.IMAGE_TAG }}"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
