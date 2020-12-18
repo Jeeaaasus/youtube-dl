@@ -21,6 +21,7 @@ jobs:
           else
             echo "IMAGE_TAG=$CI_ACTION_REF_NAME_SLUG" >> $GITHUB_ENV
           fi
+          echo "IMAGE_TAG=$CI_ACTION_REF_NAME_SLUG"
 
       - name: Print image tag
         run: |
