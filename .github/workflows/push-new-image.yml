@@ -1,6 +1,10 @@
 name: Push New Image
 
-on: [push]
+on:
+  push:
+    paths-ignore:
+      - 'README.md'
+      - '.*'
 
 env:
   IMAGE_REPO: jeeaaasustest
