@@ -15,7 +15,7 @@ jobs:
 
       - name: Set tag
         run: |
-          if echo "$CI_ACTION_REF_NAME_SLUG" == 'master'
+          if [ echo "$CI_ACTION_REF_NAME_SLUG" == 'master' ]
           then
             echo "IMAGE_TAGS=latest" >> $GITHUB_ENV
           else
