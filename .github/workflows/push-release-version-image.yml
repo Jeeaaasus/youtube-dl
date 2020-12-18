@@ -2,6 +2,8 @@ name: Push New Release Version Image
 
 on:
   push:
+    branches: 
+      - 'master'
     paths:
       - 'release-versions/latest.txt'
 
