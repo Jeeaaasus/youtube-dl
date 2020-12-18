@@ -17,7 +17,7 @@ jobs:
         run: |
           if echo "$CI_ACTION_REF_NAME_SLUG" == 'master'
           then
-            echo "IMAGE_TAG=latest" >> $GITHUB_ENV
+            echo "IMAGE_TAG=beta" >> $GITHUB_ENV
           else
             echo "IMAGE_TAG=$CI_ACTION_REF_NAME_SLUG" >> $GITHUB_ENV
           fi
@@ -43,4 +43,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:beta
+          tags: ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
