@@ -16,6 +16,18 @@ RUN wget -P /tmp/ http://github.com/just-containers/s6-overlay/releases/download
     tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
     rm -rf /tmp/* 
 
+RUN addgroup --gid "$PGID" abc && \
+    adduser \
+        --gecos "" \
+        --disabled-password \
+        --no-create-home \
+        --uid "$PUID" \
+        --ingroup abc \
+        --shell /bin/bash \
+        abc 
+
+COPY root/ /
+
 RUN set -x && \
     apk update && \
     apk upgrade && \
@@ -28,22 +40,12 @@ RUN set -x && \
         atomicparsley@testing \
         ffmpeg@community \
         py3-pip@community && \
-    python3 -m pip --no-cache-dir install youtube_dl && \
     rm -rf \
         /root/.cache \
         /root/packages
 
-RUN addgroup --gid "$PGID" abc && \
-    adduser \
-        --gecos "" \
-        --disabled-password \
-        --no-create-home \
-        --uid "$PUID" \
-        --ingroup abc \
-        --shell /bin/bash \
-        abc 
-
-COPY root/ /
+RUN set -x && \
+    python3 -m pip --no-cache-dir install youtube_dl
 
 VOLUME /config /downloads
 
