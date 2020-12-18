@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'release-versions/latest.txt'
+    branches:
+      - 'master'
 
 env:
   IMAGE_REPO: jeeaaasustest
