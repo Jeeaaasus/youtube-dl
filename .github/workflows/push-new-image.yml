@@ -21,8 +21,11 @@ jobs:
           else
             echo "BRANCH=$CI_ACTION_REF_NAME_SLUG" >> $GITHUB_ENV
           fi
+
+      - name: Print image tag
+        run: |
           echo "Branch: $CI_ACTION_REF_NAME_SLUG"
-          echo "Tag: ${{ env.BRANCH }}"
+          echo "Image Tag: ${{ env.BRANCH }}"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
