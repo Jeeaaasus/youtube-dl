@@ -2,7 +2,7 @@ name: Release Checker
 
 on:
   schedule:
-    - cron: '32 0-4 * * *'
+    - cron: "39 0-4 * * *"
 
 jobs:
   Release-Checker:
