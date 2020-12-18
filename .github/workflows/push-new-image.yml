@@ -24,7 +24,7 @@ jobs:
 
       - name: Print image tag
         run: |
-          echo "Branch: $CI_ACTION_REF_NAME_SLUG"
+          echo "Branch: $CI_ACTION_REF_NAME"
           echo "Image Tag: ${{ env.IMAGE_TAG }}"
 
       - name: Set up QEMU
