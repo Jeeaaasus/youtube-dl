@@ -23,5 +23,5 @@ jobs:
         if: steps.git-check.outputs.modified == 'true'
         run: |
           git config --global user.name 'Release Checker'
-          git commit -am "New release version: $(echo cat release-versions/latest.txt)"
+          git commit -am "New release version: $(cat release-versions/latest.txt)"
           git push
