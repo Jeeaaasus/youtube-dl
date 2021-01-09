@@ -26,6 +26,11 @@ jobs:
             echo "IMAGE_TAG=$CI_ACTION_REF_NAME_SLUG" >> $GITHUB_ENV
           fi
 
+      - name: Set version
+        run: |
+          RELEASE_VERSION=$(cat release-versions/latest.txt)
+          sed -i -E 's!(python.*install.*)(youtube_dl)!\1\2=='"$RELEASE_VERSION"'!i' Dockerfile
+
       - name: Print image tag
         run: |
           echo "Branch: $CI_ACTION_REF_NAME"
