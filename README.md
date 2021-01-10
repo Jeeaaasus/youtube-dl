@@ -90,7 +90,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     It is recommended to use the ID-based URLs, they look like: `/channel/UC0vaVaSyV14uvJ4hEZDOl0Q`, as the other ones might get changed.
     You find the ID-based URL by going to a video and clicking on the uploader.
     
-    A recent change makes it that all channel URLs must end with `/videos`, otherwise you will download "related" channels and other things.
+    All channel URLs must end with `/videos`, otherwise you will download "related" channels and other things.
     This *should* be added automatically but still recommend you add it to the end of all channel URLs.
 
 * **archive.txt**
