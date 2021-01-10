@@ -100,7 +100,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 * **args.conf**
 
     File location: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore default options*  
-    This is where all youtube-dl execution options are and you can add or remove them however you like, 
+    This is where all youtube-dl execution options are, you can add or remove them however you like, 
     exceptions being that `--config-location` and `--batch-file` cannot be used.
     
     Keep in mind that if you define `--format`, the ENV `youtubedl_quality` is not used anymore.
