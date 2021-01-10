@@ -55,7 +55,6 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 * **`:latest`**
     * Automatically built when a new version is released.
     * Container updates itself to latest youtube-dl.
-
 * **`:v<VERSION>`**
     * Automatically built when a new version is released.
     * Tagged with installed youtube-dl version.
