@@ -51,15 +51,6 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
   This is where on your Docker host you want youtube-dl to download videos.  
   Replace `<PATH>`, example: `-v /media/youtube-dl:/downloads`  
 
-**Image Tags**
-* **`latest`**
-    * Automatically built when a new version is released.
-    * Container updates itself to latest youtube-dl.
-* **`v<VERSION>`**
-    * Automatically built when a new version is released.
-    * Tagged with installed youtube-dl version.
-    * Does not update while running.
-
 # Env Parameters
 `-e <Parameter>=<Value>`
 
@@ -70,6 +61,16 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 | `TZ` | `Europe/London` | Specify TimeZone for the log timestamps to be correct.
 | `youtubedl_interval` | `1h` (`3h`) `12h` `3d` | If you want to change the default download interval. 1 hour, (3 hours), 12 hours, 3 days.
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution. 720p, (1080p), 1440p, 4k.
+
+# Image Tags
+**`latest`**
+  * Automatically built when a new version is released.
+  * Container updates itself to latest youtube-dl.
+
+**`v<VERSION>`**
+  * Automatically built when a new version is released.
+  * Tagged with installed youtube-dl version.
+  * Does not update while running.
 
 # Configure youtube-dl
 * **channels.txt**
