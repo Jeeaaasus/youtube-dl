@@ -63,14 +63,13 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution. 720p, (1080p), 1440p, 4k.
 
 # Image Tags
-**`latest`**
-  * Automatically built when a new version is released.
-  * Container updates itself to latest youtube-dl.
-
-**`v<VERSION>`**
-  * Automatically built when a new version is released.
-  * Tagged with installed youtube-dl version.
-  * Does not update while running.
+* **`latest`**
+    * Automatically built when a new version is released.
+    * Container updates itself to latest youtube-dl.
+* **`v<VERSION>`**
+    * Automatically built when a new version is released.
+    * Tagged with installed youtube-dl version.
+    * Does not update while running.
 
 # Configure youtube-dl
 * **channels.txt**
