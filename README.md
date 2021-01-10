@@ -64,7 +64,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
 # Image Tags
 * **`latest`**
-    * Automatically built when a youtube-dl version is released, GitHub commit is pushed.
+    * Automatically built when a youtube-dl version is released.
     * Container updates to latest youtube-dl while running.
 * **`v<VERSION>`**
     * Automatically built when a youtube-dl version is released.
