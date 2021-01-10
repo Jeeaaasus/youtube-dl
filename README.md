@@ -11,10 +11,11 @@ Docker hub page [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl).
 youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme).
 
 # Features
-* **Self Updating youtube-dl**
-* **Automated Downloading**
+* **Automatic Updates**
+    * Self updating container
+    * Automated image building
+* **Automatic Downloads**
     * Interval options
-* **Subscriptions Downloading**
     * Channel URLs from file
 * **PUID/PGID**
 * **All youtube-dl Options**
@@ -28,6 +29,7 @@ youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/mast
     * Geo bypass
     * Proxy support
     * Metadata
+    * Etc
 
 # Usage
 ```
@@ -47,7 +49,17 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
   This makes a bind mount where videos get downloaded.
   
   This is where on your Docker host you want youtube-dl to download videos.  
-  Replace `<PATH>`, example: `-v /media/youtube-dl:/downloads`
+  Replace `<PATH>`, example: `-v /media/youtube-dl:/downloads`  
+
+**Image Tags**
+* **`:latest`**
+    * Automatically built when a new version is released.
+    * Container updates itself to latest youtube-dl.
+
+* **`:v<VERSION>`**
+    * Automatically built when a new version is released.
+    * Tagged with installed youtube-dl version.
+    * Does not update while running.
 
 # Env Parameters
 `-e <Parameter>=<Value>`
