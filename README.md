@@ -52,10 +52,10 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
   Replace `<PATH>`, example: `-v /media/youtube-dl:/downloads`  
 
 **Image Tags**
-* **`:latest`**
+* **`latest`**
     * Automatically built when a new version is released.
     * Container updates itself to latest youtube-dl.
-* **`:v<VERSION>`**
+* **`v<VERSION>`**
     * Automatically built when a new version is released.
     * Tagged with installed youtube-dl version.
     * Does not update while running.
