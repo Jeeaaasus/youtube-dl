@@ -1,8 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-youtubedl_binary="youtube-dl"
-
-if [ $youtubedl_debug == 'true' ]; then youtubedl_debug=true; else youtubedl_debug=false; fi
+if $youtubedl_debug; then youtubedl_args_verbose=true; else youtubedl_args_verbose=false; fi
 if grep -qe '--format ' "/config/args.conf"; then youtubedl_args_format=true; else youtubedl_args_format=false; fi
 if grep -qe '--download-archive ' "/config/args.conf"; then youtubedl_args_downloadarchive=true; else youtubedl_args_downloadarchive=false; fi
 
@@ -16,8 +14,9 @@ then
   fi
 fi
 
+youtubedl_binary="youtube-dl"
 exec=$youtubedl_binary
-if $youtubedl_debug; then exec+=" --verbose"; fi
+if $youtubedl_args_verbose; then exec+=" --verbose"; fi
 if ! $youtubedl_args_downloadarchive; then exec+=" --download-archive "/config/archive.txt""; fi
 if [ -f "/config/dateafter.txt" ]; then exec+=" --dateafter $(cat /config/dateafter.txt)"; fi
 exec+=" --config-location "/config/args.conf""
