@@ -2,7 +2,7 @@
 
 youtubedl_binary="youtube-dl"
 
-if [ $youtubedl_debug == 'true' ]; then youtubedl_args_verbose=true; else youtubedl_args_verbose=false; fi
+if [ $youtubedl_debug == 'true' ]; then youtubedl_debug=true; else youtubedl_debug=false; fi
 if grep -qe '--format ' "/config/args.conf"; then youtubedl_args_format=true; else youtubedl_args_format=false; fi
 if grep -qe '--download-archive ' "/config/args.conf"; then youtubedl_args_downloadarchive=true; else youtubedl_args_downloadarchive=false; fi
 
