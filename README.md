@@ -11,15 +11,15 @@ Docker hub page [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl).
 youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme).
 
 # Features
-* **Minimal Setup**
-    * Easy quality setting with env parameter
-    * Included download format option for easy usage
-    * Included argument options for easy usage
+* **Easy Usage with Minimal Setup**
+    * Quality options with env parameter
+    * Included format selection argument
+    * Included necessary arguments
 * **Automatic Updates**
     * Self updating container
     * Automated image building
 * **Automatic Downloads**
-    * Interval options
+    * Interval options with env parameter
     * Channel URLs from file
 * **PUID/PGID**
 * **youtube-dl Options**
