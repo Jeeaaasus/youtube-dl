@@ -46,7 +46,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
   This makes a Docker volume where your config files are saved, named: `youtube-dl_data`.
  
 * `-v <PATH>:/downloads`  
-  This makes a bind mount where videos get downloaded.
+  This makes a bind mount where the videos are downloaded.
   
   This is where on your Docker host you want youtube-dl to download videos.  
   Replace `<PATH>`, example: `-v /media/youtube-dl:/downloads`
