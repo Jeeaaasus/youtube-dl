@@ -11,6 +11,10 @@ Docker hub page [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl).
 youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme).
 
 # Features
+* **Minimal Setup**
+    * Easy quality setting with env parameter
+    * Included download format option for easy usage
+    * Included argument options for easy usage
 * **Automatic Updates**
     * Self updating container
     * Automated image building
@@ -56,9 +60,10 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
 | Parameter | Value (Default) | What it does
 | :---: | :---: | :--- |
+| `TZ` | `Europe/London` | Specify TimeZone for the log timestamps to be correct.
 | `PUID` | (`911`) | If you need to specify UserID for file permission reasons.
 | `PGID` | (`911`) | If you need to specify GroupID for file permission reasons.
-| `TZ` | `Europe/London` | Specify TimeZone for the log timestamps to be correct.
+| `youtubedl_debug` | `true` | If you need to enable verbose mode.
 | `youtubedl_interval` | `1h` (`3h`) `12h` `3d` | If you want to change the default download interval. 1 hour, (3 hours), 12 hours, 3 days.
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution. 720p, (1080p), 1440p, 4k.
 
