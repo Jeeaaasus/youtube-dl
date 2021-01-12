@@ -14,7 +14,7 @@ youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/mast
 * **Easy Usage with Minimal Setup**
     * Quality options with env parameter
     * Included format selection argument
-    * Included necessary arguments
+    * Included starter arguments
 * **Automatic Updates**
     * Self updating container
     * Automated image building
