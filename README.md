@@ -11,13 +11,18 @@ Docker hub page [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl).
 youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme).
 
 # Features
-* **Self Updating youtube-dl**
-* **Automated Downloading**
-    * Interval options
-* **Subscriptions Downloading**
+* **Easy Usage with Minimal Setup**
+    * Quality options with env parameter
+    * Included format selection argument
+    * Included set of starter arguments
+* **Automatic Updates**
+    * Self updating container
+    * Automated image building
+* **Automatic Downloads**
+    * Interval options with env parameter
     * Channel URLs from file
 * **PUID/PGID**
-* **All youtube-dl Options**
+* **youtube-dl Options**
     * Format
     * Quality
     * High fps videos
@@ -28,6 +33,7 @@ youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/mast
     * Geo bypass
     * Proxy support
     * Metadata
+    * Etc
 
 # Usage
 ```
@@ -44,7 +50,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
   This makes a Docker volume where your config files are saved, named: `youtube-dl_data`.
  
 * `-v <PATH>:/downloads`  
-  This makes a bind mount where videos get downloaded.
+  This makes a bind mount where the videos are downloaded.
   
   This is where on your Docker host you want youtube-dl to download videos.  
   Replace `<PATH>`, example: `-v /media/youtube-dl:/downloads`
@@ -54,11 +60,20 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
 | Parameter | Value (Default) | What it does
 | :---: | :---: | :--- |
+| `TZ` | `Europe/London` | Specify TimeZone for the log timestamps to be correct.
 | `PUID` | (`911`) | If you need to specify UserID for file permission reasons.
 | `PGID` | (`911`) | If you need to specify GroupID for file permission reasons.
-| `TZ` | `Europe/London` | Specify TimeZone for the log timestamps to be correct.
+| `youtubedl_debug` | `true` (`false`) | If you want to enable verbose mode.
 | `youtubedl_interval` | `1h` (`3h`) `12h` `3d` | If you want to change the default download interval. 1 hour, (3 hours), 12 hours, 3 days.
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution. 720p, (1080p), 1440p, 4k.
+
+# Image Tags
+* **`latest`**
+    * Automatically built when a youtube-dl version is released.
+    * Container updates to latest youtube-dl while running.
+* **`v<VERSION>`**
+    * Automatically built when a youtube-dl version is released.
+    * Does not update.
 
 # Configure youtube-dl
 * **channels.txt**
@@ -79,7 +94,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     It is recommended to use the ID-based URLs, they look like: `/channel/UC0vaVaSyV14uvJ4hEZDOl0Q`, as the other ones might get changed.
     You find the ID-based URL by going to a video and clicking on the uploader.
     
-    A recent change makes it that all channel URLs must end with `/videos`, otherwise you will download "related" channels and other things.
+    All channel URLs must end with `/videos`, otherwise you will download "related" channels and other things.  
     This *should* be added automatically but still recommend you add it to the end of all channel URLs.
 
 * **archive.txt**
@@ -89,8 +104,8 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
 * **args.conf**
 
-    File location: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore default options*  
-    This is where all youtube-dl execution options are and you can add or remove them however you like, 
+    File location: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore default arguments*  
+    This is where all youtube-dl execution arguments are, you can add or remove them however you like, 
     exceptions being that `--config-location` and `--batch-file` cannot be used.
     
     Keep in mind that if you define `--format`, the ENV `youtubedl_quality` is not used anymore.
