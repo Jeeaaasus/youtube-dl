@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+
+if ! [ -f "/usr/bin/AtomicParsley" ]
+then
+  if [ -f "/usr/bin/atomicparsley" ]
+  then
+    ln /usr/bin/atomicparsley /usr/bin/AtomicParsley
+  fi
+fi
