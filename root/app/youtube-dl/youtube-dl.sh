@@ -1,7 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-alias AtomicParsley=atomicparsley
-
 if $youtubedl_debug; then youtubedl_args_verbose=true; else youtubedl_args_verbose=false; fi
 if grep -qe '--format ' "/config/args.conf"; then youtubedl_args_format=true; else youtubedl_args_format=false; fi
 if grep -qe '--download-archive ' "/config/args.conf"; then youtubedl_args_downloadarchive=true; else youtubedl_args_downloadarchive=false; fi
