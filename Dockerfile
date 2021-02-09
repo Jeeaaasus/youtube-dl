@@ -5,6 +5,7 @@ ENV PUID="911"
 ENV PGID="911"
 ENV youtubedl_interval="3h"
 ENV youtubedl_quality="1080"
+ENV youtubedl_debug="false"
 
 RUN printf "\
 @edge http://dl-cdn.alpinelinux.org./alpine/edge/main\n\
