@@ -1,3 +1,5 @@
+#!/usr/bin/with-contenv bash
+
 if ! [ -f "/usr/bin/AtomicParsley" ]
 then
   if [ -f "/usr/bin/atomicparsley" ]
