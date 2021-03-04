@@ -46,6 +46,9 @@ RUN set -x && \
         /root/packages
 
 RUN set -x && \
+    python3 -m pip install -r /app/requirements.txt
+
+RUN set -x && \
     python3 -m pip --no-cache-dir install youtube_dl
 
 VOLUME /config /downloads
