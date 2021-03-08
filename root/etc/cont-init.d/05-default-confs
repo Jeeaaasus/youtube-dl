@@ -10,3 +10,5 @@ then
   echo "[default-confs] restoring default 'channels.txt'."
   cp /config.default/channels.txt /config/
 fi
+
+sed -i -E 's!\$youtubedl_quality!'"${youtubedl_quality}"'!g' /config.default/format

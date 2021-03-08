@@ -1,0 +1,1 @@
+bestvideo[height<=$youtubedl_quality][vcodec=vp9][fps>30]+bestaudio[acodec!=opus]/bestvideo[height<=$youtubedl_quality][vcodec=vp9]+bestaudio[acodec!=opus]/bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]/best
