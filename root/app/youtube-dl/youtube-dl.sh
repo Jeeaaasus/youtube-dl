@@ -8,7 +8,6 @@ youtubedl_binary="youtube-dl"
 exec=$youtubedl_binary
 if $youtubedl_args_verbose; then exec+=" --verbose"; fi
 if ! $youtubedl_args_downloadarchive; then exec+=" --download-archive /config/archive.txt"; fi
-if [ -f '/config/dateafter.txt' ]; then exec+=" --dateafter $(cat "/config/dateafter.txt")"; fi
 exec+=" --config-location /config/args.conf"
 exec+=" --batch-file /config/channels.txt"
 
