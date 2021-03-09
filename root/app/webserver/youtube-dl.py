@@ -1,7 +1,6 @@
-import subprocess
-import aiofiles
+import subprocess, aiofiles, re
 from fastapi import FastAPI, Request, Form
-from fastapi.responses import RedirectResponse
+from fastapi.responses import RedirectResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 
 
@@ -28,17 +27,20 @@ async def dashboard(request: Request):
     return templates.TemplateResponse('dashboard.html', {'request': request})
 
 
-@webserver.get('/download')
-async def download_url(request: Request):
-    url = request.query_params.get('URL', False)
-    print(url)
-    execute(f'youtube-dl {url} --format "bestvideo[height<=1440][vcodec=vp9][fps>30]+bestaudio[acodec!=opus] / bestvideo[height<=1440][vcodec=vp9]+bestaudio[acodec!=opus] / bestvideo[height<=1440]+bestaudio[acodec!=opus] / best" --config-location "/config/args.conf"')
-    print(url)
+@webserver.post('/download')
+async def download_url(url: str = Form(...)):
+    if url is not False:
+        async with aiofiles.open('/config/args.conf') as f:
+            if re.search(r'(--format .+$)', await f.read(), flags=re.I | re.MULTILINE) is not None:
+                youtubedl_args_format = ''
+            else:
+                youtubedl_args_format = youtubedl_default_args_format
+        execute(f'youtube-dl {url} --config-location /config/args.conf {youtubedl_args_format}')
     return RedirectResponse(url='/', status_code=303)
 
 
 @webserver.get('/edit/args')
-async def configure_args(request: Request):
+async def edit_args(request: Request):
     args = ''
     async with aiofiles.open('/config/args.conf') as f:
         async for line in f:
@@ -47,7 +49,7 @@ async def configure_args(request: Request):
 
 
 @webserver.post('/edit/args/save')
-async def save_channels(args_new: list = Form(...)):
+async def save_args(args_new: list = Form(...)):
     async with aiofiles.open('/config/args.conf', mode='w') as f:
         for line in args_new:
             await f.write(line.replace('\r\n', '\n'))
@@ -55,7 +57,7 @@ async def save_channels(args_new: list = Form(...)):
 
 
 @webserver.get('/edit/channels')
-async def configure_channels(request: Request):
+async def edit_channels(request: Request):
     channels = ''
     async with aiofiles.open('/config/channels.txt') as f:
         async for line in f:
@@ -72,7 +74,7 @@ async def save_channels(channels_new: list = Form(...)):
 
 
 @webserver.get('/edit/archive')
-async def configure_channels(request: Request):
+async def edit_archive(request: Request):
     archive = ''
     async with aiofiles.open('/config/archive.txt') as f:
         async for line in f:
@@ -81,8 +83,17 @@ async def configure_channels(request: Request):
 
 
 @webserver.post('/edit/archive/save')
-async def save_channels(archive_new: list = Form(...)):
+async def save_archive(archive_new: list = Form(...)):
     async with aiofiles.open('/config/archive.txt', mode='w') as f:
         for line in archive_new:
             await f.write(line.replace('\r\n', '\n'))
     return RedirectResponse(url='/edit/archive', status_code=303)
+
+
+@webserver.get('/favicon.ico')
+async def favicon():
+    return FileResponse('/app/webserver/static/favicon.png')
+
+
+with open('/config.default/format') as default_format:
+    youtubedl_default_args_format = f'--format "{str(default_format.read()).strip()}"'

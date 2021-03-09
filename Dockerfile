@@ -30,8 +30,7 @@ RUN addgroup --gid "$PGID" abc && \
 COPY root/ /
 
 RUN set -x && \
-    apk update && \
-    apk upgrade && \
+    apk upgrade --no-cache && \
     apk add --no-cache \
         bash \
         coreutils \
@@ -46,7 +45,7 @@ RUN set -x && \
         /root/packages
 
 RUN set -x && \
-    python3 -m pip install -r /app/requirements.txt
+    python3 -m pip --no-cache-dir install -r /app/requirements.txt
 
 RUN set -x && \
     python3 -m pip --no-cache-dir install youtube_dl
