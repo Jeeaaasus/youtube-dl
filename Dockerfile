@@ -30,17 +30,16 @@ RUN addgroup --gid "$PGID" abc && \
 COPY root/ /
 
 RUN set -x && \
-    apk update && \
-    apk upgrade && \
+    apk upgrade --no-cache && \
     apk add --no-cache \
         bash \
         coreutils \
         shadow \
         tzdata \
         python3 \
+        py3-pip \
         atomicparsley@testing \
-        ffmpeg@community \
-        py3-pip@community && \
+        ffmpeg@community && \
     rm -rf \
         /root/.cache \
         /root/packages
