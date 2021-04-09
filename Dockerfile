@@ -9,8 +9,8 @@ ENV youtubedl_debug="false"
 
 RUN printf "\
 @edge http://dl-cdn.alpinelinux.org./alpine/v3.13/main\n\
-@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
 @community http://dl-cdn.alpinelinux.org/alpine/v3.13/community\n\
+@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
 " >> /etc/apk/repositories
 
 RUN wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/latest/download/s6-overlay-amd64.tar.gz && \
