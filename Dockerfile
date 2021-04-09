@@ -9,7 +9,7 @@ ENV youtubedl_debug="false"
 
 RUN printf "\
 @edge http://dl-cdn.alpinelinux.org./alpine/v3.13/main\n\
-@testing http://dl-cdn.alpinelinux.org/alpine/v3.13/testing\n\
+@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
 @community http://dl-cdn.alpinelinux.org/alpine/v3.13/community\n\
 " >> /etc/apk/repositories
 
