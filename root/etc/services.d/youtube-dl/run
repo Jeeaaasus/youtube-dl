@@ -1,4 +1,4 @@
 #!/usr/bin/with-contenv bash
 
 sleep 10s
-exec s6-setuidgid abc:abc /app/youtube-dl/youtube-dl.sh
+exec s6-setuidgid -u abc -g abc /app/youtube-dl/youtube-dl.sh
