@@ -1,6 +1,7 @@
 name: Push New Release Version Image
 
 on:
+  workflow_dispatch:
   push:
     branches: 
       - 'master'

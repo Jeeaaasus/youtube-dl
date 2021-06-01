@@ -1,6 +1,7 @@
 name: Push New Image
 
 on:
+  workflow_dispatch:
   push:
     paths-ignore:
       - '.*/**'
