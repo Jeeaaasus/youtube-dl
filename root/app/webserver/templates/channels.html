@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="ui container">
+    <form method="post" action="/edit/channels/save">
+    <h2 class="ui header">Channels.txt</h2>
+        <textarea name="channels_new" style="width:100%;height:600px;font-family:Courier New, monospace;white-space: pre-line">
+{% for line in channels %}{{ line }}{% endfor %}</textarea>
+        <input type="submit" value="save"/>
+    </form>
+</div>
+{% endblock %}

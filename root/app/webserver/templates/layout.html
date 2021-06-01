@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <title>youtube-dl</title>
+</head>
+
+<body>
+    <div class="ui inverted menu">
+        <div class="ui container">
+            <a href="/" class="item"><i class="home icon"></i>Dashboard</a>
+            <div class="ui simple dropdown item">Edit<i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="/edit/args">Args</a>
+                    <a class="item" href="/edit/archive">Archive</a>
+                    <a class="item" href="/edit/channels">Channels</a>
+                </div>
+            </div>
+            <div class="ui container">
+                <form class="item" method="post" action="/download">
+                    <input type="text" name="url" size="100%" placeholder="URL">
+                    &nbsp;
+                    <button class="ui inverted button">Download</button>
+                </form>
+            </div>
+        </div>
+    <a href="https://github.com/Jeeaaasus/youtube-dl" class="header item"><i class="github icon"></i>Jeeaaasus</a>
+    <a href="https://hub.docker.com/r/jeeaaasustest/youtube-dl/" class="header item"><i class="docker icon"></i>youtube-dl</a>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

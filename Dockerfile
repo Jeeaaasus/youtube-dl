@@ -6,11 +6,10 @@ ENV PGID="911"
 ENV youtubedl_interval="3h"
 ENV youtubedl_quality="1080"
 ENV youtubedl_debug="false"
+ENV youtubedl_webui="false"
 
 RUN printf "\
-@edge http://dl-cdn.alpinelinux.org./alpine/v3.13/main\n\
-@community http://dl-cdn.alpinelinux.org/alpine/v3.13/community\n\
-@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
+http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
 " >> /etc/apk/repositories
 
 RUN wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/latest/download/s6-overlay-amd64.tar.gz && \
@@ -38,11 +37,14 @@ RUN set -x && \
         tzdata \
         python3 \
         py3-pip \
-        atomicparsley@testing \
-        ffmpeg@community && \
+        atomicparsley \
+        ffmpeg && \
     rm -rf \
         /root/.cache \
         /root/packages
+
+RUN set -x && \
+    python3 -m pip --no-cache-dir install -r /app/requirements.txt
 
 RUN set -x && \
     python3 -m pip --no-cache-dir install youtube_dl
