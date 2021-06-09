@@ -5,5 +5,5 @@ then
   echo "[web-ui] webserver is enabled."
 else
   echo "[web-ui] webserver is disabled."
-  [ -f '/etc/services.d/webserver' ] && rm -r /etc/services.d/webserver
+  rm -rf /etc/services.d/webserver
 fi
