@@ -7,6 +7,7 @@ ENV youtubedl_interval="3h"
 ENV youtubedl_quality="1080"
 ENV youtubedl_debug="false"
 ENV youtubedl_webui="false"
+ENV youtubedl_webuiport="8080"
 
 RUN printf "\
 http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
