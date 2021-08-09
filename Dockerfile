@@ -48,7 +48,7 @@ RUN set -x && \
     python3 -m pip --no-cache-dir install -r /app/requirements.txt
 
 RUN set -x && \
-    python3 -m pip --no-cache-dir install youtube_dl
+    wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/bin/yt-dlp
 
 VOLUME /config /downloads
 

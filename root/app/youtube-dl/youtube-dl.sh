@@ -4,7 +4,7 @@ if $youtubedl_debug; then youtubedl_args_verbose=true; else youtubedl_args_verbo
 if grep -qiEe '--format ' "/config/args.conf"; then youtubedl_args_format=true; else youtubedl_args_format=false; fi
 if grep -qiEe '--download-archive ' "/config/args.conf"; then youtubedl_args_downloadarchive=true; else youtubedl_args_downloadarchive=false; fi
 
-youtubedl_binary="youtube-dl"
+youtubedl_binary="yt-dlp"
 exec=$youtubedl_binary
 if $youtubedl_args_verbose; then exec+=" --verbose"; fi
 if ! $youtubedl_args_downloadarchive; then exec+=" --download-archive /config/archive.txt"; fi
