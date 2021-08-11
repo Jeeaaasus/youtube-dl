@@ -67,7 +67,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 | `youtubedl_webuiport` | (`8080`) | If you want to change the default web-ui port.
 | `youtubedl_interval` | `1h` (`3h`) `12h` `3d` | If you want to change the default download interval. 1 hour, (3 hours), 12 hours, 3 days.
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution. 720p, (1080p), 1440p, 4k.
-  `youtubedl_completed` | `true` (`false`) | Used to add a youtubedl-complete file in downloads directory.  Useful trigger for external cron jobs/file movers.
+  `youtubedl_completed` | `true` (`false`) | Used to add a youtubedl-completed file in downloads directory.  Useful trigger for external cron jobs/file movers.
 
 # Image Tags
 * **`latest`**
@@ -121,6 +121,6 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     
     Don't want mp4 files? Change the line with `--merge-output-format` to suit your needs.
 
-    If using `%(playlist_index)` in output format and `--playlist-reverse`, the change from youtube-dl to ytp-dl alters how this operates.  Recommendation is to move to `%(playlist_autonumber)` and using `--compat-options playlist-index` instead.  More details [here] (https://github.com/yt-dlp/yt-dlp/pull/302).
+    If using `%(playlist_index)` in output format and `--playlist-reverse`, the change from youtube-dl to ytp-dl alters how this operates.  Recommendation is to move to `%(playlist_autonumber)` and using `--compat-options playlist-index` instead.  More details [here](https://github.com/yt-dlp/yt-dlp/pull/302).
 
     yt-dlp configuration options documentation [here](https://github.com/yt-dlp/yt-dlp#usage-and-options).
