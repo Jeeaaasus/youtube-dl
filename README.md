@@ -4,10 +4,10 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/jeeaaasustest/youtube-dl?style=flat&logo=docker)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
 [![Docker Stars](https://img.shields.io/docker/stars/jeeaaasustest/youtube-dl?style=flat&logo=docker)](https://hub.docker.com/r/jeeaaasustest/youtube-dl/)
 
-**Automated youtube-dl Docker image for downloading YouTube subscriptions**
+**Automated yt-dlp Docker image for downloading YouTube subscriptions**
 
 Docker hub page [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl).  
-youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme).
+yt-dlp documentation [here](https://github.com/yt-dlp/yt-dlp).
 
 # Features
 * **Easy Usage with Minimal Setup**
@@ -21,7 +21,7 @@ youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/mast
     * Interval options with env parameter
     * Channel URLs from file
 * **PUID/PGID**
-* **youtube-dl Options**
+* **yt-dlp Options**
     * Format
     * Quality
     * High fps videos
@@ -67,6 +67,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 | `youtubedl_webuiport` | (`8080`) | If you want to change the default web-ui port.
 | `youtubedl_interval` | `1h` (`3h`) `12h` `3d` | If you want to change the default download interval. 1 hour, (3 hours), 12 hours, 3 days.
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution. 720p, (1080p), 1440p, 4k.
+  `youtubedl_completed` | `true` (`false`) | Used to add a youtubedl-complete file in downloads directory.  Useful trigger for external cron jobs/file movers.
 
 # Image Tags
 * **`latest`**
@@ -120,4 +121,4 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     
     Don't want mp4 files? Change the line with `--merge-output-format` to suit your needs.
 
-    youtube-dl configuration options documentation [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#options).
+    yt-dlp configuration options documentation [here](https://github.com/yt-dlp/yt-dlp#usage-and-options).
