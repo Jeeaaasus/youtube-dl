@@ -13,7 +13,7 @@ RUN printf "\
 http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
 " >> /etc/apk/repositories
 
-RUN /bin/ash -c 'set -ex && \
+RUN set -ex && \
     ARCH=`uname -m` && \
     if [ "$ARCH" == "x86_64" ]; then \
        echo "Architecture = x86_64" && \
@@ -25,10 +25,10 @@ RUN /bin/ash -c 'set -ex && \
        wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/latest/download/s6-overlay-aarch64.tar.gz && \
        tar xzf /tmp/s6-overlay-aarch64.tar.gz -C / && \
        rm -rf /tmp/* ; \
-    else \
+    else && \
        echo "unknown arch" && \
-       exit 1 \
-    fi'
+       exit 1 ; \
+    fi
 
 
 RUN addgroup --gid "$PGID" abc && \
