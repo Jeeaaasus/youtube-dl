@@ -121,4 +121,6 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     
     Don't want mp4 files? Change the line with `--merge-output-format` to suit your needs.
 
+    If using `%(playlist_index)` in output format and `--playlist-reverse`, the change from youtube-dl to ytp-dl alters how this operates.  Recommendation is to move to `%(playlist_autonumber)` and using `--compat-options playlist-index` instead.  More details [here] (https://github.com/yt-dlp/yt-dlp/pull/302).
+
     yt-dlp configuration options documentation [here](https://github.com/yt-dlp/yt-dlp#usage-and-options).
