@@ -25,7 +25,7 @@ RUN set -ex && \
        wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/latest/download/s6-overlay-aarch64.tar.gz && \
        tar xzf /tmp/s6-overlay-aarch64.tar.gz -C / && \
        rm -rf /tmp/* ; \
-    else && \
+    else \
        echo "unknown arch" && \
        exit 1 ; \
     fi
