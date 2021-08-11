@@ -13,7 +13,7 @@ RUN printf "\
 http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
 " >> /etc/apk/repositories
 
-RUN /bin/ash -c 'set -ex && \
+RUN set -ex && \
     ARCH=`uname -m` && \
     if [ "$ARCH" == "x86_64" ]; then \
        echo "Architecture = x86_64" && \
@@ -27,8 +27,8 @@ RUN /bin/ash -c 'set -ex && \
        rm -rf /tmp/* ; \
     else \
        echo "unknown arch" && \
-       exit 1 \
-    fi'
+       exit 1 ; \
+    fi
 
 
 RUN addgroup --gid "$PGID" abc && \
