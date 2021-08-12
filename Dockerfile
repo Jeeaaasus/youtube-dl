@@ -13,9 +13,23 @@ RUN printf "\
 http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
 " >> /etc/apk/repositories
 
-RUN wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/latest/download/s6-overlay-amd64.tar.gz && \
-    tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
-    rm -rf /tmp/* 
+RUN set -ex && \
+    ARCH=`uname -m` && \
+    if [ "$ARCH" == "x86_64" ]; then \
+       echo "Architecture = x86_64" && \
+       wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/latest/download/s6-overlay-amd64.tar.gz && \
+       tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
+       rm -rf /tmp/* ; \
+    elif [ "$ARCH" == "aarch64" ]; then \
+       echo "Architecture = aarch64" && \
+       wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/latest/download/s6-overlay-aarch64.tar.gz && \
+       tar xzf /tmp/s6-overlay-aarch64.tar.gz -C / && \
+       rm -rf /tmp/* ; \
+    else \
+       echo "unknown arch" && \
+       exit 1 ; \
+    fi
+
 
 RUN addgroup --gid "$PGID" abc && \
     adduser \
