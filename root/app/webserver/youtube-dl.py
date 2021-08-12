@@ -21,7 +21,7 @@ def execute(command):
 templates = Jinja2Templates(directory='/app/webserver/templates')
 webserver = FastAPI()
 
-youtubedl_binary = "yt-dlp"
+youtubedl_binary = 'yt-dlp'
 
 @webserver.get('/')
 async def dashboard(request: Request):
