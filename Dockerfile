@@ -52,7 +52,6 @@ RUN set -x && \
         tzdata \
         python3 \
         py3-pip \
-        atomicparsley \
         ffmpeg && \
     rm -rf \
         /root/.cache \
@@ -60,6 +59,10 @@ RUN set -x && \
 
 RUN set -x && \
     python3 -m pip --no-cache-dir install -r /app/requirements.txt
+
+RUN set -x && \
+    wget https://github.com/faissaloo/SponSkrub/releases/latest/download/sponskrub -O /usr/bin/sponskrub && \
+    chmod a+rx /usr/bin/sponskrub
 
 RUN set -x && \
     wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/bin/yt-dlp && \
