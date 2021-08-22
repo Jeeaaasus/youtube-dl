@@ -46,6 +46,7 @@ RUN set -x && \
         coreutils \
         shadow \
         tzdata \
+        curl \
         gcompat \
         python3 \
         py3-pip \
