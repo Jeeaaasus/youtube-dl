@@ -35,7 +35,7 @@ then
   touch '/downloads/youtubedl-completed'
 fi
 
-echo "youtube-dl version: $youtubedl_version"
+echo "$youtubedl_binary version: $youtubedl_version"
 echo "waiting $youtubedl_interval.."
 sleep $youtubedl_interval
 date "+%Y-%m-%d %H:%M:%S"
