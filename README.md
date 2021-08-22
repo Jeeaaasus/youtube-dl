@@ -9,6 +9,14 @@
 Docker hub page [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl).  
 youtube-dl documentation [here](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme).
 
+# Recent Changes
+   ### ***2021-08-22***
+   
+   Because [youtube-dl](https://github.com/ytdl-org/youtube-dl) seems to have seized development, this image will soon be changing over to use [yt-dlp](https://github.com/yt-dlp/yt-dlp) instead.
+Because of this change some current setups might not work the same, the major differences are listed [here](https://github.com/yt-dlp/yt-dlp#differences-in-default-behavior).
+
+Hopefully this wont affect most users but if you are someone with a heavily customized configuration I ask you to try out the beta image (`jeeaaasustest/youtube-dl:yt-dlp-beta`) containing [yt-dlp](https://github.com/yt-dlp/yt-dlp) and let me know about any issues or questions [here](https://github.com/Jeeaaasus/youtube-dl/issues/49).
+
 # Features
 * **Easy Usage with Minimal Setup**
     * Quality options with env parameter
