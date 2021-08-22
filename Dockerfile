@@ -9,10 +9,6 @@ ENV youtubedl_debug="false"
 ENV youtubedl_webui="false"
 ENV youtubedl_webuiport="8080"
 
-RUN printf "\
-http://dl-cdn.alpinelinux.org/alpine/edge/testing\n\
-" >> /etc/apk/repositories
-
 RUN set -ex && \
     ARCH=`uname -m` && \
     if [ "$ARCH" == "x86_64" ]; then \
@@ -50,6 +46,7 @@ RUN set -x && \
         coreutils \
         shadow \
         tzdata \
+        gcompat \
         python3 \
         py3-pip \
         ffmpeg && \
