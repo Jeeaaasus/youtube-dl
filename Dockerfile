@@ -62,7 +62,7 @@ RUN set -x && \
 
 RUN set -x && \
     wget https://github.com/faissaloo/SponSkrub/releases/latest/download/sponskrub -O /usr/bin/sponskrub && \
-    chmod a+rx /usr/bin/sponskrub
+    chmod a+x /usr/bin/sponskrub
 
 RUN set -x && \
     wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/bin/yt-dlp && \
