@@ -9,6 +9,14 @@
 Docker hub page [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl).  
 yt-dlp documentation [here](https://github.com/yt-dlp/yt-dlp).
 
+# Recent News
+   ### ***2021-08-22***
+   
+   Because [youtube-dl](https://github.com/ytdl-org/youtube-dl) seems to have seized development, this image will soon be changing over to use [yt-dlp](https://github.com/yt-dlp/yt-dlp) instead.
+Because of this change some current setups might not work the same, the major differences are listed [here](https://github.com/yt-dlp/yt-dlp#differences-in-default-behavior).
+
+Hopefully this wont affect most users but if you are someone with a heavily customized configuration I ask you to try out the beta image (`jeeaaasustest/youtube-dl:yt-dlp-beta`) containing [yt-dlp](https://github.com/yt-dlp/yt-dlp) and let me know about any issues or questions [here](https://github.com/Jeeaaasus/youtube-dl/issues/49).
+
 # Features
 * **Easy Usage with Minimal Setup**
     * Quality options with env parameter
@@ -22,17 +30,18 @@ yt-dlp documentation [here](https://github.com/yt-dlp/yt-dlp).
     * Channel URLs from file
 * **PUID/PGID**
 * **yt-dlp Options**
-    * Format
-    * Quality
-    * High fps videos
-    * Download archive
-    * Output
-    * Subtitles
-    * Thumbnails
-    * Geo bypass
-    * Proxy support
-    * Metadata
-    * Etc
+   * SponSkrub
+   * Format
+   * Quality
+   * High fps videos
+   * Download archive
+   * Output
+   * Subtitles
+   * Thumbnails
+   * Geo bypass
+   * Proxy support
+   * Metadata
+   * Etc
 
 # Usage
 ```
@@ -63,11 +72,11 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 | `PUID` | (`911`) | If you need to specify UserID for file permission reasons.
 | `PGID` | (`911`) | If you need to specify GroupID for file permission reasons.
 | `youtubedl_debug` | `true` (`false`) | Used to enable verbose mode.
+| `youtubedl_completed` | `true` (`false`) | Used to add a youtubedl-completed file in downloads directory.  Useful trigger for external cron jobs/file movers.
 | `youtubedl_webui` | `true` (`false`) | If you would like to beta test the unfinished web-ui feature, might be broken!
 | `youtubedl_webuiport` | (`8080`) | If you want to change the default web-ui port.
 | `youtubedl_interval` | `1h` (`3h`) `12h` `3d` | If you want to change the default download interval. 1 hour, (3 hours), 12 hours, 3 days.
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution. 720p, (1080p), 1440p, 4k.
-  `youtubedl_completed` | `true` (`false`) | Used to add a youtubedl-completed file in downloads directory.  Useful trigger for external cron jobs/file movers.
 
 # Image Tags
 * **`latest`**
@@ -120,7 +129,5 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     Don't want a folder for every channel? Change the line with `--output` to suit your needs.
     
     Don't want mp4 files? Change the line with `--merge-output-format` to suit your needs.
-
-    If using `%(playlist_index)` in output format and `--playlist-reverse`, the change from youtube-dl to ytp-dl alters how this operates.  Recommendation is to move to `%(playlist_autonumber)` and using `--compat-options playlist-index` instead.  More details [here](https://github.com/yt-dlp/yt-dlp/pull/302).
 
     yt-dlp configuration options documentation [here](https://github.com/yt-dlp/yt-dlp#usage-and-options).
