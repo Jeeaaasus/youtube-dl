@@ -9,7 +9,7 @@
 Docker hub page [here](https://hub.docker.com/r/jeeaaasustest/youtube-dl).  
 yt-dlp documentation [here](https://github.com/yt-dlp/yt-dlp).
 
-# Recent Changes
+## Recent Changes
    ### ***2021-08-22***
    
    Because [youtube-dl](https://github.com/ytdl-org/youtube-dl) seems to have seized development, this image will soon be changing over to use [yt-dlp](https://github.com/yt-dlp/yt-dlp) instead.
