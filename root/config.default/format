@@ -1,1 +1,1 @@
-bestvideo[height<=$youtubedl_quality][vcodec=vp9][fps>30]+bestaudio[acodec!=opus]/bestvideo[height<=$youtubedl_quality][vcodec=vp9]+bestaudio[acodec!=opus]/bestvideo[height<=$youtubedl_quality]+bestaudio[acodec!=opus]/best
+((bv*[fps>30]/bv*)[height<=$youtubedl_quality]/(wv*[fps>30]/wv*)) + ba / (b[fps>30]/b)[height<=$youtubedl_quality]/(w[fps>30]/w)
