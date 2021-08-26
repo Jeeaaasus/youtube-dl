@@ -30,7 +30,7 @@ Hopefully this wont affect most users but if you are someone with a heavily cust
     * Channel URLs from file
 * **PUID/PGID**
 * **yt-dlp Options**
-   * SponSkrub
+   * SponsorBlock
    * Format
    * Quality
    * High fps videos
