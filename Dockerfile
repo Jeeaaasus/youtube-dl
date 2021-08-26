@@ -1,13 +1,14 @@
 FROM alpine:latest
 
-ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2"
-ENV PUID="911"
-ENV PGID="911"
-ENV youtubedl_interval="3h"
-ENV youtubedl_quality="1080"
-ENV youtubedl_debug="false"
-ENV youtubedl_webui="false"
-ENV youtubedl_webuiport="8080"
+ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2" \
+    PUID="911" \
+    PGID="911" \
+    youtubedl_interval="3h" \
+    youtubedl_quality="1080" \
+    youtubedl_debug="false" \
+    youtubedl_webui="false" \
+    youtubedl_webuiport="8080" \
+    youtubedl_lockfile="true"
 
 RUN set -ex && \
     ARCH=`uname -m` && \
