@@ -72,7 +72,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 | `PUID` | (`911`) | If you need to specify UserID for file permission reasons.
 | `PGID` | (`911`) | If you need to specify GroupID for file permission reasons.
 | `youtubedl_debug` | `true` (`false`) | Used to enable verbose mode.
-| `youtubedl_completed` | `true` (`false`) | Used to add a youtubedl-completed file in downloads directory.  Useful trigger for external cron jobs/file movers.
+| `youtubedl_lockfile` | `true` (`false`) | Used to enable youtubedl-running, youtubedl-completed files in downloads directory. Useful for external scripts.
 | `youtubedl_webui` | `true` (`false`) | If you would like to beta test the unfinished web-ui feature, might be broken!
 | `youtubedl_webuiport` | (`8080`) | If you want to change the default web-ui port.
 | `youtubedl_interval` | `1h` (`3h`) `12h` `3d` | If you want to change the default download interval. 1 hour, (3 hours), 12 hours, 3 days.
@@ -104,9 +104,6 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     
     It is recommended to use the ID-based URLs, they look like: `/channel/UC0vaVaSyV14uvJ4hEZDOl0Q`, as the other ones might get changed.
     You find the ID-based URL by going to a video and clicking on the uploader.
-    
-    All channel URLs must end with `/videos`, otherwise you will download "related" channels and other things.  
-    This *should* be added automatically but still recommend you add it to the end of all channel URLs.
 
 * **archive.txt**
 
