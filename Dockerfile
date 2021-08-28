@@ -13,14 +13,12 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2" \
 RUN set -ex && \
     ARCH=`uname -m` && \
     if [ "$ARCH" == "x86_64" ]; then \
-        echo "Architecture = x86_64" && \
-        s6_package="s6-overlay-amd64.tar.gz" \
+        s6_package="s6-overlay-amd64.tar.gz" ; \
     elif [ "$ARCH" == "aarch64" ]; then \
-        echo "Architecture = aarch64" && \
-        s6_package="s6-overlay-aarch64.tar.gz" \
+        s6_package="s6-overlay-aarch64.tar.gz" ; \
     else \
         echo "unknown arch" && \
-        exit 1 \
+        exit 1 ; \
     fi && \
     wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/latest/download/${s6_package} && \
     tar xzf /tmp/${s6_package} -C / && \
