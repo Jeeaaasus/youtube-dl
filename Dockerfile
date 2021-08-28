@@ -13,20 +13,16 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2" \
 RUN set -ex && \
     ARCH=`uname -m` && \
     if [ "$ARCH" == "x86_64" ]; then \
-       echo "Architecture = x86_64" && \
-       wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/latest/download/s6-overlay-amd64.tar.gz && \
-       tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
-       rm -rf /tmp/* ; \
+        s6_package="s6-overlay-amd64.tar.gz" && \
     elif [ "$ARCH" == "aarch64" ]; then \
-       echo "Architecture = aarch64" && \
-       wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/latest/download/s6-overlay-aarch64.tar.gz && \
-       tar xzf /tmp/s6-overlay-aarch64.tar.gz -C / && \
-       rm -rf /tmp/* ; \
+        s6_package="s6-overlay-aarch64.tar.gz" && \
     else \
-       echo "unknown arch" && \
-       exit 1 ; \
-    fi
-
+        echo "unknown arch" && \
+        exit 1 \
+    fi && \
+    wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/latest/download/${s6_package} && \
+    tar xzf /tmp/${s6_package} -C / && \
+    rm -rf /tmp/*
 
 RUN addgroup --gid "$PGID" abc && \
     adduser \
