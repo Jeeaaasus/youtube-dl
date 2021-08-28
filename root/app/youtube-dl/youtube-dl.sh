@@ -14,21 +14,22 @@ exec+=" --batch-file /config/channels.txt"
 while ! [ -f "$(which $youtubedl_binary)" ]; do sleep 1s; done
 youtubedl_version=$($youtubedl_binary --version)
 youtubedl_last_run_time=$(date "+%s")
+echo ""
+echo "$(date "+%Y-%m-%d %H:%M:%S") - starting execution"
+
 if $youtubedl_lockfile; then touch '/downloads/youtubedl-running' && rm -f '/downloads/youtubedl-completed'; fi
 
 if $youtubedl_args_format; then $exec; else $exec --format "$(cat '/config.default/format')"; fi
 
+if $youtubedl_lockfile; then touch '/downloads/youtubedl-completed' && rm -f '/downloads/youtubedl-running'; fi
+
+echo ""
 if [ $(( ($(date "+%s") - $youtubedl_last_run_time) / 60 )) -ge 2 ]
 then
   echo "$(date "+%Y-%m-%d %H:%M:%S") - execution took $(( ($(date "+%s") - $youtubedl_last_run_time) / 60 )) minutes"
 else
   echo "$(date "+%Y-%m-%d %H:%M:%S") - execution took $(( ($(date "+%s") - $youtubedl_last_run_time) )) seconds"
 fi
-
-if $youtubedl_lockfile; then touch '/downloads/youtubedl-completed' && rm -f '/downloads/youtubedl-running'; fi
-
-echo ""
 echo "$youtubedl_binary version: $youtubedl_version"
 echo "waiting $youtubedl_interval.."
 sleep $youtubedl_interval
-date "+%Y-%m-%d %H:%M:%S"
