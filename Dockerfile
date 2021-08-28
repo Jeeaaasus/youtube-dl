@@ -13,8 +13,10 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2" \
 RUN set -ex && \
     ARCH=`uname -m` && \
     if [ "$ARCH" == "x86_64" ]; then \
+        echo "Architecture = x86_64" && \
         s6_package="s6-overlay-amd64.tar.gz" \
     elif [ "$ARCH" == "aarch64" ]; then \
+        echo "Architecture = aarch64" && \
         s6_package="s6-overlay-aarch64.tar.gz" \
     else \
         echo "unknown arch" && \
