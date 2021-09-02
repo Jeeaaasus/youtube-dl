@@ -30,7 +30,7 @@ Hopefully this wont affect most users but if you are someone with a heavily cust
     * Channel URLs from file
 * **PUID/PGID**
 * **yt-dlp Options**
-   * SponsorBlock
+   * SponsorBlock*
    * Format
    * Quality
    * High fps videos
@@ -94,9 +94,9 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     ```
     # One per line
     # Name
-    https://www.youtube.com/user/channel_username/videos
+    https://www.youtube.com/user/channel_username
     # Another one
-    https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q/videos
+    https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q
     ```
     Adding with Docker:  
     `docker exec youtube-dl bash -c 'echo "# NAME" >> ./channels.txt'`  
@@ -112,21 +112,24 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
 * **args.conf**
 
-    File location: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore default arguments*  
-    This is where all youtube-dl execution arguments are, you can add or remove them however you like, 
-    exceptions being that `--config-location` and `--batch-file` cannot be used.
+    File location: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore [default arguments](https://github.com/Jeeaaasus/youtube-dl/blob/master/root/config.default/args.conf)*  
+    This is where all youtube-dl execution arguments are, you can add or remove them however you like. If left unchanged this file will get updated automatically.
     
-    Keep in mind that if you define `--format`, the ENV `youtubedl_quality` is not used anymore.
+    **Unsupported arguments**
+    * `--config-location`, hardcoded to '/config/args.conf'.
+    * `--batch-file`, hardcoded to '/config/channels.txt'.
+    * `--sponsorblock-remove`, temporarily unsupported because of a bug with ffmpeg.
     
-    The default `--playlist-end 8` makes youtube-dl only download the latest 8 videos.
-    Be careful changing this! YouTube may feel like you are making too many requests and therefore ip banning you.
+    **Default arguments**
+    * `--output "/downloads/%(uploader)s/%(title)s.%(ext)s"`, makes youtube-dl create separate folders for each channel and use the video title for the filename.
+    * `--playlist-end 8`, makes youtube-dl only download the latest 8 videos. Be careful changing this! YouTube may feel like you are making too many requests and therefore might ip ban you.
+    * `--match-filter "! is_live"`, makes youtube-dl ignore live streams.
+    * `--windows-filenames`, restricts filenames to only Windows allowed characters.
+    * `--no-write-playlist-metafiles`, makes youtube-dl not download channel posters.
+    * `--no-progress`, removes a lot of unnecessary clutter from the logs.
+    * `--merge-output-format mp4`, makes youtube-dl create mp4 files.
+    * `--sub-langs all,-live_chat`, makes youtube-dl embed subtitles.
+    * `--embed-metadata`, makes youtube-dl embed metadata like video description and chapters.
+    * `--sponsorblock-mark all`, makes youtube-dl create chapters from [SponsorBlock](https://sponsor.ajay.app/) segments.
     
-    The default `--match-filter "! is_live"` makes youtube-dl ignore live streams.
-    
-    The default `--sponsorblock-mark all` makes youtube-dl create chapters using the [SponsorBlock API](https://sponsor.ajay.app/).
-
-    Don't want a folder for every channel? Change the line with `--output` to suit your needs.
-    
-    Don't want mp4 files? Change the line with `--merge-output-format` to suit your needs.
-
     yt-dlp configuration options documentation [here](https://github.com/yt-dlp/yt-dlp#usage-and-options).
