@@ -113,7 +113,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 * **args.conf**
 
     File location: `/config/args.conf`.&nbsp;&nbsp;&nbsp;*delete and restart container to restore [default arguments](https://github.com/Jeeaaasus/youtube-dl/blob/master/root/config.default/args.conf)*  
-    This is where all youtube-dl execution arguments are, you can add or remove them however you like. If left unchanged this file will get updated automatically.
+    This is where all youtube-dl execution arguments are, you can add or remove them however you like. If unmodified this file is automatically updated.
     
     **Unsupported arguments**
     * `--config-location`, hardcoded to '/config/args.conf'.
