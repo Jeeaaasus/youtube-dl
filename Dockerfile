@@ -3,12 +3,12 @@ FROM alpine:latest
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2" \
     PUID="911" \
     PGID="911" \
-    youtubedl_interval="3h" \
-    youtubedl_quality="1080" \
     youtubedl_debug="false" \
+    youtubedl_lockfile="false" \
     youtubedl_webui="false" \
     youtubedl_webuiport="8080" \
-    youtubedl_lockfile="true"
+    youtubedl_interval="3h" \
+    youtubedl_quality="1080" 
 
 RUN set -ex && \
     ARCH=`uname -m` && \
@@ -43,21 +43,13 @@ RUN set -x && \
         coreutils \
         shadow \
         tzdata \
-        curl \
-        gcompat \
         python3 \
         py3-pip \
         ffmpeg && \
+    python3 -m pip --no-cache-dir install -r /app/requirements.txt && \
     rm -rf \
         /root/.cache \
         /root/packages
-
-RUN set -x && \
-    python3 -m pip --no-cache-dir install -r /app/requirements.txt
-
-RUN set -x && \
-    wget https://github.com/faissaloo/SponSkrub/releases/latest/download/sponskrub -O /usr/bin/sponskrub && \
-    chmod a+x /usr/bin/sponskrub
 
 RUN set -x && \
     wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/bin/yt-dlp && \
