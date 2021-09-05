@@ -10,7 +10,7 @@ if $youtubedl_args_verbose; then exec+=" --verbose"; fi
 if ! $youtubedl_args_download_archive; then exec+=" --download-archive /config/archive.txt"; fi
 if $youtubedl_cookies; then exec+=" --cookies /config/cookies.txt"; fi
 exec+=" --config-location /config/args.conf"
-exec+=" --batch-file -"; cat '/config/channels.txt' > '/app/urls'
+exec+=" --batch-file -"; (cat '/config/channels.txt'; echo '') > '/app/urls'
 if $youtubedl_watchlater; then echo 'https://www.youtube.com/playlist?list=WL' >> '/app/urls'; fi
 
 while ! [ -f "$(which $youtubedl_binary)" ]; do sleep 1s; done
