@@ -7,6 +7,8 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2" \
     youtubedl_lockfile="false" \
     youtubedl_webui="false" \
     youtubedl_webuiport="8080" \
+    youtubedl_cookies="false" \
+    youtubedl_watchlater="false" \
     youtubedl_interval="3h" \
     youtubedl_quality="1080" 
 
@@ -48,6 +50,7 @@ RUN set -x && \
         ffmpeg && \
     python3 -m pip --no-cache-dir install -r /app/requirements.txt && \
     rm -rf \
+        /app/requirements.txt \
         /root/.cache \
         /root/packages
 
