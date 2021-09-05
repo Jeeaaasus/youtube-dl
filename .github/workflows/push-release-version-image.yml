@@ -33,7 +33,7 @@ jobs:
       - name: Set version
         run: |
           RELEASE_VERSION=$(cat release-versions/latest.txt)
-          sed -i -E 's!(python.*install.*)(youtube_dl)!\1\2=='"$RELEASE_VERSION"'!i' Dockerfile
+          sed -i -E 's!(wget\ https:\/\/github\.com\/yt-dlp\/yt-dlp\/releases\/)(latest\/download)(\/yt-dlp)!\1download/'"$RELEASE_VERSION"'\3!i' Dockerfile
 
       - name: Remove updater
         run: rm --verbose -r root/etc/services.d/updater/
@@ -54,5 +54,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:v${{ env.IMAGE_TAG }}

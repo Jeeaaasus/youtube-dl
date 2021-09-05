@@ -21,6 +21,7 @@ def execute(command):
 templates = Jinja2Templates(directory='/app/webserver/templates')
 webserver = FastAPI()
 
+youtubedl_binary = 'yt-dlp'
 
 @webserver.get('/')
 async def dashboard(request: Request):
@@ -35,7 +36,7 @@ async def download_url(url: str = Form(...)):
                 youtubedl_args_format = ''
             else:
                 youtubedl_args_format = youtubedl_default_args_format
-        execute(f'youtube-dl {url} --config-location /config/args.conf {youtubedl_args_format}')
+        execute(f'{youtubedl_binary} \'{url}\' --config-location \'/config/args.conf\' {youtubedl_args_format}')
     return RedirectResponse(url='/', status_code=303)
 
 
