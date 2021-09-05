@@ -8,8 +8,10 @@ youtubedl_binary="yt-dlp"
 exec=$youtubedl_binary
 if $youtubedl_args_verbose; then exec+=" --verbose"; fi
 if ! $youtubedl_args_download_archive; then exec+=" --download-archive /config/archive.txt"; fi
+if $youtubedl_cookies; then exec+=" --cookies /config/cookies.txt"; fi
 exec+=" --config-location /config/args.conf"
-exec+=" --batch-file /config/channels.txt"
+exec+=" --batch-file -"; cat '/config/channels.txt' > '/app/urls'
+if $youtubedl_watchlater; then echo 'https://www.youtube.com/playlist?list=WL' >> '/app/urls'; fi
 
 while ! [ -f "$(which $youtubedl_binary)" ]; do sleep 1s; done
 youtubedl_version=$($youtubedl_binary --version)
@@ -19,7 +21,7 @@ echo "$(date "+%Y-%m-%d %H:%M:%S") - starting execution"
 
 if $youtubedl_lockfile; then touch '/downloads/youtubedl-running' && rm -f '/downloads/youtubedl-completed'; fi
 
-if $youtubedl_args_format; then $exec; else $exec --format "$(cat '/config.default/format')"; fi
+if $youtubedl_args_format; then cat '/app/urls' | $exec; else cat '/app/urls' | $exec --format "$(cat '/config.default/format')"; fi
 
 if $youtubedl_lockfile; then touch '/downloads/youtubedl-completed' && rm -f '/downloads/youtubedl-running'; fi
 
