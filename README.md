@@ -17,7 +17,7 @@ Image tags `latest`, `v2021.09.02` and future `v<VERSION>` now contains [yt-dlp]
 
 There are many new and changed default arguments, if you have modified your `args.conf` you might want to take a look at the new [default args](https://github.com/Jeeaaasus/youtube-dl/blob/master/root/config.default/args.conf). If you have not modified your `args.conf` it should update to the new one.  
 
-With yt-dlp comes many improvments, such as, bypass age gate in most cases, better video format selection, [SponsorBlock API](https://sponsor.ajay.app/) support to generate chapters when there are sponsored segments, although cutting out segments are not yet supported.  
+With yt-dlp comes many improvments, such as, bypass age gate in most cases, better video format selection, [SponsorBlock API](https://sponsor.ajay.app/) support to generate chapters when there are sponsored segments, <s>although cutting out segments are not yet supported</s> ***(fixed)***.  
 Other new stuff include, arm64 image, new ENVs: `youtubedl_lockfile`, to help with external scripts. `youtubedl_cookies`, an easy way to pass cookies without the need to modify your `args.conf`. `youtubedl_watchlater`, an easy way to download your Watch Later playlist.
 #
 
@@ -40,7 +40,7 @@ Hopefully this wont affect most users but if you are someone with a heavily cust
     * Channel URLs from file
 * **PUID/PGID**
 * **yt-dlp Options**
-   * SponsorBlock*
+   * SponsorBlock
    * Format
    * Quality
    * High fps videos
@@ -139,7 +139,6 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     **Unsupported arguments**
     * `--config-location`, hardcoded to `/config/args.conf`.
     * `--batch-file`, hardcoded to `/config/channels.txt`.
-    * `--sponsorblock-remove`, currently unsupported because of a bug with ffmpeg.
 
     **Default arguments**
     * `--output "/downloads/%(uploader)s/%(title)s.%(ext)s"`, makes youtube-dl create separate folders for each channel and use the video title for the filename.
