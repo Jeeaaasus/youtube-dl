@@ -39,11 +39,25 @@ RUN set -x && \
         /app/requirements.txt
 
 RUN set -x && \
-    wget -q $(wget -q https://api.github.com/repos/nihil-admirari/FFmpeg-With-VP9-Timestamp-Fix/releases/latest -O - | grep -ioE 'https://github.com/nihil-admirari/FFmpeg-With-VP9-Timestamp-Fix/releases/download/.*?-linux64-nonfree.tar.xz') -O - | tar -xJ -C /tmp/ && \
-    chmod -R a+x $(find /tmp/ffmpeg*/bin/ -type d) && \
-    mv $(find /tmp/ffmpeg*/bin/ -type d)/* /usr/bin/ && \
-    rm -rf /tmp/*
-
+    ARCH=`uname -m` && \
+    if [ "$ARCH" = "x86_64" ]; then \
+        wget -q $(wget -q https://api.github.com/repos/nihil-admirari/FFmpeg-With-VP9-Timestamp-Fix/releases/latest -O - | grep -ioE 'https://github.com/nihil-admirari/FFmpeg-With-VP9-Timestamp-Fix/releases/download/.*?-linux64-nonfree.tar.xz') -O - | tar -xJ -C /tmp/ && \
+        chmod -R a+x $(find /tmp/ffmpeg*/bin/ -type d) && \
+        mv $(find /tmp/ffmpeg*/bin/ -type d)/* /usr/bin/ && \
+        rm -rf /tmp/* \
+    elif [ "$ARCH" = "aarch64" ]; then \
+        apt update && \
+        apt install -y \
+            ffmpeg && \
+        apt clean && \
+        rm -rf \
+            /var/lib/apt/lists/* \
+            -rf /tmp/* \
+    else \
+        echo "unknown arch: ${ARCH}" && \
+        exit 1 ; \
+    fi
+    
 RUN set -ex && \
     ARCH=`uname -m` && \
     if [ "$ARCH" = "x86_64" ]; then \
