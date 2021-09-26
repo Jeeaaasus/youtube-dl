@@ -41,7 +41,7 @@ RUN set -x && \
 RUN set -x && \
     ARCH=`uname -m` && \
     if [ "$ARCH" = "x86_64" ]; then \
-        wget -q $(wget -q https://api.github.com/repos/nihil-admirari/FFmpeg-With-VP9-Timestamp-Fix/releases/latest -O - | grep -ioE 'https://github.com/nihil-admirari/FFmpeg-With-VP9-Timestamp-Fix/releases/download/.*?-linux64-nonfree.tar.xz') -O - | tar -xJ -C /tmp/ && \
+        wget -q $(wget -q https://api.github.com/repos/yt-dlp/FFmpeg-Builds/releases/latest -O - | grep -ioE 'https://github.com/yt-dlp/FFmpeg-Builds/releases/download/.*?-linux64-nonfree.tar.xz') -O - | tar -xJ -C /tmp/ && \
         chmod -R a+x $(find /tmp/ffmpeg*/bin/ -type d) && \
         mv $(find /tmp/ffmpeg*/bin/ -type d)/* /usr/bin/ && \
         rm -rf /tmp/* ; \
