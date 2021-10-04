@@ -13,15 +13,20 @@ jobs:
           token: ${{ secrets.REPO_SCOPED_TOKEN }}
 
       - name: Fetch latest release version
-        run: curl -s https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest | jq -r ".tag_name" > release-versions/latest.txt
+        id: fetch-release
+        run: |
+          curl -s https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest | jq -r ".tag_name" > release-versions/latest.txt
+          echo ::set-output name=success::$([ "$(cat release-versions/latest.txt)" == "vnull" ] && echo "false" || echo "true")
 
       - name: Check for modified files
         id: git-check
         run: echo ::set-output name=modified::$([ -z "`git status --porcelain`" ] && echo "false" || echo "true")
 
       - name: Commit latest release version
-        if: steps.git-check.outputs.modified == 'true'
+        if: |
+          steps.fetch-release.outputs.success == 'true' &&
+          steps.git-check.outputs.modified == 'true'
         run: |
           git config --global user.name 'Release Checker'
-          git commit -am "New release: v$(cat release-versions/latest.txt)"
+          git commit -am "Release: v$(cat release-versions/latest.txt)"
           git push
