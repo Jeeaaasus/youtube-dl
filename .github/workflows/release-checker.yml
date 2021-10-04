@@ -16,7 +16,7 @@ jobs:
         id: fetch-release
         run: |
           curl -s https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest | jq -r ".tag_name" > release-versions/latest.txt
-          echo ::set-output name=success::$([ "$(cat release-versions/latest.txt)" == "vnull" ] && echo "false" || echo "true")
+          echo ::set-output name=success::$([ "$(cat release-versions/latest.txt)" == 'null' ] && echo "false" || echo "true")
 
       - name: Check for modified files
         id: git-check
