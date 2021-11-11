@@ -50,7 +50,7 @@ jobs:
         run: |
           if [ "$CI_ACTION_REF_NAME_SLUG" == 'master' ]
           then
-            sed -i -E '3s!.*!python3 -m pip --no-cache-dir --disable-pip-version-check install --upgrade --force-reinstall --no-deps git+https://github.com/yt-dlp/yt-dlp.git > /dev/null!i' root/app/youtube-dl/updater.sh
+            sed -i -E '3s!.*!python3 -m pip --no-cache-dir --quiet install --upgrade --force-reinstall --no-deps git+https://github.com/yt-dlp/yt-dlp.git!i' root/app/youtube-dl/updater.sh
           fi
 
       - name: Add git
