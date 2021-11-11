@@ -1,4 +1,4 @@
-name: Push New Image
+name: Push New Unstable Image
 
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ env:
   IMAGE_NAME: youtube-dl
 
 jobs:
-  Push-New-Image:
+  Push-New-Unstable-Image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,24 +27,38 @@ jobs:
       - name: Get environment variables
         uses: FranzDiebold/github-env-vars-action@v2
 
+      - name: Set version
+        run: |
+          RELEASE_VERSION=$(cat release-versions/latest.txt)
+          sed -i -E 's!(python.*install yt-dlp)!\1=='"$RELEASE_VERSION"'!i' Dockerfile
+
       - name: Set tag
         run: |
           if [ "$CI_ACTION_REF_NAME_SLUG" == 'master' ]
           then
-            echo "IMAGE_TAG=latest" >> $GITHUB_ENV
+            echo "IMAGE_TAG=unstable" >> $GITHUB_ENV
           else
             echo "IMAGE_TAG=$CI_ACTION_REF_NAME_SLUG" >> $GITHUB_ENV
           fi
-
-      - name: Set version
-        run: |
-          RELEASE_VERSION=$(cat release-versions/latest.txt)
-          sed -i -E 's!(wget\ https:\/\/github\.com\/yt-dlp\/yt-dlp\/releases\/)(latest\/download)(\/yt-dlp)!\1download/'"$RELEASE_VERSION"'\3!i' Dockerfile
 
       - name: Print image tag
         run: |
           echo "Branch: $CI_ACTION_REF_NAME"
           echo "Image Tag: ${{ env.IMAGE_TAG }}"
+
+      - name: Configure updater
+        run: |
+          if [ "$CI_ACTION_REF_NAME_SLUG" == 'master' ]
+          then
+            sed -i -E '3s!.*!python3 -m pip --no-cache-dir --disable-pip-version-check install --upgrade --force-reinstall --no-deps git+https://github.com/yt-dlp/yt-dlp.git > /dev/null!i' root/app/youtube-dl/updater.sh
+          fi
+
+      - name: Add git
+        run: |
+          if [ "$CI_ACTION_REF_NAME_SLUG" == 'master' ]
+          then
+            sed -i -E 's!(python3-pip)!\1 git!i' Dockerfile
+          fi
 
       - name: Login to DockerHub
         uses: docker/login-action@v1

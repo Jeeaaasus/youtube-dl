@@ -43,7 +43,7 @@ RUN set -x && \
     if [ "$ARCH" = "x86_64" ]; then \
         wget -q $(wget -q https://api.github.com/repos/yt-dlp/FFmpeg-Builds/releases/latest -O - | grep -ioE 'https://github.com/yt-dlp/FFmpeg-Builds/releases/download/.*?ffmpeg-n-.*?-linux64-gpl.tar.xz') -O - | tar -xJ -C /tmp/ && \
         chmod -R a+x $(find /tmp/ffmpeg*/bin/ -type d) && \
-        mv $(find /tmp/ffmpeg*/bin/ -type d)/* /usr/bin/ && \
+        mv $(find /tmp/ffmpeg*/bin/ -type d)/* /usr/local/bin/ && \
         rm -rf /tmp/* ; \
     else \
         apt update && \
@@ -70,8 +70,7 @@ RUN set -ex && \
     rm -rf /tmp/*
 
 RUN set -x && \
-    wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/bin/yt-dlp && \
-    chmod a+x /usr/bin/yt-dlp
+    python3 -m pip --no-cache-dir install yt-dlp
 
 VOLUME /config /downloads
 
