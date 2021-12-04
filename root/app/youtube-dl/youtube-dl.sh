@@ -13,7 +13,7 @@ exec+=" --config-location /config/args.conf"
 exec+=" --batch-file -"; (cat '/config/channels.txt'; echo '') > '/app/urls'
 if $youtubedl_watchlater; then echo 'https://www.youtube.com/playlist?list=WL' >> '/app/urls'; fi
 
-while ! [ -f "$(which $youtubedl_binary)" ]; do sleep 1s; done
+while ! [ -f "$(which $youtubedl_binary)" ]; do sleep 10s; done
 youtubedl_version=$($youtubedl_binary --version)
 youtubedl_last_run_time=$(date "+%s")
 echo ""
@@ -27,13 +27,13 @@ do
   if grep -qiPe '\|' '/app/urls'
   then
     grep -m 1 -niPe '\|' '/app/urls' > '/app/url'
-    sed -i -e "$(grep -oiPe '^[0-9]+' /app/url)d" '/app/urls'
+    sed -i -E "$(grep -oiPe '^[0-9]+' /app/url)d" '/app/urls'
     extra_params=" $(grep -oiPe '.*\| *\K.*' '/app/url')"
     sed -i -E 's!([0-9]*:)?(.*?)(\|.*)!\2!i' '/app/url'
   else
     mv '/app/urls' '/app/url'
   fi
-  while ! [ -f "$(which $youtubedl_binary)" ]; do sleep 1s; done
+  while ! [ -f "$(which $youtubedl_binary)" ]; do sleep 10s; done
   if $youtubedl_args_format; then cat '/app/url' | $exec$extra_params; else cat '/app/url' | $exec --format "$(cat '/config.default/format')"$extra_params; fi
 done
 
