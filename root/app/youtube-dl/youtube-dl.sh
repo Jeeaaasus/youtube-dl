@@ -33,6 +33,7 @@ do
   else
     mv '/app/urls' '/app/url'
   fi
+  while ! [ -f "$(which $youtubedl_binary)" ]; do sleep 1s; done
   if $youtubedl_args_format; then cat '/app/url' | $exec$extra_params; else cat '/app/url' | $exec --format "$(cat '/config.default/format')"$extra_params; fi
 done
 
