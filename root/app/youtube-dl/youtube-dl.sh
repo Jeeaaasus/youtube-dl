@@ -21,7 +21,20 @@ echo "$(date "+%Y-%m-%d %H:%M:%S") - starting execution"
 
 if $youtubedl_lockfile; then touch '/downloads/youtubedl-running' && rm -f '/downloads/youtubedl-completed'; fi
 
-if $youtubedl_args_format; then cat '/app/urls' | $exec; else cat '/app/urls' | $exec --format "$(cat '/config.default/format')"; fi
+while [ -f '/app/urls' ]
+do
+  extra_params=''
+  if grep -qiPe '\|' '/app/urls'
+  then
+    grep -m 1 -niPe '\|' '/app/urls' > '/app/url'
+    sed -i -e "$(grep -oiPe '^[0-9]+' /app/url)d" '/app/urls'
+    extra_params=" $(grep -oiPe '.*\| *\K.*' '/app/url')"
+    sed -i -E 's!([0-9]*:)?(.*?)(\|.*)!\2!i' '/app/url'
+  else
+    mv '/app/urls' '/app/url'
+  fi
+  if $youtubedl_args_format; then cat '/app/url' | $exec$extra_params; else cat '/app/url' | $exec --format "$(cat '/config.default/format')"$extra_params; fi
+done
 
 if $youtubedl_lockfile; then touch '/downloads/youtubedl-completed' && rm -f '/downloads/youtubedl-running'; fi
 
@@ -35,3 +48,4 @@ fi
 echo "$youtubedl_binary version: $youtubedl_version"
 echo "waiting $youtubedl_interval.."
 sleep $youtubedl_interval
+
