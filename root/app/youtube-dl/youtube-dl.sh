@@ -34,7 +34,7 @@ do
     mv '/app/urls' '/app/url'
   fi
   while ! [ -f "$(which $youtubedl_binary)" ]; do sleep 10s; done
-  if $youtubedl_args_format; then cat '/app/url' | $exec$extra_params; else cat '/app/url' | $exec --format "$(cat '/config.default/format')"$extra_params; fi
+  if $youtubedl_args_format; then cat '/app/url' | eval "$exec$extra_params"; else cat '/app/url' | eval "$exec --format '$(cat '/config.default/format')'$extra_params"; fi
 done
 
 if $youtubedl_lockfile; then touch '/downloads/youtubedl-completed' && rm -f '/downloads/youtubedl-running'; fi
