@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-old_default_hashes=("a542c9474391e0c6bf0dbe6d90dcbaf8" "a57003fda8c119c23374a49698a0f151" "5047874a8048322fef0d6e48748fdde7" "b98da37515edb9aadcae4cf631d8f128" "68a02cedb0a7d658f6d4f7064e0beae4" "1e2f494df9dcc013ec1d6fda46ab4b2d" "a8c0463fc150d864ffce760f48be92b1" "2d99511dcd6004722fb2aaae10d2e6b0" "30637344b751ddc5e5b601e33933ec46" "b613144065defef162a06894f64dbca2")
+old_default_hashes=("a542c9474391e0c6bf0dbe6d90dcbaf8" "a57003fda8c119c23374a49698a0f151" "5047874a8048322fef0d6e48748fdde7" "b98da37515edb9aadcae4cf631d8f128" "68a02cedb0a7d658f6d4f7064e0beae4" "1e2f494df9dcc013ec1d6fda46ab4b2d" "a8c0463fc150d864ffce760f48be92b1" "2d99511dcd6004722fb2aaae10d2e6b0" "30637344b751ddc5e5b601e33933ec46" "b613144065defef162a06894f64dbca2" "6f1b46ccdcff61d834af6c4e5a90eb5b")
 default_hash=$(md5sum /config.default/args.conf | awk '{ print $1 }')
 if ! md5sum --status -c <(echo $default_hash /config/args.conf)
 then

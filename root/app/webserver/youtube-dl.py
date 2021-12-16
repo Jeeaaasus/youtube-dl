@@ -32,7 +32,7 @@ async def dashboard(request: Request):
 async def download_url(url: str = Form(...)):
     if url is not False:
         async with aiofiles.open('/config/args.conf') as f:
-            if re.search(r'(--format .+$)', await f.read(), flags=re.I | re.MULTILINE) is not None:
+            if re.search(r'(--format |-f )', await f.read(), flags=re.I | re.MULTILINE) is not None:
                 youtubedl_args_format = ''
             else:
                 youtubedl_args_format = youtubedl_default_args_format
