@@ -41,7 +41,7 @@ RUN set -x && \
 RUN set -x && \
     ARCH=`uname -m` && \
     if [ "$ARCH" = "x86_64" ]; then \
-        wget -q $(wget -q https://api.github.com/repos/yt-dlp/FFmpeg-Builds/releases/latest -O - | grep -ioE 'https://github.com/yt-dlp/FFmpeg-Builds/releases/download/.*?ffmpeg-n-.*?-linux64-gpl.tar.xz') -O - | tar -xJ -C /tmp/ && \
+        wget -q 'https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz' -O - | tar -xJ -C /tmp/ && \
         chmod -R a+x $(find /tmp/ffmpeg*/bin/ -type d) && \
         mv $(find /tmp/ffmpeg*/bin/ -type d)/* /usr/local/bin/ && \
         rm -rf /tmp/* ; \
