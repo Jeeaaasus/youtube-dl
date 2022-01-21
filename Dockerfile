@@ -65,7 +65,7 @@ RUN set -ex && \
         echo "unknown arch: ${ARCH}" && \
         exit 1 ; \
     fi && \
-    wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/latest/download/${s6_package} && \
+    wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/v2.2.0.3/download/${s6_package} && \
     tar -xzf /tmp/${s6_package} -C / && \
     rm -rf /tmp/*
 
