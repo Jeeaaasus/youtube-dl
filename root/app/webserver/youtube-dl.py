@@ -2,6 +2,7 @@ import subprocess, aiofiles, re
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import RedirectResponse, FileResponse
 from fastapi.templating import Jinja2Templates
+from pathlib import Path
 
 
 def execute(command):
@@ -22,6 +23,21 @@ templates = Jinja2Templates(directory='/app/webserver/templates')
 webserver = FastAPI()
 
 youtubedl_binary = 'yt-dlp'
+
+def get_archive():
+    """Ensure that the archive file exists and return its path.
+
+    This is a function so the path can be made configurable in the future.
+
+    Returns:
+        :obj:`str`: The full local path to the archive file.
+    """
+    filename = '/config/archive.txt'
+    archfile = Path(filename)
+    if not archfile.exists():
+        archfile.touch()
+    return filename
+
 
 @webserver.get('/')
 async def dashboard(request: Request):
@@ -77,7 +93,7 @@ async def save_channels(channels_new: list = Form(...)):
 @webserver.get('/edit/archive')
 async def edit_archive(request: Request):
     archive = ''
-    async with aiofiles.open('/config/archive.txt') as f:
+    async with aiofiles.open(get_archive()) as f:
         async for line in f:
             archive = archive + line
     return templates.TemplateResponse('archive.html', {'request': request, 'archive': archive})
