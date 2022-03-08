@@ -19,11 +19,6 @@ def execute(command):
         raise Exception(command, exit_code, output)
 
 
-templates = Jinja2Templates(directory='/app/webserver/templates')
-webserver = FastAPI()
-
-youtubedl_binary = 'yt-dlp'
-
 def get_archive():
     """Ensure that the archive file exists and return its path.
 
@@ -38,6 +33,11 @@ def get_archive():
         archfile.touch()
     return filename
 
+
+templates = Jinja2Templates(directory='/app/webserver/templates')
+webserver = FastAPI()
+
+youtubedl_binary = 'yt-dlp'
 
 @webserver.get('/')
 async def dashboard(request: Request):
