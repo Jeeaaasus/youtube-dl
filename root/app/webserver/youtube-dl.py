@@ -52,7 +52,7 @@ async def download_url(url: str = Form(...)):
                 youtubedl_args_format = ''
             else:
                 youtubedl_args_format = youtubedl_default_args_format
-        execute(f'{youtubedl_binary} \'{url}\' --no-playlist-reverse --playlist-end '-1' --config-location \'/config/args.conf\' {youtubedl_args_format}')
+        execute(f'{youtubedl_binary} \'{url}\' --no-playlist-reverse --playlist-end \'-1\' --config-location \'/config/args.conf\' {youtubedl_args_format}')
     return RedirectResponse(url='/', status_code=303)
 
 
