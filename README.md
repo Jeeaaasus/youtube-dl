@@ -95,6 +95,21 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     # Another one
     https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q
     ```
+    It is also possible to specify args to only use per URL, these will override any conflicting args from `/config/args.conf`.
+    ```
+    # Examples
+    # Output to 'named' folder instead of channel name
+    https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q | --output '/downloads/named/%(title)s.%(ext)s'
+    
+    # Use regex to only download videos matching words
+    https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q | --match-filter '!is_live & title~=(?i)words.*to.*match'
+    
+    # Use regex to only download videos not matching words
+    https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q | --match-filter '!is_live & title!~=(?i)words.*to.*exclude'
+    
+    # Download a whole playlist, also disable reverse download order
+    https://www.youtube.com/watch?v=0_WbxbTAW&list=PL-oTjIcS-sULx8tlzLQY | --playlist-end '-1' --no-playlist-reverse
+    ```
     Adding with Docker:  
     `docker exec youtube-dl bash -c 'echo "# NAME" >> ./channels.txt'`  
     `docker exec youtube-dl bash -c 'echo "URL" >> ./channels.txt'`
@@ -126,15 +141,14 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     * `--batch-file`, hardcoded to `/config/channels.txt`.
 
     **Default arguments**
-    * `--output "/downloads/%(uploader)s/%(title)s.%(ext)s"`, makes youtube-dl create separate folders for each channel and use the video title for the filename.
-    * `--playlist-end 8`, makes youtube-dl only download the latest 8 videos. Be careful changing this! YouTube may feel like you are making too many requests and therefore might ip ban you.
-    * `--match-filter "! is_live"`, makes youtube-dl ignore live streams.
+    * `--output '/downloads/%(uploader)s/%(title)s.%(ext)s'`, makes youtube-dl create separate folders for each channel and use the video title for the filename.
+    * `--playlist-end '8'`, makes youtube-dl only download the latest 8 videos. Be careful changing this! YouTube may feel like you are making too many requests and therefore might ip ban you.
+    * `--match-filter '!is_live'`, makes youtube-dl ignore live streams.
     * `--windows-filenames`, restricts filenames to only Windows allowed characters.
-    * `--no-write-playlist-metafiles`, makes youtube-dl not download channel posters.
     * `--no-progress`, removes a lot of unnecessary clutter from the logs.
     * `--merge-output-format mp4`, makes youtube-dl create mp4 files.
-    * `--sub-langs all,-live_chat`, makes youtube-dl embed subtitles.
+    * `--sub-langs 'all,-live_chat'`, makes youtube-dl embed subtitles.
     * `--embed-metadata`, makes youtube-dl embed metadata like video description and chapters.
-    * `--sponsorblock-mark all`, makes youtube-dl create chapters from [SponsorBlock](https://sponsor.ajay.app/) segments.
+    * `--sponsorblock-mark 'all'`, makes youtube-dl create chapters from [SponsorBlock](https://sponsor.ajay.app/) segments.
 
     yt-dlp configuration options documentation [here](https://github.com/yt-dlp/yt-dlp#usage-and-options).
