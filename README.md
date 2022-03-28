@@ -102,10 +102,10 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q | --output '/downloads/named/%(title)s.%(ext)s'
     
     # Use regex to only download videos matching words
-    https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q | --match-filter '!is_live & title~=(?i)words.*to.*match'
+    https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q | --no-match-filter --match-filter '!is_live & title~=(?i)words.*to.*match'
     
     # Use regex to only download videos not matching words
-    https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q | --match-filter '!is_live & title!~=(?i)words.*to.*exclude'
+    https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q | --no-match-filter --match-filter '!is_live & title!~=(?i)words.*to.*exclude'
     
     # Download a whole playlist, also disable reverse download order
     https://www.youtube.com/watch?v=0_WbxbTAW&list=PL-oTjIcS-sULx8tlzLQY | --playlist-end '-1' --no-playlist-reverse
