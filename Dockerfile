@@ -77,4 +77,6 @@ VOLUME /config /downloads
 
 WORKDIR /config
 
+EXPOSE 8080/tcp
+
 ENTRYPOINT ["/init"]
