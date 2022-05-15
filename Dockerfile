@@ -3,6 +3,7 @@ FROM debian:11-slim
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2" \
     PUID="911" \
     PGID="911" \
+    UMASK="022" \
     youtubedl_debug="false" \
     youtubedl_lockfile="false" \
     youtubedl_webui="false" \

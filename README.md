@@ -63,6 +63,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 | `TZ` | `Europe/London` | Specify TimeZone for the log timestamps to be correct.
 | `PUID` | (`911`) | If you need to specify UserID for file permission reasons.
 | `PGID` | (`911`) | If you need to specify GroupID for file permission reasons.
+| `UMASK` | (`022`) | If you need to specify umask for file permission reasons.
 | `youtubedl_debug` | `true` (`false`) | Used to enable verbose mode.
 | `youtubedl_lockfile` | `true` (`false`) | Used to enable youtubedl-running, youtubedl-completed files in downloads directory. Useful for external scripts.
 | `youtubedl_webui` | `true` (`false`) | If you would like to beta test the unfinished web-ui feature, might be broken!
