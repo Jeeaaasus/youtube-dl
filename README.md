@@ -96,7 +96,8 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     # Another one
     https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q
     ```
-    It is also possible to specify args to only use per URL, these will override any conflicting args from `/config/args.conf`.
+    It is also possible to specify args to only use per URL.
+    These will override any conflicting args from `/config/args.conf`.
     ```
     # Examples
     # Output to 'named' folder instead of channel name
@@ -143,11 +144,12 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
     **Default arguments**
     * `--output '/downloads/%(uploader)s/%(title)s.%(ext)s'`, makes youtube-dl create separate folders for each channel and use the video title for the filename.
-    * `--playlist-end '8'`, makes youtube-dl only download the latest 8 videos. Be careful changing this! YouTube may feel like you are making too many requests and therefore might ip ban you.
+    * `--playlist-end '16'`, makes youtube-dl only download the latest 16 videos, per channel.
     * `--match-filter '!is_live'`, makes youtube-dl ignore live streams.
     * `--windows-filenames`, restricts filenames to only Windows allowed characters.
     * `--no-progress`, removes a lot of unnecessary clutter from the logs.
-    * `--merge-output-format mp4`, makes youtube-dl create mp4 files.
+    * `--sleep-requests '1'`, makes youtube-dl wait 1 second between requests. Be careful changing this! YouTube might feel you are making too many requests and ip ban you.
+    * `--merge-output-format 'mp4'`, makes youtube-dl create mp4 files.
     * `--sub-langs 'all,-live_chat'`, makes youtube-dl embed subtitles.
     * `--embed-metadata`, makes youtube-dl embed metadata like video description and chapters.
     * `--sponsorblock-mark 'all'`, makes youtube-dl create chapters from [SponsorBlock](https://sponsor.ajay.app/) segments.
