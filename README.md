@@ -96,7 +96,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     # Another one
     https://www.youtube.com/channel/UC0vaVaSyV14uvJ4hEZDOl0Q
     ```
-    It is also possible to specify args to only use per URL.
+    It is also possible to specify args to only use per URL.  
     These will override any conflicting args from `/config/args.conf`.
     ```
     # Examples
