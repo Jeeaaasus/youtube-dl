@@ -9,6 +9,7 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2" \
     youtubedl_webui="false" \
     youtubedl_webuiport="8080" \
     youtubedl_cookies="false" \
+    youtubedl_subscriptions="false" \
     youtubedl_watchlater="false" \
     youtubedl_interval="3h" \
     youtubedl_quality="1080" 
