@@ -10,7 +10,7 @@ exec+=" --config-location '/config/args.conf'"
 exec+=" --batch-file '/app/urls'"; (cat '/config/channels.txt'; echo '') > '/app/urls.temp'
 if $youtubedl_args_verbose; then exec+=" --verbose"; fi
 if $youtubedl_cookies; then exec+=" --cookies '/config/cookies.txt'"; fi
-if $youtubedl_subscriptions then echo 'https://www.youtube.com/feed/channels' >> '/app/urls.temp'; fi
+if $youtubedl_subscriptions; then echo 'https://www.youtube.com/feed/channels' >> '/app/urls.temp'; fi
 if $youtubedl_watchlater; then echo ":ytwatchlater | --playlist-end '-1' --no-playlist-reverse" >> '/app/urls.temp'; fi
 if ! $youtubedl_args_format; then exec+=" --format '$(cat '/config.default/format')'"; fi
 if ! $youtubedl_args_download_archive; then exec+=" --download-archive '/config/archive.txt'"; fi
