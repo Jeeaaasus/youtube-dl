@@ -48,7 +48,7 @@ RUN set -x && \
         mv $(dirname $(find /tmp/ffmpeg/* -name ffmpeg))/{ffmpeg,ffprobe,ffplay} /usr/local/bin/ && \
         rm -rf /tmp/* ; \
     else \
-        if [ "$ARCH" = "aarch64" ]; then ARCH='arm64'; fi
+        if [ "$ARCH" = "aarch64" ]; then ARCH='arm64'; fi && \
         wget -q "https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-${ARCH}-static.tar.xz" -O - | tar -xJ -C /tmp/ --one-top-level=ffmpeg && \
         mv $(dirname $(find /tmp/ffmpeg/* -name ffmpeg))/{ffmpeg,ffprobe} /usr/local/bin/ && \
         rm -rf /tmp/* ; \
