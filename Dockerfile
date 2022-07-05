@@ -45,12 +45,12 @@ RUN set -x && \
     if [ "$ARCH" = "x86_64" ]; then \
         wget -q 'https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz' -O - | tar -xJ -C /tmp/ --one-top-level=ffmpeg && \
         chmod -R a+x /tmp/ffmpeg/* && \
-        mv $(dirname $(find /tmp/ffmpeg/* -name ffmpeg))/{ffmpeg,ffprobe,ffplay} /usr/local/bin/ && \
+        mv "$(dirname $(find /tmp/ffmpeg/* -name ffmpeg))/{ffmpeg,ffprobe,ffplay}" /usr/local/bin/ && \
         rm -rf /tmp/* ; \
     else \
         if [ "$ARCH" = "aarch64" ]; then ARCH='arm64'; fi && \
         wget -q "https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-${ARCH}-static.tar.xz" -O - | tar -xJ -C /tmp/ --one-top-level=ffmpeg && \
-        mv $(dirname $(find /tmp/ffmpeg/* -name ffmpeg))/{ffmpeg,ffprobe} /usr/local/bin/ && \
+        mv "$(dirname $(find /tmp/ffmpeg/* -name ffmpeg))/{ffmpeg,ffprobe}" /usr/local/bin/ && \
         rm -rf /tmp/* ; \
     fi
 
