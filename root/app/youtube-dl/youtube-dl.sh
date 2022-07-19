@@ -29,7 +29,7 @@ do
   then
     grep -m 1 -nPe '\|' '/app/urls.temp' > '/app/urls'
     sed -i -E "$(grep -oPe '^[0-9]+' /app/urls)d" '/app/urls.temp'
-    extra_url_args="$(grep -oPe '.*\| *\K.*' '/app/urls')"
+    extra_url_args="$(grep -oPe '.*?\|\K.*' '/app/urls')"
     sed -i -E 's!([0-9]*:)?(.*?)(\|.*)!\2!' '/app/urls'
   else
     mv '/app/urls.temp' '/app/urls'
