@@ -5,10 +5,13 @@ then
   echo "[default-confs] restoring default 'args.conf'."
   cp /config.default/args.conf /config/
 fi
+
 if ! [ -f "/config/channels.txt" ]
 then
   echo "[default-confs] restoring default 'channels.txt'."
   cp /config.default/channels.txt /config/
 fi
+
+ln -fs /config/args.conf /etc/yt-dlp.conf
 
 sed -i -E 's!\$youtubedl_quality!'"${youtubedl_quality}"'!g' /config.default/format
