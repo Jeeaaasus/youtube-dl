@@ -48,5 +48,12 @@ else
   echo ''; echo "$(date '+%Y-%m-%d %H:%M:%S') - execution took $(( ($(date '+%s') - $youtubedl_last_run_time) )) seconds"
 fi
 echo "$youtubedl_binary version: $youtubedl_version"
-echo "waiting $youtubedl_interval.."
-sleep $youtubedl_interval
+
+if [ "$youtube_interval" != 'false' ]
+then
+  echo "waiting $youtubedl_interval.."
+  sleep $youtubedl_interval
+else
+  echo "youtubedl_interval is set to 'false', container will now exit."
+  s6-svscanctl -t '/var/run/s6/services'
+fi
