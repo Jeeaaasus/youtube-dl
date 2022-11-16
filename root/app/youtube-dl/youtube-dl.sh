@@ -49,7 +49,7 @@ else
 fi
 echo "$youtubedl_binary version: $youtubedl_version"
 
-if [ "$youtube_interval" != 'false' ]
+if [ "$youtubedl_interval" != 'false' ]
 then
   echo "waiting $youtubedl_interval.."
   sleep $youtubedl_interval
