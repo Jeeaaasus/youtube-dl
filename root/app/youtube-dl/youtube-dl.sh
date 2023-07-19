@@ -37,6 +37,7 @@ do
     mv '/tmp/urls.temp' '/tmp/urls'
   fi
   eval "$exec $extra_url_args"
+  rm -f '/tmp/urls'
 done
 
 if $youtubedl_lockfile; then touch '/downloads/youtubedl-completed' && rm -f '/downloads/youtubedl-running'; fi
