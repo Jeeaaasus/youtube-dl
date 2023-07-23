@@ -144,6 +144,16 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     It is recommended to use the UCID-based URLs, they look like: `/channel/UC0vaVaSyV14uvJ4hEZDOl0Q`, as the other ones might get changed.
     You find the UCID-based URL by going to a video and clicking on the uploader.
 
+* **pre-execution.sh**
+
+    File location: `/config/pre-execution.sh`.  
+    This is an optional user defined script that is executed before youtube-dl starts downloading videos.
+
+* **post-execution.sh**
+
+    File location: `/config/post-execution.sh`.  
+    This is an optional user defined script that is executed after youtube-dl has finished its full execution.
+
 * **archive.txt**
 
     File location: `/config/archive.txt`.&nbsp;&nbsp;&nbsp;*delete to make youtube-dl forget downloaded videos*  
