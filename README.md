@@ -42,7 +42,6 @@ docker run -d \
     --name youtube-dl \
     -v youtube-dl_data:/config \
     -v <PATH>:/downloads \
-    -e youtubedl_cookies=true \
     -e youtubedl_subscriptions=true \
     -e youtubedl_watchlater=true \
     -e youtubedl_quality=2160 \
@@ -84,7 +83,6 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 | `youtubedl_lockfile` | `true` (`false`) | Used to enable youtubedl-running, youtubedl-completed files in downloads directory. Useful for external scripts.
 | `youtubedl_webui` | `true` (`false`) | If you would like to beta test the unfinished web-ui feature, might be broken!
 | `youtubedl_webuiport` | (`8080`) | If you need to change the web-ui port.
-| `youtubedl_cookies` | `true` (`false`) | Used to pass cookies for authentication.
 | `youtubedl_subscriptions` | `true` (`false`) | If you want to download all your subscriptions. Authentication is required.
 | `youtubedl_watchlater` | `true` (`false`) | If you want to download your Watch Later playlist. Authentication is required.
 | `youtubedl_interval` | `1h` (`3h`) `12h` `3d` `false` | If you want to change the default download interval.<br>This can be any value compatible with [gnu sleep](https://github.com/tldr-pages/tldr/blob/main/pages/linux/sleep.md) or if set to false, the container will shutoff after executing. A low interval value risks you being ip-banned by YouTube.<br>1 hour, (3 hours), 12 hours, 3 days, false.
@@ -108,7 +106,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 
     In order to pass your cookies to youtube-dl, you first need a browser extension to extract your cookies, for example, [Get cookies.txt](https://chrome.google.com/webstore/detail/get-cookiestxt/bgaddhkoddajcdgocldbbfleckgcbcid/) (Chrome) or [cookies.txt](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/) (Firefox).  
     Once you've extracted your cookies, place the `cookies.txt` file inside your Docker volume named `youtube-dl_data` or the folder `/config/` inside your container. One way of doing this would be using the command: `docker cp ./cookies.txt youtube-dl:/config/`.  
-    Then use `-e youtubedl_cookies=true` in your Docker run command when creating your container.
+    Then youtube-dl will find and use the `cookies.txt` file automatically.
 
 * **channels.txt**
 
