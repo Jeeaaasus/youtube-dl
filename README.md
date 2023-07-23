@@ -87,7 +87,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 | `youtubedl_cookies` | `true` (`false`) | Used to pass cookies for authentication.
 | `youtubedl_subscriptions` | `true` (`false`) | If you want to download all your subscriptions. Authentication is required.
 | `youtubedl_watchlater` | `true` (`false`) | If you want to download your Watch Later playlist. Authentication is required.
-| `youtubedl_interval` | `1h` (`3h`) `12h` `3d` | If you want to change the default download interval. This can be any argument compatible with [gnu sleep](https://github.com/tldr-pages/tldr/blob/main/pages/linux/sleep.md).  Be mindful that if you download too frequently, you risk getting ip-banned by YouTube.<br />1 hour, (3 hours), 12 hours, 3 days.
+| `youtubedl_interval` | `1h` (`3h`) `12h` `3d` `false` | If you want to change the default download interval.<br>This can be any value compatible with [gnu sleep](https://github.com/tldr-pages/tldr/blob/main/pages/linux/sleep.md) or if set to false, the container will shutoff after executing. A low interval value risks you being ip-banned by YouTube.<br>1 hour, (3 hours), 12 hours, 3 days, false.
 | `youtubedl_quality` | `720` (`1080`) `1440` `2160` | If you want to change the default download resolution.<br>720p, (1080p), 1440p, 4k.
 
 # Image Tags
