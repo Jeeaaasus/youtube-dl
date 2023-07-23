@@ -30,6 +30,7 @@ COPY root/ /
 RUN set -x && \
     apt update && \
     apt install -y \
+        file \
         wget \
         python3 \
         python3-pip && \

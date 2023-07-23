@@ -17,6 +17,13 @@ if $youtubedl_watchlater; then echo ":ytwatchlater | --playlist-end '-1' --no-pl
 if ! $youtubedl_args_format; then exec+=" --format '$(cat '/config.default/format')'"; fi
 if ! $youtubedl_args_download_archive; then exec+=" --download-archive '/config/archive.txt'"; fi
 
+if [ -f '/config/pre-execution.sh' ]
+then
+  echo '[pre-execution] running pre-execution script...'
+  bash '/config/pre-execution.sh'
+  echo '[pre-execution] finished pre-execution script.'
+fi
+
 while [ -f '/tmp/updater-running' ]; do sleep 1s; done
 youtubedl_version="$($youtubedl_binary --version)"
 youtubedl_last_run_time="$(date '+%s')"
@@ -48,6 +55,14 @@ then
 else
   echo ''; echo "$(date '+%Y-%m-%d %H:%M:%S') - execution took $(( ($(date '+%s') - $youtubedl_last_run_time) )) seconds"
 fi
+
+if [ -f '/config/post-execution.sh' ]
+then
+  echo '[post-execution] running post-execution script...'
+  bash '/config/post-execution.sh'
+  echo '[post-execution] finished post-execution script.'
+fi
+
 echo "$youtubedl_binary version: $youtubedl_version"
 
 if [ "$youtubedl_interval" != 'false' ]
