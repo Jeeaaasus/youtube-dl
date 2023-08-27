@@ -29,7 +29,7 @@ youtubedl_version="$($youtubedl_binary --version)"
 youtubedl_last_run_time="$(date '+%s')"
 echo ''; echo "$(date '+%Y-%m-%d %H:%M:%S') - starting execution"
 
-if $youtubedl_lockfile; then touch '/downloads/youtubedl-running' && rm -f '/downloads/youtubedl-completed'; fi
+if $youtubedl_lockfile; then touch '/downloads/.youtubedl-running' && rm -f '/downloads/.youtubedl-completed'; fi
 
 while [ -f '/tmp/urls.temp' ]
 do
@@ -47,7 +47,7 @@ do
   rm -f '/tmp/urls'
 done
 
-if $youtubedl_lockfile; then touch '/downloads/youtubedl-completed' && rm -f '/downloads/youtubedl-running'; fi
+if $youtubedl_lockfile; then touch '/downloads/.youtubedl-completed' && rm -f '/downloads/.youtubedl-running'; fi
 
 if [ $(( ($(date '+%s') - $youtubedl_last_run_time) / 60 )) -ge 2 ]
 then
