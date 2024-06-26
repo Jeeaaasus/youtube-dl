@@ -11,7 +11,8 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2" \
     youtubedl_subscriptions="false" \
     youtubedl_watchlater="false" \
     youtubedl_interval="3h" \
-    youtubedl_quality="1080" 
+    youtubedl_quality="1080" \
+    OPENSSL_CONF=
 
 RUN set -x && \
     addgroup --gid "$PGID" abc && \
