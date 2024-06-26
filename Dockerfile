@@ -75,6 +75,12 @@ RUN set -ex && \
 RUN set -x && \
     python3 -m pip --no-cache-dir install yt-dlp
 
+RUN set -x && \
+    wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
+    tar -xf phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
+    mv phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/bin/phantomjs && \
+    rm -rf phantomjs-2.1.1-linux-x86_64 phantomjs-2.1.1-linux-x86_64.tar.bz2
+
 VOLUME /config /downloads
 
 WORKDIR /config
