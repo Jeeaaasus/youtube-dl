@@ -11,7 +11,8 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2" \
     youtubedl_subscriptions="false" \
     youtubedl_watchlater="false" \
     youtubedl_interval="3h" \
-    youtubedl_quality="1080" 
+    youtubedl_quality="1080" \
+    OPENSSL_CONF=
 
 RUN set -x && \
     addgroup --gid "$PGID" abc && \
@@ -74,6 +75,12 @@ RUN set -ex && \
 
 RUN set -x && \
     python3 -m pip --no-cache-dir install yt-dlp
+
+RUN set -x && \
+    wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
+    tar -xf phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
+    mv phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/bin/phantomjs && \
+    rm -rf phantomjs-2.1.1-linux-x86_64 phantomjs-2.1.1-linux-x86_64.tar.bz2
 
 VOLUME /config /downloads
 
