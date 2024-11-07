@@ -57,6 +57,9 @@ async def download_url(background_tasks: BackgroundTasks,url: str = Form(...)):
         background_tasks.add_task(download_bg,url,youtubedl_args_format)
     return RedirectResponse(url='/', status_code=303)
 
+@webserver.get('/download')
+async def get_download():
+    return RedirectResponse(url='/', status_code=303)
 
 @webserver.get('/edit/args')
 async def edit_args(request: Request):
