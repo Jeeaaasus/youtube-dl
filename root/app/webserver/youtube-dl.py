@@ -1,5 +1,5 @@
 import subprocess, aiofiles, re
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Request, Form,BackgroundTasks
 from fastapi.responses import RedirectResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 from pathlib import Path
@@ -43,18 +43,23 @@ youtubedl_binary = 'yt-dlp'
 async def dashboard(request: Request):
     return templates.TemplateResponse('dashboard.html', {'request': request})
 
+def download_bg(url: str, youtubedl_args_format=""):
+    execute(f'{youtubedl_binary} \'{url}\' --no-playlist-reverse --playlist-end \'-1\' --config-location \'/config/args.conf\' {youtubedl_args_format}')
 
 @webserver.post('/download')
-async def download_url(url: str = Form(...)):
+async def download_url(background_tasks: BackgroundTasks,url: str = Form(...)):
     if url is not False:
         async with aiofiles.open('/config/args.conf') as f:
             if re.search(r'(--format |-f )', await f.read(), flags=re.I | re.MULTILINE) is not None:
                 youtubedl_args_format = ''
             else:
                 youtubedl_args_format = youtubedl_default_args_format
-        execute(f'{youtubedl_binary} \'{url}\' --no-playlist-reverse --playlist-end \'-1\' --config-location \'/config/args.conf\' {youtubedl_args_format}')
+        background_tasks.add_task(download_bg,url,youtubedl_args_format)
     return RedirectResponse(url='/', status_code=303)
 
+@webserver.get('/download')
+async def get_download():
+    return RedirectResponse(url='/', status_code=303)
 
 @webserver.get('/edit/args')
 async def edit_args(request: Request):

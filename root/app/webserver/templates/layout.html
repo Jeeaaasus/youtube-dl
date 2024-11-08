@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
@@ -19,17 +20,23 @@
             </div>
             <div class="ui container">
                 <form class="item" method="post" action="/download">
-                    <input type="text" name="url" size="100%" placeholder="URL">
-                    &nbsp;
-                    <button class="ui inverted button">Download</button>
+                    <div class="ui action input">
+                        <input type="text" name="url" size="100%" placeholder="URL">
+                        <button class="ui teal right labeled icon button">
+                            <i class="download icon"></i>
+                            Download
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
-    <a href="https://github.com/Jeeaaasus/youtube-dl" class="header item"><i class="github icon"></i>Jeeaaasus</a>
-    <a href="https://hub.docker.com/r/jeeaaasustest/youtube-dl/" class="header item"><i class="docker icon"></i>youtube-dl</a>
+        <a href="https://github.com/Jeeaaasus/youtube-dl" class="header item"><i class="github icon"></i>Jeeaaasus</a>
+        <a href="https://hub.docker.com/r/jeeaaasustest/youtube-dl/" class="header item"><i
+                class="docker icon"></i>youtube-dl</a>
     </div>
 
     {% block content %}
     {% endblock %}
 </body>
+
 </html>
