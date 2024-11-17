@@ -1,4 +1,4 @@
-uvicorn
+uvicorn[standard]
 fastapi
 aiofiles
 Jinja2
