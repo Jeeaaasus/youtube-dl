@@ -44,10 +44,9 @@ def get_archive(archive_file='/config/archive.txt'):
     Returns:
         :obj:`str`: The full local path to the archive file.
     """
-    archive_file = Path(filename)
-    if not archive_file.exists():
+    if not Path(archive_file).exists():
         archive_file.touch()
-    return filename
+    return archive_file
 
 
 @webserver.get('/favicon.ico')
