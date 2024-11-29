@@ -4,6 +4,68 @@
 <div class="ui container">
     <br>
     <p>Everything is probably totally borked, I know nothing of web development thus this is very much WIP.</p>
-    <p>good luck, brave soul.</p>
+    <p>Good luck, brave soul.</p>
+
+    {% if not download_id %}
+        <div class="ui segment">
+            <h3>Log:</h3>
+            <pre class="logs" id="text"></pre>
+        </div>
+
+    <script>
+        function fetchLog() {
+            fetch(`/log/youtube-dl`)
+                .then(response => response.text())
+                .then(data => {
+	            const fileContentElement = document.getElementById('text');
+                    const isScrolledToBottom = fileContentElement.scrollHeight - fileContentElement.scrollTop === fileContentElement.clientHeight;
+                    fileContentElement.textContent = data;
+                    if (isScrolledToBottom) {
+                        fileContentElement.scrollTop = fileContentElement.scrollHeight;
+                    }
+                })
+        }
+        setInterval(fetchLog, 200);
+        fetchLog();
+    </script>
+    {% endif %}
+
+    {% if download_id %}
+        <div class="ui segment">
+            <h3>Download log:</h3>
+            <pre class="logs" id="text"></pre>
+        </div>
+
+    <script>
+        function fetchLog() {
+            fetch(`/log/download/{{ download_id }}`)
+                .then(response => response.text())
+                .then(data => {
+                    const fileContentElement = document.getElementById('text');
+                    const isScrolledToBottom = fileContentElement.scrollHeight - fileContentElement.scrollTop === fileContentElement.clientHeight;
+                    fileContentElement.textContent = data;
+                    if (isScrolledToBottom) {
+                        fileContentElement.scrollTop = fileContentElement.scrollHeight;
+                    }
+                })
+        }
+        setInterval(fetchLog, 200);
+        fetchLog();
+    </script>
+    {% endif %}
 </div>
+<style>
+    .logs {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f5f5f5;
+        max-height: 600px;
+	overflow-y: auto;
+    }
+</style>
 {% endblock %}

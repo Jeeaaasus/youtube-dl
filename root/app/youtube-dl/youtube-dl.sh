@@ -34,6 +34,7 @@ if $youtubedl_lockfile; then touch '/downloads/.youtubedl-running' && rm -f '/do
 while [ -f '/tmp/urls.temp' ]
 do
   extra_url_args=''
+  sed -i '/^#/d' '/tmp/urls.temp'
   if grep -qPe '\|' '/tmp/urls.temp'
   then
     grep -m 1 -nPe '\|' '/tmp/urls.temp' > '/tmp/urls'
