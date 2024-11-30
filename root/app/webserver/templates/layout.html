@@ -9,31 +9,30 @@
 
 <body>
     <div class="ui inverted menu">
-        <div class="ui container">
-            <a href="/" class="item"><i class="home icon"></i>Dashboard</a>
-            <a href="/restart-youtube-dl" class="item"><i class="sync alternate icon"></i>Restart youtube-dl</a>
-            <div class="ui simple dropdown item">Edit<i class="dropdown icon"></i>
-                <div class="menu">
-                    <a class="item" href="/edit/args">Args</a>
-                    <a class="item" href="/edit/archive">Archive</a>
-                    <a class="item" href="/edit/channels">Channels</a>
-                </div>
-            </div>
-            <div class="ui container">
-                <form class="item" method="post" action="/download">
-                    <div class="ui action input">
-                        <input type="text" name="url" size="100%" placeholder="URL">
-                        <button class="ui teal right labeled icon button">
-                            <i class="download icon"></i>
-                            Download
-                        </button>
-                    </div>
-                </form>
+        <a href="/" class="item"><i class="home icon"></i>Dashboard</a>
+        <a href="/restart-youtube-dl" class="item"><i class="sync alternate icon"></i>Restart youtube-dl</a>
+        <div class="ui simple dropdown item">Edit<i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="/edit/args">Args</a>
+                <a class="item" href="/edit/archive">Archive</a>
+                <a class="item" href="/edit/channels">Channels</a>
             </div>
         </div>
-        <a href="https://github.com/Jeeaaasus/youtube-dl" class="header item"><i class="github icon"></i>Jeeaaasus</a>
-        <a href="https://hub.docker.com/r/jeeaaasustest/youtube-dl/" class="header item"><i
-                class="docker icon"></i>youtube-dl</a>
+        <form class="item" method="post" action="/download"  style="flex-grow:1;">
+            <div class="ui action input">
+                <input type="text" name="url" placeholder="URL">
+                <button class="ui teal right labeled icon button">
+                    <i class="download icon"></i>
+                    Download
+                </button>
+            </div>
+        </form>
+        <div class="right menu">
+            <a href="https://github.com/Jeeaaasus/youtube-dl" class=" item"><i
+                    class="github icon"></i>Jeeaaasus</a>
+            <a href="https://hub.docker.com/r/jeeaaasustest/youtube-dl/" class=" item"><i
+                    class="docker icon"></i>youtube-dl</a>
+        </div>
     </div>
 
     {% block content %}
