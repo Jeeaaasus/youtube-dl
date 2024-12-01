@@ -181,7 +181,8 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     * `--match-filter '!is_live'`, makes youtube-dl ignore live streams.
     * `--windows-filenames`, restricts filenames to only Windows allowed characters.
     * `--ignore-no-formats-error`, keeps youtube-dl from crashing when trying to download a video premiere.
-    * `--no-progress`, removes a lot of unnecessary clutter from the logs.
+    * `--newline`, makes youtube-dl print download progress while a download is in progress.
+    * `--progress-delta '10'`, makes youtube-dl calculate and print progress every 10 seconds.
     * `--sleep-requests '1'`, makes youtube-dl wait 1 second between requests. Be careful changing this! YouTube might feel you are making too many requests and ip ban you.
     * `--merge-output-format 'mp4'`, makes youtube-dl create mp4 video files.
     * `--sub-langs 'all,-live_chat'`, makes youtube-dl embed subtitles.
