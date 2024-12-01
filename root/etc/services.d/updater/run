@@ -1,3 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-exec /app/youtube-dl/updater.sh

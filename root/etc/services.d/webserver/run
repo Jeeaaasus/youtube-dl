@@ -1,6 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-sleep 5s
-chown -R abc:abc /var/run/s6/services/youtube-dl/
-umask "$UMASK"
-exec s6-setuidgid abc uvicorn --app-dir /app/webserver youtube-dl:webserver --host 0.0.0.0 --port $youtubedl_webuiport

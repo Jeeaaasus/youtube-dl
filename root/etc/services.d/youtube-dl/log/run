@@ -1,5 +1,0 @@
-#!/usr/bin/execlineb
-
-s6-envuidgid abc
-s6-applyuidgid -U
-s6-log -bp 1 n1 s1048576 /var/log/youtube-dl

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="ui container">
+    <form method="post" action="/edit/args/save">
+        <h2 class="ui header">Args.conf</h2>
+        <div class="ui form">
+            <div class="field">
+                <textarea name="args_new" rows="30" style="width:100%;font-family:Courier New, monospace">{% for line in args %}{{ line }}{% endfor %}</textarea>
+            </div>
+            <div class="field">
+                <input type="submit" value="Save" class="ui primary button" />
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

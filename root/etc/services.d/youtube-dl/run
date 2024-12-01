@@ -1,5 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-sleep 1s
-umask "$UMASK"
-fdmove -c 2 1 exec s6-setuidgid abc /app/youtube-dl/youtube-dl.sh
