@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 from pathlib import Path
 
 
-templates = Jinja2Templates(directory='/app/webserver/templates')
+templates = Jinja2Templates(directory='/app/youtube-dl-webui/templates')
 webserver = FastAPI()
 youtubedl_binary = 'yt-dlp'
 
@@ -45,13 +45,13 @@ def get_archive(archive_file='/config/archive.txt'):
         :obj:`str`: The full local path to the archive file.
     """
     if not Path(archive_file).exists():
-        archive_file.touch()
+        Path(archive_file).touch()
     return archive_file
 
 
 @webserver.get('/favicon.ico')
 async def favicon():
-    return FileResponse('/app/webserver/static/favicon.png')
+    return FileResponse('/app/youtube-dl-webui/static/favicon.png')
 
 
 @webserver.get('/')
@@ -80,7 +80,7 @@ async def download_status(request: Request, download_id: str):
 
 @webserver.get('/log/youtube-dl')
 async def youtube_dl_log(request: Request):
-    file_path = f'/var/log/youtube-dl/current'
+    file_path = f'/var/log/youtube-dl/youtube-dl.log'
     try:
         async with aiofiles.open(file_path, 'r') as file:
             file_content = await file.read()
@@ -102,7 +102,7 @@ async def download_log(request: Request, filename: str):
 
 @webserver.get('/restart-youtube-dl')
 async def restart_youtube_dl():
-    await asyncio.create_subprocess_exec('s6-svc', '-r', '/var/run/s6/services/youtube-dl/')
+    await asyncio.create_subprocess_exec('supervisorctl', 'restart', 'youtube-dl')
     return RedirectResponse(url='/', status_code=303)
 
 

@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bash
+#!/bin/bash
 
 if $youtubedl_debug; then youtubedl_args_verbose=true; else youtubedl_args_verbose=false; fi
 if grep -qPe '^(--output |-o ).*\$\(' '/config/args.conf'; then youtubedl_args_output_expand=true; else youtubedl_args_output_expand=false; fi
@@ -72,5 +72,5 @@ then
   sleep $youtubedl_interval
 else
   echo "youtubedl_interval is set to 'false', container will now exit."
-  s6-svscanctl -t '/var/run/s6/services'
+  kill -3 $(cat "/etc/supervisor/supervisord.pid")
 fi

@@ -30,7 +30,7 @@ jobs:
       - name: Set version
         run: |
           RELEASE_VERSION=$(cat release-versions/latest.txt)
-          sed -i -E 's!(python.*install yt-dlp\[default\])!\1=='"$RELEASE_VERSION"'!i' Dockerfile
+          sed -i -E 's!(pip install yt-dlp\[default\])!\1=='"$RELEASE_VERSION"'!i' Dockerfile
 
       - name: Set tag
         run: |
@@ -50,7 +50,7 @@ jobs:
         run: |
           if [ "$CI_ACTION_REF_NAME_SLUG" == 'master' ]
           then
-            sed -i -E '5s!.*!python3 -m pip --no-cache-dir --quiet install --upgrade --force-reinstall --no-deps git+https://github.com/yt-dlp/yt-dlp.git!i' 'root/app/youtube-dl/updater.sh'
+            sed -i -E '6s!.*!pip --no-cache-dir --quiet install --upgrade --force-reinstall --no-deps git+https://github.com/yt-dlp/yt-dlp.git!i' 'root/app/youtube-dl/updater.sh'
           fi
 
       - name: Add git

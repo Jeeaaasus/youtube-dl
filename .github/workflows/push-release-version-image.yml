@@ -31,7 +31,7 @@ jobs:
       - name: Set version
         run: |
           RELEASE_VERSION=$(cat release-versions/latest.txt)
-          sed -i -E 's!(python.*install yt-dlp\[default\])!\1=='"$RELEASE_VERSION"'!i' Dockerfile
+          sed -i -E 's!(pip install yt-dlp\[default\])!\1=='"$RELEASE_VERSION"'!i' Dockerfile
 
       - name: Set tag
         run: |
@@ -41,7 +41,7 @@ jobs:
       - name: Remove updater
         run: |
           rm --verbose root/app/youtube-dl/updater.sh
-          rm --verbose -r root/etc/services.d/updater/
+          rm --verbose root/etc/supervisor/conf.d/youtube-dl-updater.conf
 
       - name: Print image tag
         run: |

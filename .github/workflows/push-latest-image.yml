@@ -31,7 +31,7 @@ jobs:
       - name: Set version
         run: |
           RELEASE_VERSION=$(cat release-versions/latest.txt)
-          sed -i -E 's!(python.*install yt-dlp\[default\])!\1=='"$RELEASE_VERSION"'!i' Dockerfile
+          sed -i -E 's!(pip install yt-dlp\[default\])!\1=='"$RELEASE_VERSION"'!i' Dockerfile
 
       - name: Set tag
         run: echo "IMAGE_TAG=latest" >> $GITHUB_ENV
