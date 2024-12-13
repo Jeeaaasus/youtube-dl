@@ -1,9 +1,9 @@
-#!/usr/bin/with-contenv sh
+#!/bin/bash
 
 if $youtubedl_webui
 then
   echo "[web-ui] webserver is enabled."
 else
   echo "[web-ui] webserver is disabled."
-  rm -rf /etc/services.d/webserver
+  rm -rf /etc/supervisor/conf.d/youtube-dl-webui.conf
 fi

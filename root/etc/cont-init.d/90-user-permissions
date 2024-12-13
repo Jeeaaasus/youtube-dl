@@ -1,15 +1,13 @@
-#!/usr/bin/with-contenv bash
+#!/bin/bash
 
 groupmod -o -g "$PGID" abc
 usermod -o -u "$PUID" abc
 
-mkdir /var/log/youtube-dl
+mkdir -p /var/log/youtube-dl/
+mkdir -p /var/log/youtube-dl-webui/
 
+chown -R abc:abc /home/abc
 chown -R abc:abc /app
 chown -R abc:abc /config
 chown -R abc:abc /downloads
-chown -R abc:abc /var/run/s6/services
 chown -R abc:abc /var/log
-
-chmod +x /app/youtube-dl/updater.sh
-chmod +x /app/youtube-dl/youtube-dl.sh

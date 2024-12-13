@@ -15,6 +15,11 @@ yt-dlp documentation [here](https://github.com/yt-dlp/yt-dlp).
     * Quality options with env parameter
     * Included format selection argument
     * Included set of starter arguments
+* **Webui Interface**
+    * Manage configuration files
+    * Trigger interval downloads
+    * Manual downloading
+    * View logs
 * **Automatic Updates**
     * Self updating container
     * Automated image building
@@ -23,21 +28,21 @@ yt-dlp documentation [here](https://github.com/yt-dlp/yt-dlp).
     * Channel URLs from file
 * **PUID/PGID**
 * **yt-dlp Options**
-   * SponsorBlock
-   * Format
-   * Quality
-   * High fps videos
-   * Download archive
-   * Output
-   * Subtitles
-   * Thumbnails
-   * Geo bypass
-   * Proxy support
-   * Metadata
-   * Etc
+    * SponsorBlock
+    * Format
+    * Quality
+    * High fps videos
+    * Download archive
+    * Output
+    * Subtitles
+    * Thumbnails
+    * Geo bypass
+    * Proxy support
+    * Metadata
+    * Etc
 
 # Quick Start
-"I want to download all my subscriptions and my watch later playlist in 4k"
+"I want to download all my subscriptions and my watch later playlist in 4k and also enable the webui to manage youtube-dl"
 ```
 docker run -d \
     --name youtube-dl \
@@ -46,6 +51,8 @@ docker run -d \
     -e youtubedl_subscriptions=true \
     -e youtubedl_watchlater=true \
     -e youtubedl_quality=2160 \
+    -e youtubedl_webui=true \
+    -p 8080:8080 \
     jeeaaasustest/youtube-dl
 ```
 Then add your cookies as explained in the [Configure youtube-dl](https://github.com/Jeeaaasus/youtube-dl#configure-youtube-dl) section below.
@@ -82,8 +89,8 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 | `UMASK` | (`022`) | If you need to specify umask for file permission reasons.
 | `youtubedl_debug` | `true` (`false`) | Used to enable verbose mode.
 | `youtubedl_lockfile` | `true` (`false`) | Used to enable youtubedl-running, youtubedl-completed files in downloads directory. Useful for external scripts.
-| `youtubedl_webui` | `true` (`false`) | If you would like to beta test the unfinished web-ui feature, might be broken!
-| `youtubedl_webuiport` | (`8080`) | If you need to change the web-ui port.
+| `youtubedl_webui` | `true` (`false`) | Used to enable webui feature with the ability to manage configuration files, view logs and perform manual downloads.
+| `youtubedl_webuiport` | (`8080`) | If you need to change the webui port.
 | `youtubedl_subscriptions` | `true` (`false`) | If you want to download all your subscriptions. Authentication is required.
 | `youtubedl_watchlater` | `true` (`false`) | If you want to download your Watch Later playlist. Authentication is required.
 | `youtubedl_interval` | `1h` (`3h`) `12h` `3d` `false` | If you want to change the default download interval.<br>This can be any value compatible with [gnu sleep](https://github.com/tldr-pages/tldr/blob/main/pages/linux/sleep.md) or if set to false, the container will shutoff after executing. A low interval value risks you being ip-banned by YouTube.<br>1 hour, (3 hours), 12 hours, 3 days, false.
@@ -174,7 +181,8 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
     * `--match-filter '!is_live'`, makes youtube-dl ignore live streams.
     * `--windows-filenames`, restricts filenames to only Windows allowed characters.
     * `--ignore-no-formats-error`, keeps youtube-dl from crashing when trying to download a video premiere.
-    * `--no-progress`, removes a lot of unnecessary clutter from the logs.
+    * `--newline`, makes youtube-dl print download progress while a download is in progress.
+    * `--progress-delta '10'`, makes youtube-dl calculate and print progress every 10 seconds.
     * `--sleep-requests '1'`, makes youtube-dl wait 1 second between requests. Be careful changing this! YouTube might feel you are making too many requests and ip ban you.
     * `--merge-output-format 'mp4'`, makes youtube-dl create mp4 video files.
     * `--sub-langs 'all,-live_chat'`, makes youtube-dl embed subtitles.
