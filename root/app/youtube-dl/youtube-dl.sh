@@ -40,7 +40,7 @@ do
     grep -m 1 -nPe '\|' '/tmp/urls.temp' > '/tmp/urls'
     sed -i -E "$(grep -oPe '^[0-9]+' /tmp/urls)d" '/tmp/urls.temp'
     extra_url_args="$(grep -oPe '.*?\|\K.*' '/tmp/urls')"
-    sed -i -E 's!([0-9]*:)?(.*?)(\|.*)!\2!' '/tmp/urls'
+    sed -i -E 's!([0-9]*:)(.*) (\|.*)!\2!' '/tmp/urls'
   else
     mv '/tmp/urls.temp' '/tmp/urls'
   fi
