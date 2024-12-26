@@ -72,5 +72,6 @@ then
   sleep $youtubedl_interval
 else
   echo "youtubedl_interval is set to 'false', container will now exit."
-  kill -3 $(cat "/etc/supervisor/supervisord.pid")
+  supervisorctl stop all
+  supervisorctl start terminate
 fi
