@@ -90,6 +90,7 @@ Then configure the channels as explained in the [Configure youtube-dl](https://g
 | `youtubedl_debug` | `true` (`false`) | Used to enable verbose mode.
 | `youtubedl_lockfile` | `true` (`false`) | Used to enable youtubedl-running, youtubedl-completed files in downloads directory. Useful for external scripts.
 | `youtubedl_webui` | `true` (`false`) | Used to enable webui feature with the ability to manage configuration files, view logs and perform manual downloads.
+| `youtubedl_webuipath` | (`/`) | Set if you wish to change the path the webui is served from e.g. if you want to put the ui behind a path based reverse proxy.
 | `youtubedl_webuiport` | (`8080`) | If you need to change the webui port.
 | `youtubedl_subscriptions` | `true` (`false`) | If you want to download all your subscriptions. Authentication is required.
 | `youtubedl_watchlater` | `true` (`false`) | If you want to download your Watch Later playlist. Authentication is required.

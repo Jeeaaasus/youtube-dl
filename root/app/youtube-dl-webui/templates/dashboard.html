@@ -10,7 +10,7 @@
 
     <script>
         function fetchLog() {
-            fetch(`/log/youtube-dl`)
+            fetch(`{{ base_path }}/log/youtube-dl`)
                 .then(response => response.text())
                 .then(data => {
                     const fileContentElement = document.getElementById('text');
@@ -34,7 +34,7 @@
 
     <script>
         function fetchLog() {
-            fetch(`/log/download/{{ download_id }}`)
+            fetch(`{{ base_path }}/log/download/{{ download_id }}`)
                 .then(response => response.text())
                 .then(data => {
                     const fileContentElement = document.getElementById('text');
