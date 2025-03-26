@@ -9,16 +9,16 @@
 
 <body>
     <div class="ui inverted menu">
-        <a href="/" class="item"><i class="home icon"></i>Dashboard</a>
-        <a href="/restart-youtube-dl" class="item"><i class="sync alternate icon"></i>Restart youtube-dl</a>
+        <a href="{{ base_path }}/" class="item"><i class="home icon"></i>Dashboard</a>
+        <a href="{{ base_path }}/restart-youtube-dl" class="item"><i class="sync alternate icon"></i>Restart youtube-dl</a>
         <div class="ui simple dropdown item">Edit<i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item" href="/edit/args">Args</a>
-                <a class="item" href="/edit/archive">Archive</a>
-                <a class="item" href="/edit/channels">Channels</a>
+                <a class="item" href="{{ base_path }}/edit/args">Args</a>
+                <a class="item" href="{{ base_path }}/edit/archive">Archive</a>
+                <a class="item" href="{{ base_path }}/edit/channels">Channels</a>
             </div>
         </div>
-        <form class="item" method="post" action="/download"  style="flex-grow:1;">
+        <form class="item" method="post" action="{{ base_path }}/download"  style="flex-grow:1;">
             <div class="ui action input">
                 <input type="text" name="url" placeholder="URL">
                 <button class="ui teal right labeled icon button">
