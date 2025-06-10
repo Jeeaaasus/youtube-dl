@@ -1,7 +1,5 @@
 FROM debian:12-slim
 
-ARG phantomjs_version="2.1.1"
-
 ENV PATH="/home/abc/.venv/bin:$PATH" \
     PUID="911" \
     PGID="911" \
@@ -45,15 +43,6 @@ RUN set -x && \
         /tmp/*
 
 COPY root/ /
-
-RUN set -x && \
-    arch=`uname -m` && \
-    if [ "$arch" = "x86_64" ]; then \
-        wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${phantomjs_version}-linux-${arch}.tar.bz2 && \
-        tar -xf phantomjs-${phantomjs_version}-linux-${arch}.tar.bz2 && \
-        mv phantomjs-${phantomjs_version}-linux-${arch}/bin/phantomjs /usr/bin/ && \
-        rm -rf phantomjs-* ; \
-    fi
 
 RUN set -x && \
     arch=`uname -m` && \
