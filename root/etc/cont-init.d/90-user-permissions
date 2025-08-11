@@ -1,13 +1,17 @@
 #!/bin/bash
 
-groupmod -o -g "$PGID" abc
-usermod -o -u "$PUID" abc
+if $youtubedl_set_uid; do
+    groupmod -o -g "$PGID" abc
+    usermod -o -u "$PUID" abc
+fi
 
 mkdir -p /var/log/youtube-dl/
 mkdir -p /var/log/youtube-dl-webui/
 
-chown -R abc:abc /home/abc
-chown -R abc:abc /app
-chown -R abc:abc /config
-chown -R abc:abc /downloads
-chown -R abc:abc /var/log
+if $youtubedl_chown; do
+    chown -R abc:abc /home/abc
+    chown -R abc:abc /app
+    chown -R abc:abc /config
+    chown -R abc:abc /downloads
+    chown -R abc:abc /var/log
+fi

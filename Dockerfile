@@ -12,6 +12,8 @@ ENV PATH="/home/abc/.venv/bin:$PATH" \
     youtubedl_watchlater="false" \
     youtubedl_interval="3h" \
     youtubedl_quality="1080" \
+    youtubedl_chown="true" \
+    youtubedl_set_uid="true" \
     OPENSSL_CONF=
 
 RUN set -x && \
