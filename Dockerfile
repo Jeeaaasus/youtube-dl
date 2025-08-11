@@ -71,6 +71,8 @@ VOLUME /config /downloads
 
 WORKDIR /config
 
+RUN chown -R abc:abc /home/abc /app /config /downloads
+
 EXPOSE 8080/tcp
 
 CMD ["/entrypoint.sh"]
