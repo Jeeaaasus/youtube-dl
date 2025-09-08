@@ -12,6 +12,8 @@ ENV PATH="/home/abc/.venv/bin:$PATH" \
     youtubedl_watchlater="false" \
     youtubedl_interval="3h" \
     youtubedl_quality="1080" \
+    youtubedl_chown="true" \
+    youtubedl_set_uid="true" \
     OPENSSL_CONF=
 
 RUN set -x && \
@@ -68,6 +70,8 @@ RUN set -x && \
 VOLUME /config /downloads
 
 WORKDIR /config
+
+RUN chown -R abc:abc /home/abc /app /config /downloads
 
 EXPOSE 8080/tcp
 
