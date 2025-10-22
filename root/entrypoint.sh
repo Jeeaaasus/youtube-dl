@@ -2,9 +2,15 @@
 
 echo "[startup] Running init scripts..."
 
-for init in $(ls /etc/cont-init.d/); do
-  /etc/cont-init.d/$init
-done
+scripts_dir="$(mktemp -d)"
+
+# Merge provided and local init scripts, allowing local scripts to override
+cp /etc/cont-init.d/* "$scripts_dir"
+[ -d /etc/cont-init-local.d ] && cp /etc/cont-init-local.d/* "$scripts_dir"
+
+run-parts --umask $UMASK "$scripts_dir"
+
+rm -rf "$scripts_dir"
 
 echo -e "[startup] Finished.\n"
 
