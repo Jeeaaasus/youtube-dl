@@ -32,6 +32,7 @@ RUN set -x && \
         supervisor \
         file \
         wget \
+        unzip \
         python3 \
         python3-venv \
         python3-pip && \
@@ -61,6 +62,14 @@ RUN set -x && \
         mv $(find /tmp/ffmpeg/* -name ffprobe) /usr/local/bin/ && \
         rm -rf /tmp/* ; \
     fi
+
+RUN set -x && \
+    arch=`uname -m` && \
+    wget -q "https://github.com/denoland/deno/releases/latest/download/deno-${arch}-unknown-linux-gnu.zip" -O /tmp/deno.zip && \
+    unzip /tmp/deno.zip -d /tmp/deno/ && \
+    chmod -R a+x /tmp/deno/* && \
+    mv $(find /tmp/deno/* -name deno) /usr/local/bin/ && \
+    rm -rf /tmp/*
 
 RUN set -x && \
     /home/abc/.venv/bin/pip --no-cache-dir install yt-dlp[default]
