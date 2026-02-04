@@ -5,7 +5,7 @@ if grep -qPe '^(--output |-o ).*\$\(' '/config/args.conf'; then youtubedl_args_o
 if grep -qPe '^(--format |-f )' '/config/args.conf'; then youtubedl_args_format=true; else youtubedl_args_format=false; fi
 if grep -qPe '^--download-archive ' '/config/args.conf'; then youtubedl_args_download_archive=true; else youtubedl_args_download_archive=false; fi
 
-youtubedl_binary='yt-dlp'
+youtubedl_binary='/home/abc/.venv/bin/yt-dlp'
 exec="$youtubedl_binary"
 exec+=" --config-location '/config/args.conf'"
 exec+=" --batch-file '/tmp/urls'"; (cat '/config/channels.txt'; echo '') > '/tmp/urls.temp'
