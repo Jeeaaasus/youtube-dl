@@ -58,7 +58,7 @@ async def favicon():
 
 @webserver.get('/')
 async def dashboard(request: Request):
-    return templates.TemplateResponse('dashboard.html', {'request': request, 'base_path': BASE_PATH})
+    return templates.TemplateResponse(request, 'dashboard.html', {'base_path': BASE_PATH})
 
 
 @webserver.post('/download')
@@ -77,7 +77,7 @@ async def download_url(request: Request, background_tasks: BackgroundTasks, url:
 
 @webserver.get('/download/{download_id}')
 async def download_status(request: Request, download_id: str):
-    return templates.TemplateResponse('dashboard.html', {'request': request, 'download_id': download_id, 'base_path': BASE_PATH})
+    return templates.TemplateResponse(request, 'dashboard.html', {'download_id': download_id, 'base_path': BASE_PATH})
 
 
 @webserver.get('/log/youtube-dl')
@@ -114,7 +114,7 @@ async def edit_args(request: Request):
     async with aiofiles.open('/config/args.conf') as f:
         async for line in f:
             args = args + line
-    return templates.TemplateResponse('args.html', {'request': request, 'args': args, 'base_path': BASE_PATH})
+    return templates.TemplateResponse(request, 'args.html', {'args': args, 'base_path': BASE_PATH})
 
 
 @webserver.post('/edit/args/save')
@@ -131,7 +131,7 @@ async def edit_channels(request: Request):
     async with aiofiles.open('/config/channels.txt') as f:
         async for line in f:
             channels = channels + line
-    return templates.TemplateResponse('channels.html', {'request': request, 'channels': channels, 'base_path': BASE_PATH})
+    return templates.TemplateResponse(request, 'channels.html', {'channels': channels, 'base_path': BASE_PATH})
 
 
 @webserver.post('/edit/channels/save')
@@ -148,7 +148,7 @@ async def edit_archive(request: Request):
     async with aiofiles.open(get_archive()) as f:
         async for line in f:
             archive = archive + line
-    return templates.TemplateResponse('archive.html', {'request': request, 'archive': archive, 'base_path': BASE_PATH})
+    return templates.TemplateResponse(request, 'archive.html', {'archive': archive, 'base_path': BASE_PATH})
 
 
 @webserver.post('/edit/archive/save')
